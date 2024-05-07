@@ -40,14 +40,4 @@ public class MainGameManager : MonoBehaviour
             _hasItems.Add(type, 0);
         }
     }
-
-
-}
-
-public enum ItemType
-{
-    Coin,
-    Ore,
-    Steel,
-    Weapon
 }

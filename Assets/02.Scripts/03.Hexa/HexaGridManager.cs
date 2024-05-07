@@ -24,7 +24,7 @@ public class HexaGridManager : MonoBehaviour
     private Grid _grid;
 
     [SerializeField] private HexaGridElement _elementPrefab;
-    private Dictionary<HexaGridElement, Vector3Int> _gridPositions;
+    private Dictionary<Vector3Int, HexaGridElement> _gridPositions;
 
 
     private List<GetItemPopup> _itemsPopups;
@@ -53,7 +53,7 @@ public class HexaGridManager : MonoBehaviour
     {
         _camera = Camera.main;
         _grid = GetComponent<Grid>();
-        _gridPositions = new Dictionary<HexaGridElement, Vector3Int>();
+        _gridPositions = new Dictionary<Vector3Int, HexaGridElement>();
         _itemsPopups = new List<GetItemPopup>();
         for (int i = 0; i < 15; i++)
         {
@@ -67,7 +67,7 @@ public class HexaGridManager : MonoBehaviour
     {
         foreach (HexaGridElement element in transform.GetComponentsInChildren<HexaGridElement>())
         {
-            _gridPositions.Add(element, _grid.WorldToCell(element.transform.position));
+            _gridPositions.TryAdd(_grid.WorldToCell(element.transform.position), element);
         }
     }
 
@@ -96,7 +96,7 @@ public class HexaGridManager : MonoBehaviour
         itemPopup.Init(MainGameDataSo.Instance.GetItemSprite(type));
     }
 
-    public Vector2 GetGridePos(HexaGridElement element, Vector3 mousePos, Vector3 befoPos)
+    public Vector2 GetGridePos(HexaGridElement element, Vector3 mousePos, Vector3 befoPos, ref HexaGridElement[] nearHexa)
     {
         Vector2 posPos = _camera.ScreenToWorldPoint(Input.mousePosition);
         if (posPos.y < -4.7f) posPos.y = -4.7f;
@@ -106,11 +106,20 @@ public class HexaGridManager : MonoBehaviour
 
         Vector3Int cellPos = _grid.WorldToCell(posPos);
         cellPos.z = 0;
-        if (_gridPositions.ContainsValue(cellPos))
+        if (_gridPositions.ContainsKey(cellPos) && !ReferenceEquals(_gridPositions[cellPos], null))
         {
             return befoPos;
         }
-        _gridPositions[element] = cellPos;
+
+        _gridPositions[_grid.WorldToCell(befoPos)] = null;
+        _gridPositions[cellPos] = element;
+
+        List<Vector3Int> posList = cellPos.y % 2 == 0 ? _evenPos : _oddPos;
+        for (int i = 0; i < posList.Count; i++)
+        {
+            _gridPositions.TryGetValue(cellPos + posList[i], out nearHexa[i]);
+        }
+
         return _grid.CellToWorld(cellPos);
     }
 

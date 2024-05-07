@@ -20,8 +20,6 @@ public class MainGameDataSo : ScriptableObject
     }
     #endregion
 
-
     [SerializeField] private List<Sprite> _itemSprites = new List<Sprite>();
     public Sprite GetItemSprite(ItemType type) => _itemSprites[(int)type];
-
 }
