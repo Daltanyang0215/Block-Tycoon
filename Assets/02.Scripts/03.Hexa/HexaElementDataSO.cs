@@ -5,10 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "HexaElementDataSO", menuName = "BlockTycoon/HexaElementDataSO")]
 public class HexaElementDataSO : ScriptableObject
 {
+
     [field: SerializeField] public HexaType HexaType { get; private set; }
 
     [field: Header("Produce")]
-    [field: SerializeField] public ProduceRecipe ProduceRecipe { get; private set; }
+    [field: SerializeField] public List<ProduceRecipe> ProduceRecipe { get; private set; }
 
     // TODO : 나중에 메인컬러만 변경하는 걸로 배치를 줄일수 있는지 테스트 할 필요 있음
     [field: Header("Render")]

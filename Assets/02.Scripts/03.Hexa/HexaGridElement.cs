@@ -9,8 +9,8 @@ public class HexaGridElement : MonoBehaviour
     private HexaGridManager _manger;
     private HexaGridElement[] _nearHexa = new HexaGridElement[6];
 
-    private ProduceRecipe CurRecipe { get; set; }
-    private Dictionary<ItemType, int> _itemCount;
+    public ProduceRecipe CurRecipe { get; private set; } = null;
+    public Dictionary<ItemType, int> ItemCount { get; private set; }
     private bool _isCanProduce;
     private bool _isBefoCanProduce;
     private bool _isChangeCondition;
@@ -23,8 +23,7 @@ public class HexaGridElement : MonoBehaviour
     public void Init(HexaElementDataSO newData)
     {
         Data = newData;
-        SetReciepe();
-        _fillMut = CurRecipe.ProduceTime == 0 ? 0 : 1 / CurRecipe.ProduceTime;
+        SetReciepe(0);
 
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopHexaColor);
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
@@ -34,29 +33,50 @@ public class HexaGridElement : MonoBehaviour
         transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
     }
 
-    public void SetReciepe()
+    public void SetReciepe(int index)
     {
         //TODO 나중에 레시피에따른 기능 변경 필요
-        CurRecipe = Data.ProduceRecipe;
-        _itemCount = new Dictionary<ItemType, int>();
+        if (Data.ProduceRecipe.Count == 0) return;
+        CurRecipe = Data.ProduceRecipe[index];
+        _fillMut = CurRecipe?.ProduceTime != 0 ? 1 / CurRecipe.ProduceTime : 0;
+        ItemCount = new Dictionary<ItemType, int>();
         foreach (ItemPair material in CurRecipe.MaterailItemPairs)
         {
-            _itemCount.Add(material.ProduceItemType, 0);
+            ItemCount.Add(material.ProduceItemType, 0);
         }
         foreach (ItemPair product in CurRecipe.ProduceItemPairs)
         {
-            _itemCount.Add(product.ProduceItemType, 0);
+            ItemCount.Add(product.ProduceItemType, 0);
         }
+    }
+
+    public void SetNearHexa(HexaGridElement[] hexas)
+    {
+        _nearHexa = hexas;
+        _isChangeCondition = true;
+    }
+    public void RemoveNearHexa(HexaGridElement hexa)
+    {
+        for (int i = 0; i < _nearHexa.Length; i++)
+        {
+            if (_nearHexa[i] == hexa)
+            {
+                _nearHexa[i] = null;
+                break;
+            }
+        }
+        _isChangeCondition = true;
     }
 
     private void Start()
     {
         _manger = HexaGridManager.Instance;
         _fillMaterial = transform.Find("Gauge").GetComponent<SpriteRenderer>().materials[0];
-        SetReciepe();
+        _fillMaterial.SetFloat("_CutRange", 0);
+        SetReciepe(0);
         // TODO 나중에 지워야됨
         {
-            _fillMut = CurRecipe.ProduceTime == 0 ? 0 : 1 / CurRecipe.ProduceTime;
+
 
             transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopHexaColor);
             transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
@@ -88,6 +108,7 @@ public class HexaGridElement : MonoBehaviour
 
     private bool CheckCanProduce()
     {
+        if (ReferenceEquals(CurRecipe, null)) return false;
         if (_isCanProduce) return true;
 
         // 주위 블록 조건이 논이 아닐때 주위 블록을 확인
@@ -95,9 +116,9 @@ public class HexaGridElement : MonoBehaviour
         {
             // 최적화 목적, 주위 블록의 변화가 없다면 리턴
             if (!_isChangeCondition) return _isBefoCanProduce;
-            
+
             // TODO 최적화 테스트 용 . 나중에 지워야 됨
-            Debug.Log("변화 감지");
+            //Debug.Log("변화 감지");
 
             _isCanProduce = false;
             foreach (HexaGridElement near in _nearHexa)
@@ -120,16 +141,24 @@ public class HexaGridElement : MonoBehaviour
         return _isCanProduce;
     }
 
-    private void OnMouseDown()
+    private void OnMouseOver()
     {
-        _fillAmount += CurRecipe.ProduceClick;
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!ReferenceEquals(CurRecipe, null))
+            {
+                _fillAmount += CurRecipe.ProduceClick;
+            }
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            MainUIManager.Instance.HexaInfoPanel.ShowPanel(this);
+        }
     }
 
     private void OnMouseDrag()
     {
-        transform.position = _manger.GetGridePos(this, Input.mousePosition, transform.position, ref _nearHexa);
-        // TODO 나중에 주변 블록 정보를 업데이틑 하는 방법을 변경 할 필요 있음. 이동에도 최적화 할 예정
-        _isChangeCondition = true;
+        transform.position = _manger.GetGridePos(this, Input.mousePosition, transform.position);
     }
 
 

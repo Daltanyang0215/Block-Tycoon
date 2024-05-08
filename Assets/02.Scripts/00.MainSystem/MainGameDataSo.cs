@@ -20,6 +20,11 @@ public class MainGameDataSo : ScriptableObject
     }
     #endregion
 
+    [field:SerializeField] public int MatarialStorageCountMut {  get; private set; }
+    [field:SerializeField] public int ProductStorageCountMut {  get; private set; }
+
     [SerializeField] private List<Sprite> _itemSprites = new List<Sprite>();
+    [SerializeField] private List<Color> _itemColor = new List<Color>();
     public Sprite GetItemSprite(ItemType type) => _itemSprites[(int)type];
+    public Color GetItemColor(ItemType type) => _itemColor[(int)type];
 }

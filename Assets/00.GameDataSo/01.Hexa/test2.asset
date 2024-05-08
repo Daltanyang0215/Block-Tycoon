@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <HexaType>k__BackingField: 6
   <ProduceRecipe>k__BackingField:
+  - <RecipeName>k__BackingField: ore
     <NearHexaCondition>k__BackingField: 1
     <MaterailItemPairs>k__BackingField: []
     <ProduceTime>k__BackingField: 5

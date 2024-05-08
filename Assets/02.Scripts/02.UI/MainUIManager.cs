@@ -23,6 +23,8 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private ReportElement _elementPrefeb;
     private Dictionary<ItemType,ReportElement> _reportElements;
 
+    [field: SerializeField] public HexaInfoPanel HexaInfoPanel { get; private set; }
+
     private void Start()
     {
         _reportElements = new Dictionary<ItemType,ReportElement>();

@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class ProduceRecipe
 {
+    [field: SerializeField] public string RecipeName { get; private set; }
+
     [field: Header("Material")]
     [field: SerializeField] public HexaType NearHexaCondition { get; private set; }
     [field: SerializeField] public List<ItemPair> MaterailItemPairs { get; private set; }

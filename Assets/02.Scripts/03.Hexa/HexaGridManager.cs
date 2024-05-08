@@ -96,7 +96,7 @@ public class HexaGridManager : MonoBehaviour
         itemPopup.Init(MainGameDataSo.Instance.GetItemSprite(type));
     }
 
-    public Vector2 GetGridePos(HexaGridElement element, Vector3 mousePos, Vector3 befoPos, ref HexaGridElement[] nearHexa)
+    public Vector2 GetGridePos(HexaGridElement element, Vector3 mousePos, Vector3 befoPos)
     {
         Vector2 posPos = _camera.ScreenToWorldPoint(Input.mousePosition);
         if (posPos.y < -4.7f) posPos.y = -4.7f;
@@ -111,16 +111,45 @@ public class HexaGridManager : MonoBehaviour
             return befoPos;
         }
 
+        // 이전 자리의 주변 블록 재설정
         _gridPositions[_grid.WorldToCell(befoPos)] = null;
+        HexaNearRemove(_grid.WorldToCell(befoPos), element);
+        // 다음 자리의 주변 블록 재설정
         _gridPositions[cellPos] = element;
 
         List<Vector3Int> posList = cellPos.y % 2 == 0 ? _evenPos : _oddPos;
         for (int i = 0; i < posList.Count; i++)
         {
-            _gridPositions.TryGetValue(cellPos + posList[i], out nearHexa[i]);
+            //_gridPositions.TryGetValue(cellPos + posList[i], out nearHexa[i]);
+            HexaNearUpData(cellPos + posList[i]);
         }
+        HexaNearUpData(cellPos);
 
         return _grid.CellToWorld(cellPos);
+    }
+
+    private void HexaNearRemove(Vector3Int center, HexaGridElement remove)
+    {
+        List<Vector3Int> posList = center.y % 2 == 0 ? _evenPos : _oddPos;
+        for (int i = 0; i < posList.Count; i++)
+        {
+            if (_gridPositions.TryGetValue(center + posList[i], out HexaGridElement near) && !ReferenceEquals(near, null))
+                near.RemoveNearHexa(remove);
+        }
+    }
+
+    private void HexaNearUpData(Vector3Int center)
+    {
+        // 딕셔너리에 없거나, 해당 좌표가 null 이면 리턴
+        if (!_gridPositions.ContainsKey(center) || ReferenceEquals(_gridPositions[center], null)) return;
+
+        List<Vector3Int> posList = center.y % 2 == 0 ? _evenPos : _oddPos;
+        HexaGridElement[] near = new HexaGridElement[posList.Count];
+        for (int i = 0; i < posList.Count; i++)
+        {
+            _gridPositions.TryGetValue(center + posList[i], out near[i]);
+        }
+        _gridPositions[center].SetNearHexa(near);
     }
 
 
