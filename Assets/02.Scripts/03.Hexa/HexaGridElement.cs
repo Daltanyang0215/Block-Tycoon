@@ -20,6 +20,8 @@ public class HexaGridElement : MonoBehaviour
     private float _fillAmount;
     private float _fillMut;
 
+    public System.Action<int> InfoUpData;
+
     public void Init(HexaElementDataSO newData)
     {
         Data = newData;
@@ -100,10 +102,14 @@ public class HexaGridElement : MonoBehaviour
             {
                 ItemPair item = CurRecipe.ProduceItemPairs[i];
                 _manger.ShowAddItemPopup(transform.position + (i * 0.35f) * Vector3.up + 0.15f * Vector3.up, item.ProduceItemType);
-                MainGameManager.Instance.AddItem(item.ProduceItemType, item.ProduceAmount);
+                //MainGameManager.Instance.AddItem(item.ProduceItemType, item.ProduceAmount);
+
+                ItemCount[CurRecipe.ProduceItemPairs[i].ProduceItemType] += CurRecipe.ProduceItemPairs[i].ProduceAmount;
+                InfoUpData?.Invoke(-1);
             }
         }
         _fillMaterial.SetFloat("_CutRange", _fillAmount / _filltimer);
+        
     }
 
     private bool CheckCanProduce()
@@ -111,11 +117,25 @@ public class HexaGridElement : MonoBehaviour
         if (ReferenceEquals(CurRecipe, null)) return false;
         if (_isCanProduce) return true;
 
+        // 생산품이 가득차면 리턴
+        if (CurRecipe.ProduceItemPairs.Count > 0)
+        {
+            foreach (ItemPair pair in CurRecipe.ProduceItemPairs)
+            {
+                // 생산품이 가득 찼다면 리턴
+                if (ItemCount[pair.ProduceItemType] + pair.ProduceAmount > pair.ProduceAmount * MainGameDataSo.Instance.ProductStorageCountMut)
+                {
+                    _isCanProduce = false;
+                    return _isCanProduce;
+                }
+            }
+        }
+
         // 주위 블록 조건이 논이 아닐때 주위 블록을 확인
         if (CurRecipe.NearHexaCondition != HexaType.None)
         {
             // 최적화 목적, 주위 블록의 변화가 없다면 리턴
-            if (!_isChangeCondition) return _isBefoCanProduce;
+            if (!_isChangeCondition && _isCanProduce) return _isBefoCanProduce;
 
             // TODO 최적화 테스트 용 . 나중에 지워야 됨
             //Debug.Log("변화 감지");
@@ -137,7 +157,30 @@ public class HexaGridElement : MonoBehaviour
         {
             _isCanProduce = true;
         }
-        //TODO : 나중에 생산 조건 확인 해야 됨
+        // 블록 조건에서 불합격이면 리턴
+        if (_isCanProduce == false) return _isCanProduce;
+
+
+        // 재료가 필요한 지 확인
+        if (CurRecipe.MaterailItemPairs.Count > 0)
+        {
+            foreach (ItemPair pair in CurRecipe.MaterailItemPairs)
+            {
+                // 재료가 모자르면 리턴
+                if (ItemCount[pair.ProduceItemType] < pair.ProduceAmount)
+                {
+                    _isCanProduce = false;
+                    return _isCanProduce;
+                }
+            }
+
+            foreach (ItemPair pair in CurRecipe.MaterailItemPairs)
+            {
+                // 재료 소비
+                ItemCount[pair.ProduceItemType] -= pair.ProduceAmount;
+            }
+        }
+
         return _isCanProduce;
     }
 

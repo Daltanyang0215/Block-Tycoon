@@ -21,6 +21,7 @@ public class HexaInfoPanel : MonoBehaviour
         transform.position = Camera.main.WorldToScreenPoint(curElenemt.transform.position);
 
         _curHexaElement = curElenemt;
+        _curHexaElement.InfoUpData = UpdateRecipe;
 
         _hexaName.text = _curHexaElement.Data.name;
 
@@ -34,9 +35,15 @@ public class HexaInfoPanel : MonoBehaviour
 
         if (list.Count > 0)
         {
-            _recipeDropdown.AddOptions(list);
+            _recipeDropdown.AddOptions(list);   
             UpdateRecipe(0);
         }
+    }
+
+    public void HidePanel()
+    {
+        transform.GetComponentInParent<Canvas>().enabled = false;
+        _curHexaElement.InfoUpData = null;
     }
 
     public void UpdateRecipe(int index = -1)

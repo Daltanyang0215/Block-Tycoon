@@ -16,7 +16,7 @@ public class InfoElement : MonoBehaviour
 
     public void UpDateSlider(int curValue, int maxValue)
     {
-        _slider.value = curValue / (float)maxValue;
+        _slider.value = (float)curValue / maxValue;
         _countText.text = $"{curValue}/{maxValue}";
     }
 }
