@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HexaInfoPanel : MonoBehaviour
 {
-    private HexaGridElement _curHexaElement;
+    private HexaGridProduct _curHexaElement;
 
     [SerializeField] private InfoElement _infoElementPrefab;
     [SerializeField] private TMP_Text _hexaName;
@@ -13,7 +13,7 @@ public class HexaInfoPanel : MonoBehaviour
     [SerializeField] private Transform _productParent;
     [SerializeField] private Transform _materialParent;
 
-    public void ShowPanel(HexaGridElement curElenemt)
+    public void ShowPanel(HexaGridProduct curElenemt)
     {
 
         transform.GetComponentInParent<Canvas>().enabled = true;
@@ -35,7 +35,7 @@ public class HexaInfoPanel : MonoBehaviour
 
         if (list.Count > 0)
         {
-            _recipeDropdown.AddOptions(list);   
+            _recipeDropdown.AddOptions(list);
             UpdateRecipe(0);
         }
     }
@@ -63,13 +63,13 @@ public class HexaInfoPanel : MonoBehaviour
         {
             InfoElement element = FindDisableInfoElement(false);
             element.Init(item.ProduceItemType);
-            element.UpDateSlider(_curHexaElement.ItemCount[item.ProduceItemType], item.ProduceAmount * MainGameDataSo.Instance.MatarialStorageCountMut);
+            element.UpDateSlider(_curHexaElement.MaterialItemCount[item.ProduceItemType], item.ProduceAmount * MainGameDataSo.Instance.MatarialStorageCountMut);
         }
         foreach (ItemPair item in _curHexaElement.CurRecipe.ProduceItemPairs)
         {
             InfoElement element = FindDisableInfoElement(true);
             element.Init(item.ProduceItemType);
-            element.UpDateSlider(_curHexaElement.ItemCount[item.ProduceItemType], item.ProduceAmount * MainGameDataSo.Instance.ProductStorageCountMut);
+            element.UpDateSlider(_curHexaElement.ProductItemCount[item.ProduceItemType], item.ProduceAmount * MainGameDataSo.Instance.ProductStorageCountMut);
         }
     }
 

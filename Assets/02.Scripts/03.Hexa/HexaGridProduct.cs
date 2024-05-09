@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HexaGridElement : MonoBehaviour
+public class HexaGridProduct : MonoBehaviour ,IHexaGridElement
 {
 
     [field: SerializeField] public HexaElementDataSO Data { get; private set; }
     private HexaGridManager _manger;
-    private HexaGridElement[] _nearHexa = new HexaGridElement[6];
+    private IHexaGridElement[] _nearHexa = new IHexaGridElement[6];
 
     public ProduceRecipe CurRecipe { get; private set; } = null;
-    public Dictionary<ItemType, int> ItemCount { get; private set; }
+    public Dictionary<ItemType, int> MaterialItemCount { get; private set; }
+    public Dictionary<ItemType, int> ProductItemCount { get; private set; }
     private bool _isCanProduce;
     private bool _isBefoCanProduce;
     private bool _isChangeCondition;
@@ -22,9 +23,9 @@ public class HexaGridElement : MonoBehaviour
 
     public System.Action<int> InfoUpData;
 
-    public void Init(HexaElementDataSO newData)
+    public void Init(HexaElementDataSO data)
     {
-        Data = newData;
+        Data = data;
         SetReciepe(0);
 
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopHexaColor);
@@ -41,23 +42,24 @@ public class HexaGridElement : MonoBehaviour
         if (Data.ProduceRecipe.Count == 0) return;
         CurRecipe = Data.ProduceRecipe[index];
         _fillMut = CurRecipe?.ProduceTime != 0 ? 1 / CurRecipe.ProduceTime : 0;
-        ItemCount = new Dictionary<ItemType, int>();
+        MaterialItemCount = new Dictionary<ItemType, int>();
+        ProductItemCount = new Dictionary<ItemType, int>();
         foreach (ItemPair material in CurRecipe.MaterailItemPairs)
         {
-            ItemCount.Add(material.ProduceItemType, 0);
+            MaterialItemCount.Add(material.ProduceItemType, 0);
         }
         foreach (ItemPair product in CurRecipe.ProduceItemPairs)
         {
-            ItemCount.Add(product.ProduceItemType, 0);
+            ProductItemCount.Add(product.ProduceItemType, 0);
         }
     }
 
-    public void SetNearHexa(HexaGridElement[] hexas)
+    public void SetNearHexa(IHexaGridElement[] hexas)
     {
         _nearHexa = hexas;
         _isChangeCondition = true;
     }
-    public void RemoveNearHexa(HexaGridElement hexa)
+    public void RemoveNearHexa(IHexaGridElement hexa)
     {
         for (int i = 0; i < _nearHexa.Length; i++)
         {
@@ -78,8 +80,6 @@ public class HexaGridElement : MonoBehaviour
         SetReciepe(0);
         // TODO 나중에 지워야됨
         {
-
-
             transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopHexaColor);
             transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
             transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopGaugeColor);
@@ -89,7 +89,7 @@ public class HexaGridElement : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void HexaUpdate()
     {
         if (!CheckCanProduce()) return;
 
@@ -101,15 +101,38 @@ public class HexaGridElement : MonoBehaviour
             for (int i = 0; i < CurRecipe.ProduceItemPairs.Count; i++)
             {
                 ItemPair item = CurRecipe.ProduceItemPairs[i];
-                _manger.ShowAddItemPopup(transform.position + (i * 0.35f) * Vector3.up + 0.15f * Vector3.up, item.ProduceItemType);
+                //_manger.ShowAddItemPopup(transform.position + (i * 0.35f) * Vector3.up + 0.15f * Vector3.up, item.ProduceItemType);
                 //MainGameManager.Instance.AddItem(item.ProduceItemType, item.ProduceAmount);
 
-                ItemCount[CurRecipe.ProduceItemPairs[i].ProduceItemType] += CurRecipe.ProduceItemPairs[i].ProduceAmount;
+                ProductItemCount[CurRecipe.ProduceItemPairs[i].ProduceItemType] += CurRecipe.ProduceItemPairs[i].ProduceAmount;
                 InfoUpData?.Invoke(-1);
             }
         }
         _fillMaterial.SetFloat("_CutRange", _fillAmount / _filltimer);
-        
+
+    }
+
+    public void GetMaterialToNear()
+    {
+        if (ReferenceEquals(CurRecipe, null)) return;
+        foreach (ItemPair pair in CurRecipe.MaterailItemPairs)
+        {
+            if (MaterialItemCount[pair.ProduceItemType] == pair.ProduceAmount * MainGameDataSo.Instance.MatarialStorageCountMut) continue;
+
+            foreach (IHexaGridElement near in _nearHexa)
+            {
+                if (ReferenceEquals(near, null)) continue;
+                if(!(near is HexaGridProduct hexa)) continue;
+
+                if (hexa.ProductItemCount.ContainsKey(pair.ProduceItemType) && hexa.ProductItemCount[pair.ProduceItemType] > 0)
+                {
+                    hexa.ProductItemCount[pair.ProduceItemType]--;
+                    MaterialItemCount[pair.ProduceItemType]++;
+                    InfoUpData?.Invoke(-1);
+                    break;
+                }
+            }
+        }
     }
 
     private bool CheckCanProduce()
@@ -118,69 +141,79 @@ public class HexaGridElement : MonoBehaviour
         if (_isCanProduce) return true;
 
         // 생산품이 가득차면 리턴
+        if (CheckProductCountIFMax()) return false;
+
+        _isCanProduce = CheckNearHexaType();
+        if (_isCanProduce == false) return false;
+
+        // 재료가 필요한 지 확인
+        return CheckMaterialCount();
+    }
+
+
+
+    private bool CheckProductCountIFMax()
+    {
         if (CurRecipe.ProduceItemPairs.Count > 0)
         {
             foreach (ItemPair pair in CurRecipe.ProduceItemPairs)
             {
                 // 생산품이 가득 찼다면 리턴
-                if (ItemCount[pair.ProduceItemType] + pair.ProduceAmount > pair.ProduceAmount * MainGameDataSo.Instance.ProductStorageCountMut)
+                if (ProductItemCount[pair.ProduceItemType] + pair.ProduceAmount > pair.ProduceAmount * MainGameDataSo.Instance.ProductStorageCountMut)
                 {
-                    _isCanProduce = false;
-                    return _isCanProduce;
+                    return true;
                 }
             }
         }
+        return false;
+    }
 
-        // 주위 블록 조건이 논이 아닐때 주위 블록을 확인
-        if (CurRecipe.NearHexaCondition != HexaType.None)
+    private bool CheckNearHexaType()
+    {
+        if (CurRecipe.NearHexaCondition == HexaType.None) return true;
+
+        // 최적화 목적, 주위 블록의 변화가 없다면 리턴
+        if (!_isChangeCondition) return _isBefoCanProduce;
+
+        // TODO 최적화 테스트 용 . 나중에 지워야 됨
+        //Debug.Log("변화 감지");
+
+        foreach (IHexaGridElement near in _nearHexa)
         {
-            // 최적화 목적, 주위 블록의 변화가 없다면 리턴
-            if (!_isChangeCondition && _isCanProduce) return _isBefoCanProduce;
-
-            // TODO 최적화 테스트 용 . 나중에 지워야 됨
-            //Debug.Log("변화 감지");
-
-            _isCanProduce = false;
-            foreach (HexaGridElement near in _nearHexa)
+            if (ReferenceEquals(near, null)) continue;
+            if (near.Data.HexaType == CurRecipe.NearHexaCondition)
             {
-                if (ReferenceEquals(near, null)) continue;
-                if (near.Data.HexaType == CurRecipe.NearHexaCondition)
-                {
-                    _isCanProduce = true;
-                    break;
-                }
+                _isCanProduce = true;
+                break;
             }
-            _isChangeCondition = false;
-            _isBefoCanProduce = _isCanProduce;
         }
-        else
-        {
-            _isCanProduce = true;
-        }
-        // 블록 조건에서 불합격이면 리턴
-        if (_isCanProduce == false) return _isCanProduce;
+        _isChangeCondition = false;
+        _isBefoCanProduce = _isCanProduce;
 
+        return _isCanProduce;
+    }
 
-        // 재료가 필요한 지 확인
+    private bool CheckMaterialCount()
+    {
         if (CurRecipe.MaterailItemPairs.Count > 0)
         {
             foreach (ItemPair pair in CurRecipe.MaterailItemPairs)
             {
                 // 재료가 모자르면 리턴
-                if (ItemCount[pair.ProduceItemType] < pair.ProduceAmount)
+                if (MaterialItemCount[pair.ProduceItemType] < pair.ProduceAmount)
                 {
                     _isCanProduce = false;
-                    return _isCanProduce;
+                    return false;
                 }
             }
 
             foreach (ItemPair pair in CurRecipe.MaterailItemPairs)
             {
                 // 재료 소비
-                ItemCount[pair.ProduceItemType] -= pair.ProduceAmount;
+                MaterialItemCount[pair.ProduceItemType] -= pair.ProduceAmount;
             }
         }
-
+        _isCanProduce = true;
         return _isCanProduce;
     }
 

@@ -23,8 +23,8 @@ public class HexaGridManager : MonoBehaviour
     private Camera _camera;
     private Grid _grid;
 
-    [SerializeField] private HexaGridElement _elementPrefab;
-    private Dictionary<Vector3Int, HexaGridElement> _gridPositions;
+    [SerializeField] private HexaGridProduct _elementPrefab;
+    private Dictionary<Vector3Int, IHexaGridElement> _gridPositions;
 
 
     private List<GetItemPopup> _itemsPopups;
@@ -53,7 +53,7 @@ public class HexaGridManager : MonoBehaviour
     {
         _camera = Camera.main;
         _grid = GetComponent<Grid>();
-        _gridPositions = new Dictionary<Vector3Int, HexaGridElement>();
+        _gridPositions = new Dictionary<Vector3Int, IHexaGridElement>();
         _itemsPopups = new List<GetItemPopup>();
         for (int i = 0; i < 15; i++)
         {
@@ -62,10 +62,32 @@ public class HexaGridManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        foreach (IHexaGridElement hexa in _gridPositions.Values)
+        {
+            if (ReferenceEquals(hexa, null)) continue;
+            if (hexa is HexaGridProduct)
+                hexa.HexaUpdate();
+        }
+        foreach (IHexaGridElement hexa in _gridPositions.Values)
+        {
+            if (ReferenceEquals(hexa, null)) continue;
+            if (hexa is HexaGridProduct grid)
+                grid.GetMaterialToNear();
+        }
+        foreach (IHexaGridElement hexa in _gridPositions.Values)
+        {
+            if (ReferenceEquals(hexa, null)) continue;
+            if (hexa is HexaGridStorage)
+                hexa.HexaUpdate();
+        }
+    }
+
     [ContextMenu("TestFunc")]
     public void TestFunc()
     {
-        foreach (HexaGridElement element in transform.GetComponentsInChildren<HexaGridElement>())
+        foreach (HexaGridProduct element in transform.GetComponentsInChildren<IHexaGridElement>())
         {
             _gridPositions.TryAdd(_grid.WorldToCell(element.transform.position), element);
         }
@@ -96,7 +118,7 @@ public class HexaGridManager : MonoBehaviour
         itemPopup.Init(MainGameDataSo.Instance.GetItemSprite(type));
     }
 
-    public Vector2 GetGridePos(HexaGridElement element, Vector3 mousePos, Vector3 befoPos)
+    public Vector2 GetGridePos(IHexaGridElement element, Vector3 mousePos, Vector3 befoPos)
     {
         Vector2 posPos = _camera.ScreenToWorldPoint(Input.mousePosition);
         if (posPos.y < -4.7f) posPos.y = -4.7f;
@@ -128,12 +150,12 @@ public class HexaGridManager : MonoBehaviour
         return _grid.CellToWorld(cellPos);
     }
 
-    private void HexaNearRemove(Vector3Int center, HexaGridElement remove)
+    private void HexaNearRemove(Vector3Int center, IHexaGridElement remove)
     {
         List<Vector3Int> posList = center.y % 2 == 0 ? _evenPos : _oddPos;
         for (int i = 0; i < posList.Count; i++)
         {
-            if (_gridPositions.TryGetValue(center + posList[i], out HexaGridElement near) && !ReferenceEquals(near, null))
+            if (_gridPositions.TryGetValue(center + posList[i], out IHexaGridElement near) && !ReferenceEquals(near, null))
                 near.RemoveNearHexa(remove);
         }
     }
@@ -144,7 +166,7 @@ public class HexaGridManager : MonoBehaviour
         if (!_gridPositions.ContainsKey(center) || ReferenceEquals(_gridPositions[center], null)) return;
 
         List<Vector3Int> posList = center.y % 2 == 0 ? _evenPos : _oddPos;
-        HexaGridElement[] near = new HexaGridElement[posList.Count];
+        IHexaGridElement[] near = new IHexaGridElement[posList.Count];
         for (int i = 0; i < posList.Count; i++)
         {
             _gridPositions.TryGetValue(center + posList[i], out near[i]);
