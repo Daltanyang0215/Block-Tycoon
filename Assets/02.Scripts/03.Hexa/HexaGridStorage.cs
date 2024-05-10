@@ -53,7 +53,6 @@ public class HexaGridStorage : MonoBehaviour, IHexaGridElement
                 MainGameManager.Instance.AddItem(pair.ProduceItemType, 1);
                 count++;
             }
-
             hexa.InfoUpData?.Invoke(-1);
         }
     }

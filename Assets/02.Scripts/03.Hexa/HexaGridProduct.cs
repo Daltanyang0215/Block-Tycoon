@@ -150,8 +150,6 @@ public class HexaGridProduct : MonoBehaviour ,IHexaGridElement
         return CheckMaterialCount();
     }
 
-
-
     private bool CheckProductCountIFMax()
     {
         if (CurRecipe.ProduceItemPairs.Count > 0)

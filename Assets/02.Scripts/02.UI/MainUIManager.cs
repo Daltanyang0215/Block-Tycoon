@@ -33,6 +33,7 @@ public class MainUIManager : MonoBehaviour
             ReportElement item = Instantiate(_elementPrefeb, _elementParent);
             item.Init(MainGameDataSo.Instance.GetItemSprite(type), type.ToString());
             _reportElements.Add(type,item);
+            item.gameObject.SetActive(false);
         }
         MainGameManager.Instance.UIUpdateAction += ItemCountUpdate;
     }
@@ -41,7 +42,16 @@ public class MainUIManager : MonoBehaviour
     {
         foreach (ItemType type in System.Enum.GetValues(typeof(ItemType)))
         {
-            _reportElements[type].UpdateItemCount(MainGameManager.Instance.GetItemCount(type));      
+            int itemcount = MainGameManager.Instance.GetItemCount(type);
+            if (itemcount == 0)
+            {
+                _reportElements[type].gameObject.SetActive(false);
+            }
+            else
+            {
+                _reportElements[type].gameObject.SetActive(true);
+                _reportElements[type].UpdateItemCount(itemcount);
+            }
         }
     }
 
@@ -56,8 +66,8 @@ public class MainUIManager : MonoBehaviour
     {
         RectTransform target = transform.GetChild(0).GetComponent<RectTransform>();
 
-        float startpos = show ? 0f : 400f;
-        float endPos = show ? 400f : 0;
+        float startpos = show ? 0f : 500f;
+        float endPos = show ? 500f : 0;
 
         float animationTimer = 0;
         float animationMaxTime = .5f;

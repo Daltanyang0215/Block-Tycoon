@@ -26,7 +26,6 @@ public class HexaGridManager : MonoBehaviour
     [SerializeField] private HexaGridProduct _elementPrefab;
     private Dictionary<Vector3Int, IHexaGridElement> _gridPositions;
 
-
     private List<GetItemPopup> _itemsPopups;
     [SerializeField] private GetItemPopup _itemPopupPrefab;
 
@@ -64,18 +63,28 @@ public class HexaGridManager : MonoBehaviour
 
     private void Update()
     {
+        foreach (Vector3Int pos in _gridPositions.Keys)
+        {
+            if (ReferenceEquals(_gridPositions[pos], null))
+            {
+                _gridPositions.Remove(pos);
+            }
+        }
+
         foreach (IHexaGridElement hexa in _gridPositions.Values)
         {
             if (ReferenceEquals(hexa, null)) continue;
             if (hexa is HexaGridProduct)
                 hexa.HexaUpdate();
         }
+
         foreach (IHexaGridElement hexa in _gridPositions.Values)
         {
             if (ReferenceEquals(hexa, null)) continue;
             if (hexa is HexaGridProduct grid)
                 grid.GetMaterialToNear();
         }
+
         foreach (IHexaGridElement hexa in _gridPositions.Values)
         {
             if (ReferenceEquals(hexa, null)) continue;
@@ -91,6 +100,22 @@ public class HexaGridManager : MonoBehaviour
         {
             _gridPositions.TryAdd(_grid.WorldToCell(element.transform.position), element);
         }
+    }
+
+    public void SpawnHexaGird(HexaElementDataSO data, Vector3Int pos)
+    {
+        GameObject grid = Instantiate(_elementPrefab, _grid.CellToWorld(pos), Quaternion.identity, transform).gameObject;
+
+        switch (data.HexaType)
+        {
+            case HexaType.Storge:
+                grid.AddComponent<HexaGridStorage>().Init(data);
+                break;
+            default:
+                grid.AddComponent<HexaGridProduct>().Init(data);
+                break;
+        }
+        _gridPositions.Add(pos, grid.GetComponent<IHexaGridElement>());
     }
 
     public void ShowAddItemPopup(Vector2 showPos, ItemType type)

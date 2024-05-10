@@ -5,7 +5,6 @@ using UnityEngine;
 public class MainGameManager : MonoBehaviour
 {
     #region Singleton
-
     private static MainGameManager _instance;
     public static MainGameManager Instance
     {
@@ -39,5 +38,10 @@ public class MainGameManager : MonoBehaviour
         {
             _hasItems.Add(type, 0);
         }
+    }
+
+    public void OnGameExit()
+    {
+        Application.Quit();
     }
 }
