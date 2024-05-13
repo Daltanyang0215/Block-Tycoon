@@ -25,6 +25,7 @@ public class HexaGridManager : MonoBehaviour
 
     [SerializeField] private HexaGridProduct _elementPrefab;
     private Dictionary<Vector3Int, IHexaGridElement> _gridPositions;
+    public bool CheckPlaceGrid(Vector3Int pos) => _gridPositions.ContainsKey(pos) && !ReferenceEquals(_gridPositions[pos], null); 
 
     private List<GetItemPopup> _itemsPopups;
     [SerializeField] private GetItemPopup _itemPopupPrefab;
@@ -63,14 +64,6 @@ public class HexaGridManager : MonoBehaviour
 
     private void Update()
     {
-        foreach (Vector3Int pos in _gridPositions.Keys)
-        {
-            if (ReferenceEquals(_gridPositions[pos], null))
-            {
-                _gridPositions.Remove(pos);
-            }
-        }
-
         foreach (IHexaGridElement hexa in _gridPositions.Values)
         {
             if (ReferenceEquals(hexa, null)) continue;
@@ -102,6 +95,13 @@ public class HexaGridManager : MonoBehaviour
         }
     }
 
+    [SerializeField] private HexaElementDataSO testdata;
+    [ContextMenu("Testspawn")]
+    public void TestSpawn()
+    {
+        SpawnHexaGird(testdata, Vector3Int.zero);
+    }
+
     public void SpawnHexaGird(HexaElementDataSO data, Vector3Int pos)
     {
         GameObject grid = Instantiate(_elementPrefab, _grid.CellToWorld(pos), Quaternion.identity, transform).gameObject;
@@ -118,9 +118,10 @@ public class HexaGridManager : MonoBehaviour
         _gridPositions.Add(pos, grid.GetComponent<IHexaGridElement>());
     }
 
-    public void ShowAddItemPopup(Vector2 showPos, ItemType type)
+    public void ShowAddItemPopup(Vector2 showPos, int itemid)
     {
         GetItemPopup itemPopup = null;
+        ItemData itemData = MainGameDataSo.Instance.ItemDatas[itemid];
 
         foreach (var popup in _itemsPopups)
         {
@@ -134,32 +135,26 @@ public class HexaGridManager : MonoBehaviour
         if (itemPopup == null)
         {
             itemPopup = Instantiate(_itemPopupPrefab, showPos, Quaternion.identity, transform.GetChild(0));
-            itemPopup.Init(MainGameDataSo.Instance.GetItemSprite(type));
+            itemPopup.Init(itemData.ItemSprite);
             _itemsPopups.Add(itemPopup);
             return;
         }
         itemPopup.transform.position = showPos;
         itemPopup.gameObject.SetActive(true);
-        itemPopup.Init(MainGameDataSo.Instance.GetItemSprite(type));
+        itemPopup.Init(itemData.ItemSprite);
     }
 
     public Vector2 GetGridePos(IHexaGridElement element, Vector3 mousePos, Vector3 befoPos)
     {
-        Vector2 posPos = _camera.ScreenToWorldPoint(Input.mousePosition);
-        if (posPos.y < -4.7f) posPos.y = -4.7f;
-        if (posPos.y > 4.7) posPos.y = 4.7f;
-        if (posPos.x > 8.4f) posPos.x = 8.4f;
-        if (posPos.x < -8.4f) posPos.x = -8.4f;
-
-        Vector3Int cellPos = _grid.WorldToCell(posPos);
-        cellPos.z = 0;
+        Vector3Int cellPos = MousePosToGridPos(mousePos);
         if (_gridPositions.ContainsKey(cellPos) && !ReferenceEquals(_gridPositions[cellPos], null))
         {
             return befoPos;
         }
 
         // 이전 자리의 주변 블록 재설정
-        _gridPositions[_grid.WorldToCell(befoPos)] = null;
+        //_gridPositions[_grid.WorldToCell(befoPos)] = null;
+        _gridPositions.Remove(_grid.WorldToCell(befoPos));
         HexaNearRemove(_grid.WorldToCell(befoPos), element);
         // 다음 자리의 주변 블록 재설정
         _gridPositions[cellPos] = element;
@@ -173,6 +168,23 @@ public class HexaGridManager : MonoBehaviour
         HexaNearUpData(cellPos);
 
         return _grid.CellToWorld(cellPos);
+    }
+
+    public Vector3Int MousePosToGridPos(Vector3 mousePos)
+    {
+        Vector2 posPos = _camera.ScreenToWorldPoint(Input.mousePosition);
+        if (posPos.y < -4.7f) posPos.y = -4.7f;
+        if (posPos.y > 4.7) posPos.y = 4.7f;
+        if (posPos.x > 8.4f) posPos.x = 8.4f;
+        if (posPos.x < -8.4f) posPos.x = -8.4f;
+        Vector3Int result = _grid.WorldToCell(posPos);
+        result.z = 0;
+        return result;
+    }
+
+    public Vector2 MousePosToGridWorldPos(Vector3 mousePos)
+    {
+        return _grid.CellToWorld(MousePosToGridPos(mousePos));
     }
 
     private void HexaNearRemove(Vector3Int center, IHexaGridElement remove)

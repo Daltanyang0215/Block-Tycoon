@@ -46,11 +46,11 @@ public class HexaGridStorage : MonoBehaviour, IHexaGridElement
 
             foreach (ItemPair pair in hexa.CurRecipe.ProduceItemPairs)
             {
-                if (hexa.ProductItemCount[pair.ProduceItemType] <= 0) continue;
+                if (hexa.ProductItemCount[pair.ItemID] <= 0) continue;
 
-                _manger.ShowAddItemPopup(transform.position + (count * 0.35f) * Vector3.up + 0.15f * Vector3.up, pair.ProduceItemType);
-                hexa.ProductItemCount[pair.ProduceItemType]--;
-                MainGameManager.Instance.AddItem(pair.ProduceItemType, 1);
+                _manger.ShowAddItemPopup(transform.position + (count * 0.35f) * Vector3.up + 0.15f * Vector3.up, pair.ItemID);
+                hexa.ProductItemCount[pair.ItemID]--;
+                MainGameManager.Instance.AddItem(pair.ItemID, 1);
                 count++;
             }
             hexa.InfoUpData?.Invoke(-1);

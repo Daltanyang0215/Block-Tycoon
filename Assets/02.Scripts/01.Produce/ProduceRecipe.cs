@@ -25,6 +25,6 @@ public class ProduceRecipe
 [System.Serializable]
 public class ItemPair
 {
-    [field: SerializeField] public ItemType ProduceItemType { get; private set; }
-    [field: SerializeField] public int ProduceAmount { get; private set; }
+    [field: SerializeField] public int ItemID { get; private set; }
+    [field: SerializeField] public int Amount { get; private set; }
 }

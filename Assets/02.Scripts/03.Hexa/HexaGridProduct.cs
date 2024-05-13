@@ -10,8 +10,8 @@ public class HexaGridProduct : MonoBehaviour ,IHexaGridElement
     private IHexaGridElement[] _nearHexa = new IHexaGridElement[6];
 
     public ProduceRecipe CurRecipe { get; private set; } = null;
-    public Dictionary<ItemType, int> MaterialItemCount { get; private set; }
-    public Dictionary<ItemType, int> ProductItemCount { get; private set; }
+    public Dictionary<int, int> MaterialItemCount { get; private set; }
+    public Dictionary<int, int> ProductItemCount { get; private set; }
     private bool _isCanProduce;
     private bool _isBefoCanProduce;
     private bool _isChangeCondition;
@@ -42,15 +42,15 @@ public class HexaGridProduct : MonoBehaviour ,IHexaGridElement
         if (Data.ProduceRecipe.Count == 0) return;
         CurRecipe = Data.ProduceRecipe[index];
         _fillMut = CurRecipe?.ProduceTime != 0 ? 1 / CurRecipe.ProduceTime : 0;
-        MaterialItemCount = new Dictionary<ItemType, int>();
-        ProductItemCount = new Dictionary<ItemType, int>();
+        MaterialItemCount = new Dictionary<int, int>();
+        ProductItemCount = new Dictionary<int, int>();
         foreach (ItemPair material in CurRecipe.MaterailItemPairs)
         {
-            MaterialItemCount.Add(material.ProduceItemType, 0);
+            MaterialItemCount.Add(material.ItemID, 0);
         }
         foreach (ItemPair product in CurRecipe.ProduceItemPairs)
         {
-            ProductItemCount.Add(product.ProduceItemType, 0);
+            ProductItemCount.Add(product.ItemID, 0);
         }
     }
 
@@ -104,7 +104,7 @@ public class HexaGridProduct : MonoBehaviour ,IHexaGridElement
                 //_manger.ShowAddItemPopup(transform.position + (i * 0.35f) * Vector3.up + 0.15f * Vector3.up, item.ProduceItemType);
                 //MainGameManager.Instance.AddItem(item.ProduceItemType, item.ProduceAmount);
 
-                ProductItemCount[CurRecipe.ProduceItemPairs[i].ProduceItemType] += CurRecipe.ProduceItemPairs[i].ProduceAmount;
+                ProductItemCount[CurRecipe.ProduceItemPairs[i].ItemID] += CurRecipe.ProduceItemPairs[i].Amount;
                 InfoUpData?.Invoke(-1);
             }
         }
@@ -117,17 +117,17 @@ public class HexaGridProduct : MonoBehaviour ,IHexaGridElement
         if (ReferenceEquals(CurRecipe, null)) return;
         foreach (ItemPair pair in CurRecipe.MaterailItemPairs)
         {
-            if (MaterialItemCount[pair.ProduceItemType] == pair.ProduceAmount * MainGameDataSo.Instance.MatarialStorageCountMut) continue;
+            if (MaterialItemCount[pair.ItemID] == pair.Amount * MainGameDataSo.Instance.MatarialStorageCountMut) continue;
 
             foreach (IHexaGridElement near in _nearHexa)
             {
                 if (ReferenceEquals(near, null)) continue;
                 if(!(near is HexaGridProduct hexa)) continue;
 
-                if (hexa.ProductItemCount.ContainsKey(pair.ProduceItemType) && hexa.ProductItemCount[pair.ProduceItemType] > 0)
+                if (hexa.ProductItemCount.ContainsKey(pair.ItemID) && hexa.ProductItemCount[pair.ItemID] > 0)
                 {
-                    hexa.ProductItemCount[pair.ProduceItemType]--;
-                    MaterialItemCount[pair.ProduceItemType]++;
+                    hexa.ProductItemCount[pair.ItemID]--;
+                    MaterialItemCount[pair.ItemID]++;
                     InfoUpData?.Invoke(-1);
                     break;
                 }
@@ -157,7 +157,7 @@ public class HexaGridProduct : MonoBehaviour ,IHexaGridElement
             foreach (ItemPair pair in CurRecipe.ProduceItemPairs)
             {
                 // 생산품이 가득 찼다면 리턴
-                if (ProductItemCount[pair.ProduceItemType] + pair.ProduceAmount > pair.ProduceAmount * MainGameDataSo.Instance.ProductStorageCountMut)
+                if (ProductItemCount[pair.ItemID] + pair.Amount > pair.Amount * MainGameDataSo.Instance.ProductStorageCountMut)
                 {
                     return true;
                 }
@@ -198,7 +198,7 @@ public class HexaGridProduct : MonoBehaviour ,IHexaGridElement
             foreach (ItemPair pair in CurRecipe.MaterailItemPairs)
             {
                 // 재료가 모자르면 리턴
-                if (MaterialItemCount[pair.ProduceItemType] < pair.ProduceAmount)
+                if (MaterialItemCount[pair.ItemID] < pair.Amount)
                 {
                     _isCanProduce = false;
                     return false;
@@ -208,7 +208,7 @@ public class HexaGridProduct : MonoBehaviour ,IHexaGridElement
             foreach (ItemPair pair in CurRecipe.MaterailItemPairs)
             {
                 // 재료 소비
-                MaterialItemCount[pair.ProduceItemType] -= pair.ProduceAmount;
+                MaterialItemCount[pair.ItemID] -= pair.Amount;
             }
         }
         _isCanProduce = true;

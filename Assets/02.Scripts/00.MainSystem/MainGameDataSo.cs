@@ -20,11 +20,31 @@ public class MainGameDataSo : ScriptableObject
     }
     #endregion
 
-    [field:SerializeField] public int MatarialStorageCountMut {  get; private set; }
-    [field:SerializeField] public int ProductStorageCountMut {  get; private set; }
+    [field: Header("HexaData")]
+    [field: SerializeField] public List<HexaElementDataSO> HexaDatas { get; private set; }
 
-    [SerializeField] private List<Sprite> _itemSprites = new List<Sprite>();
-    [SerializeField] private List<Color> _itemColor = new List<Color>();
-    public Sprite GetItemSprite(ItemType type) => _itemSprites[(int)type];
-    public Color GetItemColor(ItemType type) => _itemColor[(int)type];
+    [field: SerializeField] public int MatarialStorageCountMut { get; private set; }
+    [field: SerializeField] public int ProductStorageCountMut { get; private set; }
+
+    [SerializeField] private List<ItemData> _itemDatas;
+
+    public Dictionary<int,ItemData> ItemDatas { get; private set; }
+
+    public void Init()
+    {
+        ItemDatas = new Dictionary<int,ItemData>();
+        foreach (var itemData in _itemDatas)
+        {
+            ItemDatas.Add(itemData.ItemID, itemData);
+        }
+    }
+}
+[System.Serializable]
+public class ItemData
+{
+    [field: SerializeField] public string ItemName { get; private set; }
+    [field: SerializeField] public int ItemID { get; private set; }
+    [field: SerializeField] public Sprite ItemSprite { get; private set; }
+    [field: SerializeField] public Color ItemColor { get; private set; }
+
 }

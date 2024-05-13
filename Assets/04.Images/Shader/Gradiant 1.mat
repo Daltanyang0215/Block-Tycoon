@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gradiant
+  m_Name: Gradiant 1
   m_Shader: {fileID: -6465566751694194690, guid: 545f58c7e0f74c043bef4b476c63be22, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -48,8 +48,8 @@ Material:
     - _TopRange: 0.738
     m_Colors:
     - _BottomColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MiddleColor: {r: 0.33600312, g: 0.7075471, b: 0.3170612, a: 0.14117648}
-    - _TopColor: {r: 0.8748716, g: 1, b: 0.82547176, a: 0.3882353}
+    - _MiddleColor: {r: 0.7058824, g: 0.31764707, b: 0.38048017, a: 0.14117648}
+    - _TopColor: {r: 1, g: 0.8270958, b: 0.8235294, a: 0.3882353}
   m_BuildTextureStacks: []
 --- !u!114 &8447398996973080745
 MonoBehaviour:

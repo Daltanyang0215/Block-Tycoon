@@ -21,18 +21,18 @@ public class MainUIManager : MonoBehaviour
     #endregion
     [SerializeField] private Transform _elementParent;
     [SerializeField] private ReportElement _elementPrefeb;
-    private Dictionary<ItemType,ReportElement> _reportElements;
+    private Dictionary<int,ReportElement> _reportElements;
 
     [field: SerializeField] public HexaInfoPanel HexaInfoPanel { get; private set; }
 
     private void Start()
     {
-        _reportElements = new Dictionary<ItemType,ReportElement>();
-        foreach (ItemType type in System.Enum.GetValues(typeof(ItemType)))
+        _reportElements = new Dictionary<int,ReportElement>();
+        foreach (ItemData data in MainGameDataSo.Instance.ItemDatas.Values)
         {
             ReportElement item = Instantiate(_elementPrefeb, _elementParent);
-            item.Init(MainGameDataSo.Instance.GetItemSprite(type), type.ToString());
-            _reportElements.Add(type,item);
+            item.Init(data.ItemSprite,data.ItemName);
+            _reportElements.Add(data.ItemID,item);
             item.gameObject.SetActive(false);
         }
         MainGameManager.Instance.UIUpdateAction += ItemCountUpdate;
@@ -40,17 +40,17 @@ public class MainUIManager : MonoBehaviour
 
     private void ItemCountUpdate()
     {
-        foreach (ItemType type in System.Enum.GetValues(typeof(ItemType)))
+        foreach (ItemData data in MainGameDataSo.Instance.ItemDatas.Values)
         {
-            int itemcount = MainGameManager.Instance.GetItemCount(type);
+            int itemcount = MainGameManager.Instance.GetItemCount(data.ItemID);
             if (itemcount == 0)
             {
-                _reportElements[type].gameObject.SetActive(false);
+                _reportElements[data.ItemID].gameObject.SetActive(false);
             }
             else
             {
-                _reportElements[type].gameObject.SetActive(true);
-                _reportElements[type].UpdateItemCount(itemcount);
+                _reportElements[data.ItemID].gameObject.SetActive(true);
+                _reportElements[data.ItemID].UpdateItemCount(itemcount);
             }
         }
     }

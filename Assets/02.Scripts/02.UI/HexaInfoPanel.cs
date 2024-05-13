@@ -26,6 +26,11 @@ public class HexaInfoPanel : MonoBehaviour
         _hexaName.text = _curHexaElement.Data.name;
 
         _recipeDropdown.ClearOptions();
+        
+        foreach (InfoElement infoElement in transform.GetComponentsInChildren<InfoElement>())
+        {
+            infoElement.gameObject.SetActive(false);
+        }
 
         List<string> list = new List<string>();
         foreach (ProduceRecipe recipe in _curHexaElement.Data.ProduceRecipe)
@@ -48,7 +53,7 @@ public class HexaInfoPanel : MonoBehaviour
 
     public void UpdateRecipe(int index = -1)
     {
-        if (index > 0)
+        if (index >= 0)
         {
             _curHexaElement.SetReciepe(index);
         }
@@ -62,14 +67,14 @@ public class HexaInfoPanel : MonoBehaviour
         foreach (ItemPair item in _curHexaElement.CurRecipe.MaterailItemPairs)
         {
             InfoElement element = FindDisableInfoElement(false);
-            element.Init(item.ProduceItemType);
-            element.UpDateSlider(_curHexaElement.MaterialItemCount[item.ProduceItemType], item.ProduceAmount * MainGameDataSo.Instance.MatarialStorageCountMut);
+            element.Init(item.ItemID);
+            element.UpDateSlider(_curHexaElement.MaterialItemCount[item.ItemID], item.Amount * MainGameDataSo.Instance.MatarialStorageCountMut);
         }
         foreach (ItemPair item in _curHexaElement.CurRecipe.ProduceItemPairs)
         {
             InfoElement element = FindDisableInfoElement(true);
-            element.Init(item.ProduceItemType);
-            element.UpDateSlider(_curHexaElement.ProductItemCount[item.ProduceItemType], item.ProduceAmount * MainGameDataSo.Instance.ProductStorageCountMut);
+            element.Init(item.ItemID);
+            element.UpDateSlider(_curHexaElement.ProductItemCount[item.ItemID], item.Amount * MainGameDataSo.Instance.ProductStorageCountMut);
         }
     }
 

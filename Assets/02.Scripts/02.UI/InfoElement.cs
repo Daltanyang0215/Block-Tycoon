@@ -8,10 +8,12 @@ public class InfoElement : MonoBehaviour
     [SerializeField] private Slider _slider;
     [SerializeField] private TMP_Text _countText;
 
-    public void Init(ItemType type)
+    public void Init(int itemid)
     {
-        _itemImage.sprite = MainGameDataSo.Instance.GetItemSprite(type);
-        _slider.fillRect.GetComponent<Image>().color = MainGameDataSo.Instance.GetItemColor(type);
+        ItemData initItem = MainGameDataSo.Instance.ItemDatas[itemid];
+
+        _itemImage.sprite = initItem.ItemSprite;
+        _slider.fillRect.GetComponent<Image>().color = initItem.ItemColor;
     }
 
     public void UpDateSlider(int curValue, int maxValue)

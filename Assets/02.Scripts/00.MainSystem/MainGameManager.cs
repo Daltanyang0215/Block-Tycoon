@@ -21,22 +21,27 @@ public class MainGameManager : MonoBehaviour
 
     [field:SerializeField] public MainGameDataSo GameDataSo { get; private set; }
 
-    private Dictionary<ItemType, int> _hasItems;
-    public int GetItemCount(ItemType type) => _hasItems[type];
-    public void AddItem(ItemType type, int addValue)
+    private Dictionary<int, int> _hasItems;
+    public int GetItemCount(int type) => _hasItems[type];
+    public void AddItem(int itemid, int addValue)
     {
-        _hasItems[type] += addValue;
+        _hasItems[itemid] += addValue;
         UIUpdateAction?.Invoke();
     }
 
     public System.Action UIUpdateAction;
 
+    private void Awake()
+    {
+        GameDataSo.Init();
+    }
+
     private void Start()
     {
-        _hasItems = new Dictionary<ItemType, int>();
-        foreach (ItemType type in System.Enum.GetValues(typeof(ItemType)))
+        _hasItems = new Dictionary<int, int>();
+        foreach (ItemData data in MainGameDataSo.Instance.ItemDatas.Values)
         {
-            _hasItems.Add(type, 0);
+            _hasItems.Add(data.ItemID, 0);
         }
     }
 

@@ -1,12 +1,3 @@
-
-public enum ItemType
-{
-    Coin,
-    Ore,
-    Steel,
-    Weapon
-}
-
 public enum HexaType
 {
     None,
