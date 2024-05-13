@@ -23,6 +23,9 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private ReportElement _elementPrefeb;
     private Dictionary<int,ReportElement> _reportElements;
 
+    [SerializeField] private Transform _hexaElementParent;
+    [SerializeField] private  HexaPriceElement _hexaPricePrefab;
+
     [field: SerializeField] public HexaInfoPanel HexaInfoPanel { get; private set; }
 
     private void Start()
@@ -35,6 +38,15 @@ public class MainUIManager : MonoBehaviour
             _reportElements.Add(data.ItemID,item);
             item.gameObject.SetActive(false);
         }
+
+        foreach (HexaElementDataSO hexa in MainGameDataSo.Instance.HexaDatas)
+        {
+            if (hexa.CanBuy)
+            {
+                Instantiate(_hexaPricePrefab,_hexaElementParent).Init(hexa);
+            }
+        }
+
         MainGameManager.Instance.UIUpdateAction += ItemCountUpdate;
     }
 
@@ -65,6 +77,9 @@ public class MainUIManager : MonoBehaviour
     private IEnumerator ReportAnimation(bool show = true)
     {
         RectTransform target = transform.GetChild(0).GetComponent<RectTransform>();
+
+        transform.GetChild(0).GetChild(0).gameObject.SetActive(!show);
+        transform.GetChild(0).GetChild(1).gameObject.SetActive(show);
 
         float startpos = show ? 0f : 500f;
         float endPos = show ? 500f : 0;

@@ -8,6 +8,10 @@ public class HexaGridPreview : MonoBehaviour
     private Transform _canBuild;
     private Transform _canNotBuild;
 
+    private HexaElementDataSO _data;
+
+    public void Init(HexaElementDataSO dataSO) => _data = dataSO;
+
     private void Awake()
     {
         _manager = HexaGridManager.Instance;
@@ -17,23 +21,18 @@ public class HexaGridPreview : MonoBehaviour
 
     private void Update()
     {
-        transform.position =  _manager.MousePosToGridWorldPos(Input.mousePosition);
+        transform.position = _manager.MousePosToGridWorldPos(Input.mousePosition);
 
         bool isPlace = _manager.CheckPlaceGrid(_manager.MousePosToGridPos(Input.mousePosition));
         _canBuild.gameObject.SetActive(!isPlace);
         _canNotBuild.gameObject.SetActive(isPlace);
 
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !isPlace)
         {
-            if (!isPlace)
-            {
-                //TODO 블록 소환
-            }
-
-            Debug.Log($"pos : {transform.position}");
+            _manager.SpawnHexaGird(_data, _manager.MousePosToGridPos(Input.mousePosition));
             gameObject.SetActive(false);
         }
-        if(Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
             gameObject.SetActive(false);
         }

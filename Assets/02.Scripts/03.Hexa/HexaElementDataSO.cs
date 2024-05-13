@@ -8,7 +8,7 @@ public class HexaElementDataSO : ScriptableObject
 
     [field: SerializeField] public HexaType HexaType { get; private set; }
     [field:SerializeField]public bool CanBuy {  get; private set; }
-    [field:SerializeField]public List<ItemPair> ButPrice { get; private set; }  
+    [field:SerializeField]public List<ItemPair> BuyPrice { get; private set; }  
 
     [field: Header("Produce")]
     [field: SerializeField] public List<ProduceRecipe> ProduceRecipe { get; private set; }

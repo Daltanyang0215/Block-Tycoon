@@ -23,6 +23,8 @@ public class HexaGridManager : MonoBehaviour
     private Camera _camera;
     private Grid _grid;
 
+    [field:SerializeField] public HexaGridPreview GridPreview { get; private set; }
+
     [SerializeField] private HexaGridProduct _elementPrefab;
     private Dictionary<Vector3Int, IHexaGridElement> _gridPositions;
     public bool CheckPlaceGrid(Vector3Int pos) => _gridPositions.ContainsKey(pos) && !ReferenceEquals(_gridPositions[pos], null); 
