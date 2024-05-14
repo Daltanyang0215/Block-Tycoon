@@ -21,29 +21,33 @@ public class MainUIManager : MonoBehaviour
     #endregion
     [SerializeField] private Transform _elementParent;
     [SerializeField] private ReportElement _elementPrefeb;
-    private Dictionary<int,ReportElement> _reportElements;
+    private Dictionary<int, ReportElement> _reportElements;
 
     [SerializeField] private Transform _hexaElementParent;
-    [SerializeField] private  HexaPriceElement _hexaPricePrefab;
+    [SerializeField] private HexaPriceElement _hexaPricePrefab;
+    private List<HexaPriceElement> _hexaPrices;
 
     [field: SerializeField] public HexaInfoPanel HexaInfoPanel { get; private set; }
 
     private void Start()
     {
-        _reportElements = new Dictionary<int,ReportElement>();
+        _reportElements = new Dictionary<int, ReportElement>();
         foreach (ItemData data in MainGameDataSo.Instance.ItemDatas.Values)
         {
             ReportElement item = Instantiate(_elementPrefeb, _elementParent);
-            item.Init(data.ItemSprite,data.ItemName);
-            _reportElements.Add(data.ItemID,item);
+            item.Init(data.ItemSprite, data.ItemName);
+            _reportElements.Add(data.ItemID, item);
             item.gameObject.SetActive(false);
         }
 
+        _hexaPrices = new List<HexaPriceElement>();
         foreach (HexaElementDataSO hexa in MainGameDataSo.Instance.HexaDatas)
         {
             if (hexa.CanBuy)
             {
-                Instantiate(_hexaPricePrefab,_hexaElementParent).Init(hexa);
+                HexaPriceElement add = Instantiate(_hexaPricePrefab, _hexaElementParent);
+                add.Init(hexa);
+                _hexaPrices.Add(add);
             }
         }
 
@@ -64,6 +68,10 @@ public class MainUIManager : MonoBehaviour
                 _reportElements[data.ItemID].gameObject.SetActive(true);
                 _reportElements[data.ItemID].UpdateItemCount(itemcount);
             }
+        }
+        foreach (HexaPriceElement priceElement in _hexaPrices)
+        {
+            priceElement.PriceUpdata();
         }
     }
 

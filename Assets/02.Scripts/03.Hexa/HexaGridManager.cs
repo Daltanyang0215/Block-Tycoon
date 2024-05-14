@@ -118,6 +118,13 @@ public class HexaGridManager : MonoBehaviour
                 break;
         }
         _gridPositions.Add(pos, grid.GetComponent<IHexaGridElement>());
+
+        List<Vector3Int> posList = pos.y % 2 == 0 ? _evenPos : _oddPos;
+        for (int i = 0; i < posList.Count; i++)
+        {
+            HexaNearUpData(pos + posList[i]);
+        }
+        HexaNearUpData(pos);
     }
 
     public void DestoryHexaGrid(HexaGridProduct hexa)
@@ -179,7 +186,6 @@ public class HexaGridManager : MonoBehaviour
         List<Vector3Int> posList = cellPos.y % 2 == 0 ? _evenPos : _oddPos;
         for (int i = 0; i < posList.Count; i++)
         {
-            //_gridPositions.TryGetValue(cellPos + posList[i], out nearHexa[i]);
             HexaNearUpData(cellPos + posList[i]);
         }
         HexaNearUpData(cellPos);

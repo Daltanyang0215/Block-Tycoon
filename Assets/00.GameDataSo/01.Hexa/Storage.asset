@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <HexaType>k__BackingField: 8
   <CanBuy>k__BackingField: 1
-  <ButPrice>k__BackingField: []
+  <BuyPrice>k__BackingField:
+  - <ItemID>k__BackingField: 2
+    <Amount>k__BackingField: 10
   <ProduceRecipe>k__BackingField: []
   <HexaIcon>k__BackingField: {fileID: 21300000, guid: 80bc9c2a60062c54784f8a7bf4be19da, type: 3}
   <TopHexaColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}

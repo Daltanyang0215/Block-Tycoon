@@ -10,8 +10,8 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement
     private IHexaGridElement[] _nearHexa = new IHexaGridElement[6];
 
     public ProduceRecipe CurRecipe { get; private set; } = null;
-    public Dictionary<int, int> MaterialItemCount { get; private set; }
-    public Dictionary<int, int> ProductItemCount { get; private set; }
+    public Dictionary<int, int> MaterialItemCount { get; private set; } = new Dictionary<int, int>();
+    public Dictionary<int, int> ProductItemCount { get; private set; } = new Dictionary<int, int>();
     private bool _isCanProduce;
     private bool _isBefoCanProduce;
     private bool _isChangeCondition;
@@ -44,8 +44,8 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement
 
         CurRecipe = Data.ProduceRecipe[index];
         _fillMut = CurRecipe?.ProduceTime != 0 ? 1 / CurRecipe.ProduceTime : 0;
-        MaterialItemCount = new Dictionary<int, int>();
-        ProductItemCount = new Dictionary<int, int>();
+        MaterialItemCount.Clear();
+        ProductItemCount.Clear();
         foreach (ItemPair material in CurRecipe.MaterailItemPairs)
         {
             MaterialItemCount.Add(material.ItemID, 0);

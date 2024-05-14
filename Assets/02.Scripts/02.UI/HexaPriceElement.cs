@@ -31,6 +31,7 @@ public class HexaPriceElement : MonoBehaviour
             ItemData item = MainGameDataSo.Instance.ItemDatas[pair.ItemID];
             element.Init(item.ItemSprite, item.ItemName);
             element.UpdateItemCount(pair.Amount);
+            _priceButton.interactable = false;
         }
 
         _priceButton.onClick.AddListener(() =>
@@ -42,5 +43,19 @@ public class HexaPriceElement : MonoBehaviour
             HexaGridManager.Instance.GridPreview.Init(_data);
             HexaGridManager.Instance.GridPreview.gameObject.SetActive(true);
         });
+    }
+
+    public void PriceUpdata()
+    {
+        bool canPrice = true;
+
+        foreach (ItemPair pair in _data.BuyPrice)
+        {
+            if (MainGameManager.Instance.GetItemCount(pair.ItemID) < pair.Amount)
+            {
+                canPrice = false;
+            }
+        }
+        _priceButton.interactable = canPrice;
     }
 }
