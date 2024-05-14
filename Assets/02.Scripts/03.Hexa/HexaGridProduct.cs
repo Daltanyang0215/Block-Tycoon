@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HexaGridProduct : MonoBehaviour ,IHexaGridElement
+public class HexaGridProduct : MonoBehaviour, IHexaGridElement
 {
 
     [field: SerializeField] public HexaElementDataSO Data { get; private set; }
@@ -40,6 +40,8 @@ public class HexaGridProduct : MonoBehaviour ,IHexaGridElement
     {
         //TODO 나중에 레시피에따른 기능 변경 필요
         if (Data.ProduceRecipe.Count == 0) return;
+        if (CurRecipe == Data.ProduceRecipe[index]) return;
+
         CurRecipe = Data.ProduceRecipe[index];
         _fillMut = CurRecipe?.ProduceTime != 0 ? 1 / CurRecipe.ProduceTime : 0;
         MaterialItemCount = new Dictionary<int, int>();
@@ -122,7 +124,7 @@ public class HexaGridProduct : MonoBehaviour ,IHexaGridElement
             foreach (IHexaGridElement near in _nearHexa)
             {
                 if (ReferenceEquals(near, null)) continue;
-                if(!(near is HexaGridProduct hexa)) continue;
+                if (!(near is HexaGridProduct hexa)) continue;
 
                 if (hexa.ProductItemCount.ContainsKey(pair.ItemID) && hexa.ProductItemCount[pair.ItemID] > 0)
                 {
@@ -210,6 +212,7 @@ public class HexaGridProduct : MonoBehaviour ,IHexaGridElement
                 // 재료 소비
                 MaterialItemCount[pair.ItemID] -= pair.Amount;
             }
+            InfoUpData?.Invoke(-1);
         }
         _isCanProduce = true;
         return _isCanProduce;

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 86057880960378231}
   - component: {fileID: 6376032175441800178}
-  - component: {fileID: 5872550623787943272}
   m_Layer: 0
   m_Name: HexGirdElement
   m_TagString: Untagged
@@ -88,19 +87,6 @@ PolygonCollider2D:
       - {x: 0.43359375, y: 0.25}
       - {x: 0, y: 0.5}
   m_UseDelaunayMesh: 0
---- !u!114 &5872550623787943272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212047606975208707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9318adb4eb06db342a515e358296a995, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Data>k__BackingField: {fileID: 0}
 --- !u!1 &1401598909320853318
 GameObject:
   m_ObjectHideFlags: 0

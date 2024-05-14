@@ -23,11 +23,11 @@ public class HexaGridManager : MonoBehaviour
     private Camera _camera;
     private Grid _grid;
 
-    [field:SerializeField] public HexaGridPreview GridPreview { get; private set; }
+    [field: SerializeField] public HexaGridPreview GridPreview { get; private set; }
 
-    [SerializeField] private HexaGridProduct _elementPrefab;
+    [SerializeField] private GameObject _elementPrefab;
     private Dictionary<Vector3Int, IHexaGridElement> _gridPositions;
-    public bool CheckPlaceGrid(Vector3Int pos) => _gridPositions.ContainsKey(pos) && !ReferenceEquals(_gridPositions[pos], null); 
+    public bool CheckPlaceGrid(Vector3Int pos) => _gridPositions.ContainsKey(pos) && !ReferenceEquals(_gridPositions[pos], null);
 
     private List<GetItemPopup> _itemsPopups;
     [SerializeField] private GetItemPopup _itemPopupPrefab;
@@ -118,6 +118,21 @@ public class HexaGridManager : MonoBehaviour
                 break;
         }
         _gridPositions.Add(pos, grid.GetComponent<IHexaGridElement>());
+    }
+
+    public void DestoryHexaGrid(HexaGridProduct hexa)
+    {
+        Vector3Int pos = _grid.WorldToCell(hexa.transform.position);
+
+        _gridPositions.Remove(_grid.WorldToCell(pos));
+        HexaNearRemove(_grid.WorldToCell(pos), hexa);
+
+        List<Vector3Int> posList = pos.y % 2 == 0 ? _evenPos : _oddPos;
+        for (int i = 0; i < posList.Count; i++)
+        {
+            HexaNearUpData(pos + posList[i]);
+        }
+        Destroy(hexa.gameObject);
     }
 
     public void ShowAddItemPopup(Vector2 showPos, int itemid)

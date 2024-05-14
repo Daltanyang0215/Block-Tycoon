@@ -26,22 +26,26 @@ public class HexaInfoPanel : MonoBehaviour
         _hexaName.text = _curHexaElement.Data.name;
 
         _recipeDropdown.ClearOptions();
-        
+
         foreach (InfoElement infoElement in transform.GetComponentsInChildren<InfoElement>())
         {
             infoElement.gameObject.SetActive(false);
         }
 
         List<string> list = new List<string>();
-        foreach (ProduceRecipe recipe in _curHexaElement.Data.ProduceRecipe)
+        for (int i = 0; i < _curHexaElement.Data.ProduceRecipe.Count; i++)
         {
+            ProduceRecipe recipe = _curHexaElement.Data.ProduceRecipe[i];
             list.Add(recipe.RecipeName);
+
+
         }
 
         if (list.Count > 0)
         {
             _recipeDropdown.AddOptions(list);
-            UpdateRecipe(0);
+            _recipeDropdown.value = list.FindIndex(x => x == _curHexaElement.CurRecipe.RecipeName);
+            UpdateRecipe();
         }
     }
 
@@ -93,4 +97,9 @@ public class HexaInfoPanel : MonoBehaviour
         return Instantiate(_infoElementPrefab, parent);
     }
 
+    public void DestroySelectHexa()
+    {
+        HidePanel();
+        HexaGridManager.Instance.DestoryHexaGrid(_curHexaElement);
+    }
 }
