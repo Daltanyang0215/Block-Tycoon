@@ -48,8 +48,8 @@ Material:
     - _TopRange: 0.738
     m_Colors:
     - _BottomColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MiddleColor: {r: 0.7058824, g: 0.31764707, b: 0.38048017, a: 0.14117648}
-    - _TopColor: {r: 1, g: 0.8270958, b: 0.8235294, a: 0.3882353}
+    - _MiddleColor: {r: 0.5377358, g: 0.043120332, b: 0.12305827, a: 0.65882355}
+    - _TopColor: {r: 1, g: 0.20209646, b: 0.18396229, a: 0.59607846}
   m_BuildTextureStacks: []
 --- !u!114 &8447398996973080745
 MonoBehaviour:

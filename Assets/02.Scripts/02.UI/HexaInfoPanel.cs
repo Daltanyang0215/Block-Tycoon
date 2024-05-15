@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class HexaInfoPanel : MonoBehaviour
 {
@@ -65,6 +66,15 @@ public class HexaInfoPanel : MonoBehaviour
         foreach (InfoElement infoElement in transform.GetComponentsInChildren<InfoElement>())
         {
             infoElement.gameObject.SetActive(false);
+        }
+
+        // 주위 필요한 블록에 대한 정보 표시
+        if (_curHexaElement.CurRecipe.NearHexaCondition != HexaType.None)
+        {
+            InfoElement element = FindDisableInfoElement(false);
+            HexaElementDataSO data = MainGameDataSo.Instance.HexaDatas.Find(x => x.HexaType == _curHexaElement.CurRecipe.NearHexaCondition);
+            element.Init(data.HexaIcon, data.BottomHexaColor);
+            element.UpDateSlider(0, 1, false);
         }
 
         // 각 요서 필요한 만큼 활성화

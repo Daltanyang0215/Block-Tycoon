@@ -46,8 +46,7 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
-/[Aa]ssets/Mini UI/*
-/[Aa]ssets/Mini UI.meta
+
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
@@ -71,3 +70,10 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# DownLoadFolders
+/[Aa]ssets/Mini UI/*
+/[Aa]ssets/Mini UI.meta
+
+/[Aa]ssets/CleanFlatIcon/*
+/[Aa]ssets/CleanFlatIcon.meta
