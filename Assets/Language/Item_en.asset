@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Item_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: aad5afaa74dbccd4793951bb937901d9, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 69101367795712
+    m_Localized: stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69259438530560
+    m_Localized: tree
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69263800606720
+    m_Localized: water
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69273745301504
+    m_Localized: sand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69282876301312
+    m_Localized: iron ore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69286475014144
+    m_Localized: copper ore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69288131764224
+    m_Localized: coal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69289104842752
+    m_Localized: stone brick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69289838845952
+    m_Localized: wood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69290405076992
+    m_Localized: glass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69291105525760
+    m_Localized: iron
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69291726282752
+    m_Localized: copper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69292388982784
+    m_Localized: steel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69293018128384
+    m_Localized: concrete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69293693411328
+    m_Localized: iron plate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69294339334144
+    m_Localized: iron pipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69295027200000
+    m_Localized: iron stick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69295685705728
+    m_Localized: iron gear wheel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69296302268416
+    m_Localized: coppar plate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69296977551360
+    m_Localized: copper wire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69298189705216
+    m_Localized: steel plate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69298919514112
+    m_Localized: steel pipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69300240719872
+    m_Localized: steel stick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69300911808512
+    m_Localized: steel gear wheel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69301574508544
+    m_Localized: wood circuit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69303453556736
+    m_Localized: electronic curcuit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69304191754240
+    m_Localized: iron machinery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69304808316928
+    m_Localized: steel machinery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69305517154304
+    m_Localized: engine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69306146299904
+    m_Localized: curde oil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69306825777152
+    m_Localized: plastic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69307471699968
+    m_Localized: heaby oil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69308117622784
+    m_Localized: lubricant
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Menu Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Menu
+  m_TableCollectionNameGuidString: 6401ce168003adb4d956113a3a8ef6ea
+  m_Entries:
+  - m_Id: 8207933440
+    m_Key: MainMane
+    m_Metadata:
+      m_Items: []
+  - m_Id: 877624238080
+    m_Key: Product
+    m_Metadata:
+      m_Items: []
+  - m_Id: 994276220928
+    m_Key: Recipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100928983040
+    m_Key: Material
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1575518674944
+    m_Key: BUY
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 3548249736201109529
+  references:
+    version: 2
+    RefIds:
+    - rid: 3548249736201109529
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1715843143903

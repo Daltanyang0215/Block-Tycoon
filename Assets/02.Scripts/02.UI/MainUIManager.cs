@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public class MainUIManager : MonoBehaviour
 {
@@ -75,6 +76,10 @@ public class MainUIManager : MonoBehaviour
         }
     }
 
+    public void SetLanguage(int index)
+    {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
+    }
 
     public void ShowReportAnimation(bool Show)
     {

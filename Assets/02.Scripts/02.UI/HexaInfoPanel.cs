@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.Progress;
+using UnityEngine.Localization.Components;
 
 public class HexaInfoPanel : MonoBehaviour
 {
     private HexaGridProduct _curHexaElement;
 
     [SerializeField] private InfoElement _infoElementPrefab;
-    [SerializeField] private TMP_Text _hexaName;
+    [SerializeField] private LocalizeStringEvent _hexaName;
     [SerializeField] private TMP_Dropdown _recipeDropdown;
     [SerializeField] private Transform _productParent;
     [SerializeField] private Transform _materialParent;
@@ -24,7 +24,7 @@ public class HexaInfoPanel : MonoBehaviour
         _curHexaElement = curElenemt;
         _curHexaElement.InfoUpData = UpdateRecipe;
 
-        _hexaName.text = _curHexaElement.Data.name;
+        _hexaName.StringReference.SetReference("Hexa", _curHexaElement.Data.name);
 
         _recipeDropdown.ClearOptions();
 

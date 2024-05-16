@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Hexa Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Hexa
+  m_TableCollectionNameGuidString: 8c880a858ebe6da4385b367329e8d6a3
+  m_Entries:
+  - m_Id: 1042804318208
+    m_Key: Lake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1286036201472
+    m_Key: Mountain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1315555713024
+    m_Key: Field
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1333553471488
+    m_Key: Forest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1366235488256
+    m_Key: Storage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1382714908672
+    m_Key: Transit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1414440624128
+    m_Key: Quarry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1457356742656
+    m_Key: Refinery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1483868938240
+    m_Key: Factory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1510611820544
+    m_Key: Lumberyard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1551581782016
+    m_Key: Pump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569470488576
+    m_Key: Drilling machine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3421322813440
+    m_Key: Factory2
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 3548249743170994184
+  references:
+    version: 2
+    RefIds:
+    - rid: 3548249743170994184
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1715872658664

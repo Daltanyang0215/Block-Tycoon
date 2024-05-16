@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
 public class HexaPriceElement : MonoBehaviour
@@ -9,7 +9,7 @@ public class HexaPriceElement : MonoBehaviour
     private HexaElementDataSO _data;
 
     [SerializeField] private Image _hexaImage;
-    [SerializeField] private TMP_Text _hexaName;
+    [SerializeField] private LocalizeStringEvent _hexaName;
     [SerializeField] private Transform _priceTransfrom;
     [SerializeField] private Button _priceButton;
 
@@ -20,7 +20,7 @@ public class HexaPriceElement : MonoBehaviour
         _data = data;
 
         _hexaImage.sprite = _data.HexaIcon;
-        _hexaName.text = _data.name;
+        _hexaName.StringReference.SetReference("Hexa", _data.name);
         Vector2 size = GetComponent<RectTransform>().sizeDelta;
         size.y = 75 * _data.BuyPrice.Count;
         size.y = size.y < 150f ? 150 : size.y;
