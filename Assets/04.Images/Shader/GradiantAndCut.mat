@@ -43,7 +43,7 @@ Material:
     m_Floats:
     - _BottomPow: 0
     - _BottomRange: 0
-    - _CutRange: 0.903
+    - _CutRange: 1
     - _Degrees: 47
     - _Reversal: 0
     - _TopPow: 0.34

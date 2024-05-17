@@ -38,6 +38,18 @@ MonoBehaviour:
     m_Localized: "\uAD6C\uB9E4"
     m_Metadata:
       m_Items: []
+  - m_Id: 410581231935488
+    m_Localized: "\uB300\uC0C1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411159815200768
+    m_Localized: "\uC785\uB825"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411177330614272
+    m_Localized: "\uCD9C\uB825"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

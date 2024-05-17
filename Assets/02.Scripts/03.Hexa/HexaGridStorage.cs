@@ -17,6 +17,7 @@ public class HexaGridStorage : MonoBehaviour, IHexaGridElement
         {
             transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopHexaColor);
             transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
+            transform.Find("Gauge").GetComponent<SpriteRenderer>().materials[0].SetFloat("_CutRange", 0);
             //transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopGaugeColor);
             //transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomGaugeColor);
             transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
@@ -32,6 +33,7 @@ public class HexaGridStorage : MonoBehaviour, IHexaGridElement
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
         //transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopGaugeColor);
         //transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomGaugeColor);
+        transform.Find("Gauge").GetComponent<SpriteRenderer>().materials[0].SetFloat("_CutRange", 0);
         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
         transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
     }

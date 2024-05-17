@@ -10,51 +10,59 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: Menu Shared Data
+  m_Name: Recipe Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: Menu
-  m_TableCollectionNameGuidString: 6401ce168003adb4d956113a3a8ef6ea
+  m_TableCollectionName: Recipe
+  m_TableCollectionNameGuidString: 9251105d7fc6a014eb85522506393a0b
   m_Entries:
-  - m_Id: 8207933440
-    m_Key: MainMane
+  - m_Id: 32903995392
+    m_Key: curde oil
     m_Metadata:
       m_Items: []
-  - m_Id: 877624238080
-    m_Key: Product
+  - m_Id: 344763080704
+    m_Key: wood
     m_Metadata:
       m_Items: []
-  - m_Id: 994276220928
-    m_Key: Recipe
+  - m_Id: 833680515072
+    m_Key: concrete
     m_Metadata:
       m_Items: []
-  - m_Id: 1100928983040
-    m_Key: Material
+  - m_Id: 1012953456640
+    m_Key: coppar plate
     m_Metadata:
       m_Items: []
-  - m_Id: 1575518674944
-    m_Key: BUY
+  - m_Id: 1309222313984
+    m_Key: copper wire
     m_Metadata:
       m_Items: []
-  - m_Id: 410581231935488
-    m_Key: Target
+  - m_Id: 1383063035904
+    m_Key: wood circuit
     m_Metadata:
       m_Items: []
-  - m_Id: 411159815200768
-    m_Key: Input
+  - m_Id: 1773863116800
+    m_Key: iron plate
     m_Metadata:
       m_Items: []
-  - m_Id: 411177330614272
-    m_Key: Output
+  - m_Id: 1925092941824
+    m_Key: iron pipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2029749215232
+    m_Key: iron stick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2297467445248
+    m_Key: iron gear wheel
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 3548249736201109529
+    rid: 3548249759843876870
   references:
     version: 2
     RefIds:
-    - rid: 3548249736201109529
+    - rid: 3548249759843876870
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1715843143903
+        m_CustomEpoch: 1715960718451

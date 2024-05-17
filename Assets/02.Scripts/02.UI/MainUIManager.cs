@@ -20,15 +20,19 @@ public class MainUIManager : MonoBehaviour
         }
     }
     #endregion
+    [field: Header("ItemList")]
     [SerializeField] private Transform _elementParent;
     [SerializeField] private ReportElement _elementPrefeb;
     private Dictionary<int, ReportElement> _reportElements;
 
+    [field: Header("HexaPrice")]
     [SerializeField] private Transform _hexaElementParent;
     [SerializeField] private HexaPriceElement _hexaPricePrefab;
     private List<HexaPriceElement> _hexaPrices;
 
+    [field: Header("InfoPanel")]
     [field: SerializeField] public HexaInfoPanel HexaInfoPanel { get; private set; }
+    [field: SerializeField] public HexaTransitInfoPanel HexaTransitInfoPanel { get; private set; }
 
     private void Start()
     {

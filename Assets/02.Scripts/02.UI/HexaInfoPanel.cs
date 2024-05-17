@@ -111,6 +111,6 @@ public class HexaInfoPanel : MonoBehaviour
     public void DestroySelectHexa()
     {
         HidePanel();
-        HexaGridManager.Instance.DestoryHexaGrid(_curHexaElement);
+        HexaGridManager.Instance.DestoryHexaGrid(_curHexaElement.gameObject);
     }
 }

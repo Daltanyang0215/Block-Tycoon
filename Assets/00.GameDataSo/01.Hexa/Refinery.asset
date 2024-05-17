@@ -15,11 +15,67 @@ MonoBehaviour:
   <HexaType>k__BackingField: 6
   <CanBuy>k__BackingField: 1
   <BuyPrice>k__BackingField:
-  - <ItemID>k__BackingField: 2
-    <Amount>k__BackingField: 10
-  <ProduceRecipe>k__BackingField: []
+  - <ItemID>k__BackingField: 1
+    <Amount>k__BackingField: 20
+  - <ItemID>k__BackingField: 7
+    <Amount>k__BackingField: 5
+  <ProduceRecipe>k__BackingField:
+  - <RecipeName>k__BackingField: stone brick
+    <NearHexaCondition>k__BackingField: 0
+    <MaterailItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 1
+      <Amount>k__BackingField: 1
+    <ProduceTime>k__BackingField: 30
+    <ProduceClick>k__BackingField: 0.1
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 8
+      <Amount>k__BackingField: 1
+  - <RecipeName>k__BackingField: glass
+    <NearHexaCondition>k__BackingField: 0
+    <MaterailItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 4
+      <Amount>k__BackingField: 1
+    <ProduceTime>k__BackingField: 30
+    <ProduceClick>k__BackingField: 0.1
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 10
+      <Amount>k__BackingField: 1
+  - <RecipeName>k__BackingField: iron
+    <NearHexaCondition>k__BackingField: 0
+    <MaterailItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 5
+      <Amount>k__BackingField: 1
+    <ProduceTime>k__BackingField: 30
+    <ProduceClick>k__BackingField: 0.1
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 11
+      <Amount>k__BackingField: 1
+  - <RecipeName>k__BackingField: copper
+    <NearHexaCondition>k__BackingField: 0
+    <MaterailItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 6
+      <Amount>k__BackingField: 1
+    <ProduceTime>k__BackingField: 30
+    <ProduceClick>k__BackingField: 0.1
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 12
+      <Amount>k__BackingField: 1
+  - <RecipeName>k__BackingField: steel
+    <NearHexaCondition>k__BackingField: 0
+    <MaterailItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 5
+      <Amount>k__BackingField: 1
+    - <ItemID>k__BackingField: 7
+      <Amount>k__BackingField: 1
+    <ProduceTime>k__BackingField: 30
+    <ProduceClick>k__BackingField: 0.1
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 13
+      <Amount>k__BackingField: 1
   <HexaIcon>k__BackingField: {fileID: 21300000, guid: d8799a15cd7f15f43ad8b4e2515f8067, type: 3}
-  <TopHexaColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
-  <BottomHexaColor>k__BackingField: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
-  <TopGaugeColor>k__BackingField: {r: 0.748042, g: 0.7507124, b: 0.7735849, a: 1}
-  <BottomGaugeColor>k__BackingField: {r: 0.41475144, g: 0.41451585, b: 0.4245283, a: 1}
+  <HexaSubIcon1>k__BackingField: {fileID: 0}
+  <HexaSubIcon2>k__BackingField: {fileID: 0}
+  <TopHexaColor>k__BackingField: {r: 0.8679245, g: 0.59362763, b: 0.59362763, a: 1}
+  <BottomHexaColor>k__BackingField: {r: 0.7264151, g: 0.2706924, b: 0.2706924, a: 1}
+  <TopGaugeColor>k__BackingField: {r: 0.8584906, g: 0.6631214, b: 0.61957103, a: 1}
+  <BottomGaugeColor>k__BackingField: {r: 0.509434, g: 0.060074754, b: 0.089914374, a: 1}

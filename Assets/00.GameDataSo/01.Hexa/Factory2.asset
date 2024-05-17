@@ -15,11 +15,87 @@ MonoBehaviour:
   <HexaType>k__BackingField: 6
   <CanBuy>k__BackingField: 1
   <BuyPrice>k__BackingField:
-  - <ItemID>k__BackingField: 2
-    <Amount>k__BackingField: 10
-  <ProduceRecipe>k__BackingField: []
+  - <ItemID>k__BackingField: 27
+    <Amount>k__BackingField: 20
+  - <ItemID>k__BackingField: 21
+    <Amount>k__BackingField: 20
+  - <ItemID>k__BackingField: 24
+    <Amount>k__BackingField: 20
+  <ProduceRecipe>k__BackingField:
+  - <RecipeName>k__BackingField: plastic
+    <NearHexaCondition>k__BackingField: 0
+    <MaterailItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 30
+      <Amount>k__BackingField: 1
+    <ProduceTime>k__BackingField: 40
+    <ProduceClick>k__BackingField: 0
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 31
+      <Amount>k__BackingField: 1
+  - <RecipeName>k__BackingField: heaby oil
+    <NearHexaCondition>k__BackingField: 0
+    <MaterailItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 30
+      <Amount>k__BackingField: 1
+    <ProduceTime>k__BackingField: 40
+    <ProduceClick>k__BackingField: 0
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 32
+      <Amount>k__BackingField: 1
+  - <RecipeName>k__BackingField: lubricant
+    <NearHexaCondition>k__BackingField: 0
+    <MaterailItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 30
+      <Amount>k__BackingField: 1
+    <ProduceTime>k__BackingField: 40
+    <ProduceClick>k__BackingField: 0
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 33
+      <Amount>k__BackingField: 1
+  - <RecipeName>k__BackingField: electronic curcuit
+    <NearHexaCondition>k__BackingField: 0
+    <MaterailItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 31
+      <Amount>k__BackingField: 1
+    - <ItemID>k__BackingField: 20
+      <Amount>k__BackingField: 1
+    <ProduceTime>k__BackingField: 60
+    <ProduceClick>k__BackingField: 0
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 26
+      <Amount>k__BackingField: 1
+  - <RecipeName>k__BackingField: engine
+    <NearHexaCondition>k__BackingField: 0
+    <MaterailItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 16
+      <Amount>k__BackingField: 5
+    - <ItemID>k__BackingField: 17
+      <Amount>k__BackingField: 5
+    - <ItemID>k__BackingField: 21
+      <Amount>k__BackingField: 5
+    <ProduceTime>k__BackingField: 60
+    <ProduceClick>k__BackingField: 0
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 29
+      <Amount>k__BackingField: 1
+  - <RecipeName>k__BackingField: steel machinery
+    <NearHexaCondition>k__BackingField: 0
+    <MaterailItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 27
+      <Amount>k__BackingField: 1
+    - <ItemID>k__BackingField: 24
+      <Amount>k__BackingField: 5
+    - <ItemID>k__BackingField: 33
+      <Amount>k__BackingField: 2
+    <ProduceTime>k__BackingField: 90
+    <ProduceClick>k__BackingField: 0
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 28
+      <Amount>k__BackingField: 1
   <HexaIcon>k__BackingField: {fileID: 21300000, guid: 404088e94a126164cbd2fbc105e6d6b9, type: 3}
-  <TopHexaColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
-  <BottomHexaColor>k__BackingField: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
-  <TopGaugeColor>k__BackingField: {r: 0.748042, g: 0.7507124, b: 0.7735849, a: 1}
-  <BottomGaugeColor>k__BackingField: {r: 0.41475144, g: 0.41451585, b: 0.4245283, a: 1}
+  <HexaSubIcon1>k__BackingField: {fileID: 0}
+  <HexaSubIcon2>k__BackingField: {fileID: 0}
+  <TopHexaColor>k__BackingField: {r: 0.6855957, g: 0.2793699, b: 0.8113208, a: 1}
+  <BottomHexaColor>k__BackingField: {r: 0.5660378, g: 0.040049836, b: 0.5641572, a: 1}
+  <TopGaugeColor>k__BackingField: {r: 0.7075472, g: 0.29703632, b: 0.6622001, a: 1}
+  <BottomGaugeColor>k__BackingField: {r: 0.3490566, g: 0.04116233, b: 0.27379343, a: 1}

@@ -14,10 +14,10 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     public bool CanGetMaterial(int index)
     {
         index = index > 2 ? index - 3 : index + 3;
-        return _outputVec == index;
+        return OutputVec == index;
     }
-    private byte _inputVec = 0;
-    private byte _outputVec = 3;
+    public byte InputVec { get; private set; } = 0;
+    public byte OutputVec { get; private set; } = 3;
 
     private void Start()
     {
@@ -29,8 +29,10 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
             transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
             transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopGaugeColor);
             transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomGaugeColor);
-            transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
-            transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
+            transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = Data.HexaSubIcon1;
+            transform.GetChild(3).transform.localPosition = Vector3.zero;
+            transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = Data.HexaSubIcon2;
+            transform.GetChild(3).GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
 
@@ -40,8 +42,10 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         SetReciepe(0);
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopHexaColor);
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
-        transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
-        transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
+        transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = Data.HexaSubIcon1;
+        transform.GetChild(3).transform.localPosition = Vector3.zero;
+        transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = Data.HexaSubIcon2;
+        transform.GetChild(3).GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     public void SetReciepe(int index)
@@ -53,14 +57,17 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         CurRecipe = Data.ProduceRecipe[index];
         MaterialItemCount.Clear();
         ProductItemCount.Clear();
-        foreach (ItemPair material in CurRecipe.MaterailItemPairs)
-        {
-            MaterialItemCount.Add(material.ItemID, 0);
-        }
         foreach (ItemPair product in CurRecipe.ProduceItemPairs)
         {
             ProductItemCount.Add(product.ItemID, 0);
         }
+    }
+    public void SetVec(byte input, byte output)
+    {
+        InputVec = input; OutputVec = output;
+
+        transform.GetChild(2).transform.eulerAngles = Vector3.back * (InputVec * 60);
+        transform.GetChild(3).transform.eulerAngles = Vector3.back * (OutputVec * 60+180);
     }
     public void HexaUpdate()
     {
@@ -70,15 +77,15 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     public void GetMaterialToNear()
     {
         if (ReferenceEquals(CurRecipe, null)) return;
-        foreach (ItemPair pair in CurRecipe.MaterailItemPairs)
+        foreach (ItemPair pair in CurRecipe.ProduceItemPairs)
         {
             if (ProductItemCount[pair.ItemID] > 0) continue;
 
-            IHexaGridElement near = _nearHexa[_inputVec];
+            IHexaGridElement near = _nearHexa[InputVec];
             if (ReferenceEquals(near, null)) continue;
             if (!(near is IHexaGridInItem hexa)) continue;
 
-            if (hexa.CanGetMaterial(_inputVec) && hexa.ProductItemCount.ContainsKey(pair.ItemID) && hexa.ProductItemCount[pair.ItemID] > 0)
+            if (hexa.CanGetMaterial(InputVec) && hexa.ProductItemCount.ContainsKey(pair.ItemID) && hexa.ProductItemCount[pair.ItemID] > 0)
             {
                 hexa.ProductItemCount[pair.ItemID]--;
                 ProductItemCount[pair.ItemID]++;
@@ -112,7 +119,7 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         }
         if (Input.GetMouseButtonDown(1))
         {
-            //MainUIManager.Instance.HexaInfoPanel.ShowPanel(this);
+            MainUIManager.Instance.HexaTransitInfoPanel.ShowPanel(this);
         }
     }
     private void OnMouseDrag()

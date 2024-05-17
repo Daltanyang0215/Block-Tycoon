@@ -122,19 +122,19 @@ public class HexaGridManager : MonoBehaviour
         HexaNearUpData(pos);
     }
 
-    public void DestoryHexaGrid(HexaGridProduct hexa)
+    public void DestoryHexaGrid(GameObject hexa)
     {
         Vector3Int pos = _grid.WorldToCell(hexa.transform.position);
 
         _gridPositions.Remove(_grid.WorldToCell(pos));
-        HexaNearRemove(_grid.WorldToCell(pos), hexa);
+        HexaNearRemove(_grid.WorldToCell(pos), hexa.GetComponent<IHexaGridElement>());
 
         List<Vector3Int> posList = pos.y % 2 == 0 ? _evenPos : _oddPos;
         for (int i = 0; i < posList.Count; i++)
         {
             HexaNearUpData(pos + posList[i]);
         }
-        Destroy(hexa.gameObject);
+        Destroy(hexa);
     }
 
     public void ShowAddItemPopup(Vector2 showPos, int itemid)
