@@ -38,22 +38,22 @@ public class HexaGridStorage : MonoBehaviour, IHexaGridElement
     public void HexaUpdate()
     {
         int count = 0;
-        foreach (IHexaGridElement near in _nearHexa)
+        for (int i = 0; i < _nearHexa.Length; i++)
         {
+            IHexaGridElement near = _nearHexa[i];
             if (ReferenceEquals(near, null)) continue;
-            if (!(near is HexaGridProduct hexa)) continue;
+            if (!(near is IHexaGridInItem hexa)) continue;
             if (ReferenceEquals(hexa.CurRecipe, null)) continue;
 
             foreach (ItemPair pair in hexa.CurRecipe.ProduceItemPairs)
             {
-                if (hexa.ProductItemCount[pair.ItemID] <= 0) continue;
-
+                if (!hexa.CanGetMaterial(i) || hexa.ProductItemCount[pair.ItemID] <= 0) continue;
                 _manger.ShowAddItemPopup(transform.position + (count * 0.35f) * Vector3.up + 0.15f * Vector3.up, pair.ItemID);
                 hexa.ProductItemCount[pair.ItemID]--;
                 MainGameManager.Instance.AddItem(pair.ItemID, 1);
                 count++;
             }
-            hexa.InfoUpData?.Invoke(-1);
+            (hexa as HexaGridProduct)?.InfoUpData?.Invoke(-1);
         }
     }
 

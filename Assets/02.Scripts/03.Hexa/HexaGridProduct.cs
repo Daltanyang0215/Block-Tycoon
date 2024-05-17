@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HexaGridProduct : MonoBehaviour, IHexaGridElement
+public class HexaGridProduct : MonoBehaviour, IHexaGridElement,IHexaGridInItem
 {
 
     [field: SerializeField] public HexaElementDataSO Data { get; private set; }
@@ -12,6 +12,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement
     public ProduceRecipe CurRecipe { get; private set; } = null;
     public Dictionary<int, int> MaterialItemCount { get; private set; } = new Dictionary<int, int>();
     public Dictionary<int, int> ProductItemCount { get; private set; } = new Dictionary<int, int>();
+    public bool CanGetMaterial(int index) => true;
     private bool _isCanProduce;
     private bool _isBefoCanProduce;
     private bool _isChangeCondition;
@@ -121,12 +122,13 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement
         {
             if (MaterialItemCount[pair.ItemID] == pair.Amount * MainGameDataSo.Instance.MatarialStorageCountMut) continue;
 
-            foreach (IHexaGridElement near in _nearHexa)
+            for (int i = 0; i < _nearHexa.Length; i++)
             {
+                IHexaGridElement near = _nearHexa[i];
                 if (ReferenceEquals(near, null)) continue;
-                if (!(near is HexaGridProduct hexa)) continue;
+                if (!(near is IHexaGridInItem hexa)) continue;
 
-                if (hexa.ProductItemCount.ContainsKey(pair.ItemID) && hexa.ProductItemCount[pair.ItemID] > 0)
+                if (hexa.CanGetMaterial(i) && hexa.ProductItemCount.ContainsKey(pair.ItemID) && hexa.ProductItemCount[pair.ItemID] > 0)
                 {
                     hexa.ProductItemCount[pair.ItemID]--;
                     MaterialItemCount[pair.ItemID]++;

@@ -17,7 +17,17 @@ MonoBehaviour:
   <BuyPrice>k__BackingField:
   - <ItemID>k__BackingField: 2
     <Amount>k__BackingField: 10
-  <ProduceRecipe>k__BackingField: []
+  <ProduceRecipe>k__BackingField:
+  - <RecipeName>k__BackingField: 
+    <NearHexaCondition>k__BackingField: 0
+    <MaterailItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 3
+      <Amount>k__BackingField: 1
+    <ProduceTime>k__BackingField: 0
+    <ProduceClick>k__BackingField: 0
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 3
+      <Amount>k__BackingField: 1
   <HexaIcon>k__BackingField: {fileID: 21300000, guid: 0877c8ba66add6247ac8fa8e8fff9357, type: 3}
   <TopHexaColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <BottomHexaColor>k__BackingField: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}

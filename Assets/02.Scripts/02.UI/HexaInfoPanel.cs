@@ -50,6 +50,7 @@ public class HexaInfoPanel : MonoBehaviour
         }
     }
 
+
     public void HidePanel()
     {
         transform.GetComponentInParent<Canvas>().enabled = false;

@@ -66,42 +66,34 @@ public class HexaGridManager : MonoBehaviour
 
     private void Update()
     {
+        // 생산블록의 생산 시작(소비 먼저)
         foreach (IHexaGridElement hexa in _gridPositions.Values)
         {
             if (ReferenceEquals(hexa, null)) continue;
             if (hexa is HexaGridProduct)
                 hexa.HexaUpdate();
         }
-
+        // 운송블록의 재료이동
+        foreach (IHexaGridElement hexa in _gridPositions.Values)
+        {
+            if (ReferenceEquals(hexa, null)) continue;
+            if (hexa is HexaGridTransit)
+                hexa.HexaUpdate();
+        }
+        // 생산블록의 재료 이동(소비 이후 재료 이동)
         foreach (IHexaGridElement hexa in _gridPositions.Values)
         {
             if (ReferenceEquals(hexa, null)) continue;
             if (hexa is HexaGridProduct grid)
                 grid.GetMaterialToNear();
         }
-
+        // 창고블록의 재료 이동(생산 블록 종료 후 나머지 창고 이동)
         foreach (IHexaGridElement hexa in _gridPositions.Values)
         {
             if (ReferenceEquals(hexa, null)) continue;
             if (hexa is HexaGridStorage)
                 hexa.HexaUpdate();
         }
-    }
-
-    [ContextMenu("TestFunc")]
-    public void TestFunc()
-    {
-        foreach (HexaGridProduct element in transform.GetComponentsInChildren<IHexaGridElement>())
-        {
-            _gridPositions.TryAdd(_grid.WorldToCell(element.transform.position), element);
-        }
-    }
-
-    [SerializeField] private HexaElementDataSO testdata;
-    [ContextMenu("Testspawn")]
-    public void TestSpawn()
-    {
-        SpawnHexaGird(testdata, Vector3Int.zero);
     }
 
     public void SpawnHexaGird(HexaElementDataSO data, Vector3Int pos)
@@ -112,6 +104,9 @@ public class HexaGridManager : MonoBehaviour
         {
             case HexaType.Storge:
                 grid.AddComponent<HexaGridStorage>().Init(data);
+                break;
+            case HexaType.Move:
+                grid.AddComponent<HexaGridTransit>().Init(data);
                 break;
             default:
                 grid.AddComponent<HexaGridProduct>().Init(data);
