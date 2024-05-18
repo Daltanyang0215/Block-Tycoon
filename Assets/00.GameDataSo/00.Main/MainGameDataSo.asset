@@ -17,6 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ba117f695e5146a47b0237467b659767, type: 2}
   - {fileID: 11400000, guid: 98736bcbbb2a22d48b6a79ed59002d63, type: 2}
   - {fileID: 11400000, guid: a71d9572db3a8db4e8ccc92719a61a7f, type: 2}
+  - {fileID: 11400000, guid: 210087714c64db240bfe78772308b807, type: 2}
   - {fileID: 11400000, guid: 4a40533f6f6eaf145a30319b561077cb, type: 2}
   - {fileID: 11400000, guid: 4dea202bf826dbe42a7b4b4c94a58770, type: 2}
   - {fileID: 11400000, guid: 27941ffbc4bb41d4da6840ae62d59844, type: 2}
@@ -31,6 +32,10 @@ MonoBehaviour:
   <MatarialStorageCountMut>k__BackingField: 3
   <ProductStorageCountMut>k__BackingField: 3
   _itemDatas:
+  - <ItemName>k__BackingField: None
+    <ItemID>k__BackingField: -1
+    <ItemSprite>k__BackingField: {fileID: 21300000, guid: 3bcc8f37ee7a7df4eb79f2f2486a1377, type: 3}
+    <ItemColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
   - <ItemName>k__BackingField: stone
     <ItemID>k__BackingField: 1
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 3fa384bc5d7103c4da05c3983a471451, type: 3}
@@ -163,3 +168,5 @@ MonoBehaviour:
     <ItemID>k__BackingField: 33
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: f640a56694402bb4da51caa206e59615, type: 3}
     <ItemColor>k__BackingField: {r: 0.5717716, g: 0.8113208, b: 0.5319509, a: 1}
+  <ProcessTimerImage>k__BackingField: {fileID: 21300000, guid: cb7208ec9a0bbdd4b95c789dac9e8540, type: 3}
+  <ProcessClickImage>k__BackingField: {fileID: 21300000, guid: 11a2a66b5de76b348b05dbf454b1109d, type: 3}

@@ -9,7 +9,7 @@ public class HexaTransitInfoPanel : MonoBehaviour
     private HexaGridTransit _curHexaElement;
 
     [SerializeField] private LocalizeStringEvent _hexaName;
-    [SerializeField] private TMP_Dropdown _recipeDropdown;
+    [SerializeField] private ReportElement _curItemReport;
     [SerializeField] private Transform _inputArrow;
     [SerializeField] private Transform _outputArrow;
     [SerializeField] private Transform _inputMainArrow;
@@ -26,29 +26,11 @@ public class HexaTransitInfoPanel : MonoBehaviour
         transform.position = Camera.main.WorldToScreenPoint(curElenemt.transform.position);
 
         _curHexaElement = curElenemt;
+        _curHexaElement.InfoUpData = UpdateInfo;
+        UpdateInfo();
 
         _hexaName.StringReference.SetReference("Hexa", _curHexaElement.Data.name);
-
-        _recipeDropdown.ClearOptions();
-
-        foreach (InfoElement infoElement in transform.GetComponentsInChildren<InfoElement>())
-        {
-            infoElement.gameObject.SetActive(false);
-        }
-
-        List<string> list = new List<string>();
-        for (int i = 0; i < _curHexaElement.Data.ProduceRecipe.Count; i++)
-        {
-            ProduceRecipe recipe = _curHexaElement.Data.ProduceRecipe[i];
-            list.Add(recipe.RecipeName);
-        }
-
-        if (list.Count > 0)
-        {
-            _recipeDropdown.AddOptions(list);
-            _recipeDropdown.value = list.FindIndex(x => x == _curHexaElement.CurRecipe.RecipeName);
-            UpdateRecipe();
-        }
+        
         inputVec = curElenemt.InputVec;
         outputVec = curElenemt.OutputVec;
         SetInputArrow();
@@ -58,6 +40,7 @@ public class HexaTransitInfoPanel : MonoBehaviour
     public void HidePanel()
     {
         transform.GetComponentInParent<Canvas>().enabled = false;
+        _curHexaElement.InfoUpData = null;
     }
 
     public void UpdateInputVec(bool cw)
@@ -108,12 +91,10 @@ public class HexaTransitInfoPanel : MonoBehaviour
         _outputMainArrow.eulerAngles = Vector3.back * (outputVec * 60 + 180);
     }
 
-    public void UpdateRecipe(int index = -1)
+    public void UpdateInfo()
     {
-        if (index >= 0)
-        {
-            _curHexaElement.SetReciepe(index);
-        }
+        ItemData curData = MainGameDataSo.Instance.ItemDatas[_curHexaElement.CurItemid];
+        _curItemReport.Init(curData.ItemSprite, curData.ItemName);
     }
     public void DestroySelectHexa()
     {

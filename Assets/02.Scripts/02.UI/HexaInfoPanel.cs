@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
+using UnityEngine.Localization.Settings;
 
 public class HexaInfoPanel : MonoBehaviour
 {
@@ -25,21 +27,18 @@ public class HexaInfoPanel : MonoBehaviour
         _curHexaElement.InfoUpData = UpdateRecipe;
 
         _hexaName.StringReference.SetReference("Hexa", _curHexaElement.Data.name);
-
         _recipeDropdown.ClearOptions();
 
         foreach (InfoElement infoElement in transform.GetComponentsInChildren<InfoElement>())
         {
             infoElement.gameObject.SetActive(false);
         }
-
+        Locale currentLanguage = LocalizationSettings.SelectedLocale;
         List<string> list = new List<string>();
         for (int i = 0; i < _curHexaElement.Data.ProduceRecipe.Count; i++)
         {
             ProduceRecipe recipe = _curHexaElement.Data.ProduceRecipe[i];
-            list.Add(recipe.RecipeName);
-
-
+            list.Add(LocalizationSettings.StringDatabase.GetLocalizedString("Item", recipe.RecipeName, currentLanguage));
         }
 
         if (list.Count > 0)
@@ -78,7 +77,22 @@ public class HexaInfoPanel : MonoBehaviour
             element.UpDateSlider(0, 1, false);
         }
 
-        // 각 요서 필요한 만큼 활성화
+        // 생산 시간 정보
+        if (_curHexaElement.CurRecipe.ProduceTime != 0)
+        {
+            InfoElement element = FindDisableInfoElement(false);
+            element.Init(MainGameDataSo.Instance.ProcessTimerImage, Color.black);
+            element.UpDateSlider(0, 1, true, _curHexaElement.CurRecipe.ProduceTime.ToString() + "s");
+        }
+        // 생산 클릭 정보
+        if (_curHexaElement.CurRecipe.ProduceClick != 0)
+        {
+            InfoElement element = FindDisableInfoElement(false);
+            element.Init(MainGameDataSo.Instance.ProcessClickImage, Color.black);
+            element.UpDateSlider(0, 1, true, (_curHexaElement.CurRecipe.ProduceClick*100).ToString()+"%");
+        }
+
+        // 각 요소 필요한 만큼 활성화
         foreach (ItemPair item in _curHexaElement.CurRecipe.MaterailItemPairs)
         {
             InfoElement element = FindDisableInfoElement(false);

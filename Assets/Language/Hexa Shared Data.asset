@@ -67,6 +67,10 @@ MonoBehaviour:
     m_Key: Factory2
     m_Metadata:
       m_Items: []
+  - m_Id: 672880605732864
+    m_Key: Hand
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

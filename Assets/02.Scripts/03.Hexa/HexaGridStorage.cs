@@ -45,14 +45,15 @@ public class HexaGridStorage : MonoBehaviour, IHexaGridElement
             IHexaGridElement near = _nearHexa[i];
             if (ReferenceEquals(near, null)) continue;
             if (!(near is IHexaGridInItem hexa)) continue;
-            if (ReferenceEquals(hexa.CurRecipe, null)) continue;
-
-            foreach (ItemPair pair in hexa.CurRecipe.ProduceItemPairs)
+            //if (ReferenceEquals(hexa.CurRecipe, null)) continue;
+            if (hexa.ProductItemCount.Count == 0) continue;
+            List<int> keys = new List<int>(hexa.ProductItemCount.Keys);
+            foreach (int key in keys)
             {
-                if (!hexa.CanGetMaterial(i) || hexa.ProductItemCount[pair.ItemID] <= 0) continue;
-                _manger.ShowAddItemPopup(transform.position + (count * 0.35f) * Vector3.up + 0.15f * Vector3.up, pair.ItemID);
-                hexa.ProductItemCount[pair.ItemID]--;
-                MainGameManager.Instance.AddItem(pair.ItemID, 1);
+                if (!hexa.CanGetMaterial(i) || hexa.ProductItemCount[key] <= 0) continue;
+                _manger.ShowAddItemPopup(transform.position + (count * 0.35f) * Vector3.up + 0.15f * Vector3.up, key);
+                hexa.ProductItemCount[key]--;
+                MainGameManager.Instance.AddItem(key, 1);
                 count++;
             }
             (hexa as HexaGridProduct)?.InfoUpData?.Invoke(-1);

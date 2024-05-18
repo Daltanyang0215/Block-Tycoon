@@ -26,6 +26,10 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement,IHexaGridInItem
 
     public void Init(HexaElementDataSO data)
     {
+        _manger = HexaGridManager.Instance;
+        _fillMaterial = transform.Find("Gauge").GetComponent<SpriteRenderer>().materials[0];
+        _fillMaterial.SetFloat("_CutRange", 0);
+
         Data = data;
         SetReciepe(0);
 
@@ -62,6 +66,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement,IHexaGridInItem
         _nearHexa = hexas;
         _isChangeCondition = true;
     }
+
     public void RemoveNearHexa(IHexaGridElement hexa)
     {
         for (int i = 0; i < _nearHexa.Length; i++)
@@ -73,23 +78,6 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement,IHexaGridInItem
             }
         }
         _isChangeCondition = true;
-    }
-
-    private void Start()
-    {
-        _manger = HexaGridManager.Instance;
-        _fillMaterial = transform.Find("Gauge").GetComponent<SpriteRenderer>().materials[0];
-        _fillMaterial.SetFloat("_CutRange", 0);
-        SetReciepe(0);
-        // TODO 나중에 지워야됨
-        {
-            transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopHexaColor);
-            transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
-            transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopGaugeColor);
-            transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomGaugeColor);
-            transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
-            transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
-        }
     }
 
     public void HexaUpdate()
@@ -104,15 +92,12 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement,IHexaGridInItem
             for (int i = 0; i < CurRecipe.ProduceItemPairs.Count; i++)
             {
                 ItemPair item = CurRecipe.ProduceItemPairs[i];
-                //_manger.ShowAddItemPopup(transform.position + (i * 0.35f) * Vector3.up + 0.15f * Vector3.up, item.ProduceItemType);
-                //MainGameManager.Instance.AddItem(item.ProduceItemType, item.ProduceAmount);
-
+                
                 ProductItemCount[CurRecipe.ProduceItemPairs[i].ItemID] += CurRecipe.ProduceItemPairs[i].Amount;
                 InfoUpData?.Invoke(-1);
             }
         }
         _fillMaterial.SetFloat("_CutRange", _fillAmount / _filltimer);
-
     }
 
     public void GetMaterialToNear()

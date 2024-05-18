@@ -62,6 +62,10 @@ public class HexaGridManager : MonoBehaviour
             _itemsPopups.Add(Instantiate(_itemPopupPrefab, transform.GetChild(0)));
             _itemsPopups[i].gameObject.SetActive(false);
         }
+        for (int i = 0;i < 6; i++)
+        {
+            SpawnHexaGird(MainGameDataSo.Instance.HexaDatas[i], Vector3Int.right * i);
+        }
     }
 
     private void Update()

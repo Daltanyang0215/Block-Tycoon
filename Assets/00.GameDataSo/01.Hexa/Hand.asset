@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55cc7393e088ca4aa894fbbbc060df8, type: 3}
+  m_Name: Hand
+  m_EditorClassIdentifier: 
+  <HexaType>k__BackingField: 6
+  <CanBuy>k__BackingField: 0
+  <BuyPrice>k__BackingField: []
+  <ProduceRecipe>k__BackingField:
+  - <RecipeName>k__BackingField: stone
+    <NearHexaCondition>k__BackingField: 2
+    <MaterailItemPairs>k__BackingField: []
+    <ProduceTime>k__BackingField: 0
+    <ProduceClick>k__BackingField: 0.05
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 1
+      <Amount>k__BackingField: 1
+  - <RecipeName>k__BackingField: tree
+    <NearHexaCondition>k__BackingField: 3
+    <MaterailItemPairs>k__BackingField: []
+    <ProduceTime>k__BackingField: 0
+    <ProduceClick>k__BackingField: 0.1
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 2
+      <Amount>k__BackingField: 1
+  - <RecipeName>k__BackingField: coal
+    <NearHexaCondition>k__BackingField: 2
+    <MaterailItemPairs>k__BackingField: []
+    <ProduceTime>k__BackingField: 0
+    <ProduceClick>k__BackingField: 0.05
+    <ProduceItemPairs>k__BackingField:
+    - <ItemID>k__BackingField: 7
+      <Amount>k__BackingField: 1
+  <HexaIcon>k__BackingField: {fileID: 21300000, guid: 8d0cdb8f3ef847a42b2cd87a68d4cfca, type: 3}
+  <HexaSubIcon1>k__BackingField: {fileID: 0}
+  <HexaSubIcon2>k__BackingField: {fileID: 0}
+  <TopHexaColor>k__BackingField: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  <BottomHexaColor>k__BackingField: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
+  <TopGaugeColor>k__BackingField: {r: 0.6853863, g: 0.7143325, b: 0.9622642, a: 1}
+  <BottomGaugeColor>k__BackingField: {r: 0.52324426, g: 0.51699895, b: 0.6981132, a: 1}

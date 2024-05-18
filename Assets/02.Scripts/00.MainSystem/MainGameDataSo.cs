@@ -25,10 +25,13 @@ public class MainGameDataSo : ScriptableObject
 
     [field: SerializeField] public int MatarialStorageCountMut { get; private set; }
     [field: SerializeField] public int ProductStorageCountMut { get; private set; }
-
+    [Header("ItmeData")]
     [SerializeField] private List<ItemData> _itemDatas;
-
     public Dictionary<int,ItemData> ItemDatas { get; private set; }
+
+    [field: Header("Other Image")]
+    [field: SerializeField] public Sprite ProcessTimerImage { get; private set; }
+    [field: SerializeField] public Sprite ProcessClickImage { get; private set; }
 
     public void Init()
     {
@@ -38,6 +41,8 @@ public class MainGameDataSo : ScriptableObject
             ItemDatas.Add(itemData.ItemID, itemData);
         }
     }
+
+
 }
 [System.Serializable]
 public class ItemData

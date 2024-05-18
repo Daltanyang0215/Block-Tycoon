@@ -23,4 +23,5 @@ public class HexaElementDataSO : ScriptableObject
     [field: SerializeField] public Color TopGaugeColor { get; private set; }
     [field: SerializeField] public Color BottomGaugeColor { get; private set; }
 
+
 }

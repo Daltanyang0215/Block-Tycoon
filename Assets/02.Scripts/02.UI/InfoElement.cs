@@ -22,10 +22,19 @@ public class InfoElement : MonoBehaviour
         _slider.fillRect.GetComponent<Image>().color = color;
     }
 
-    public void UpDateSlider(int curValue, int maxValue, bool showValue = true)
+    public void UpDateSlider(int curValue, int maxValue, bool showValue = true , string text="")
     {
         _slider.value = (float)curValue / maxValue;
-        _countText.text = $"{curValue}/{maxValue}";
+        
+        if (text == "")
+        {
+            _countText.text = $"{curValue}/{maxValue}";
+        }
+        else
+        {
+            _countText.text = text;
+        }
+        
         _countText.enabled = showValue;
     }
 }
