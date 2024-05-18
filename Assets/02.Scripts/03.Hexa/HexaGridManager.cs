@@ -27,6 +27,7 @@ public class HexaGridManager : MonoBehaviour
 
     [SerializeField] private GameObject _elementPrefab;
     private Dictionary<Vector3Int, IHexaGridElement> _gridPositions;
+    public Dictionary<Vector3Int, IHexaGridElement> GridPositions => _gridPositions;
     public bool CheckPlaceGrid(Vector3Int pos) => _gridPositions.ContainsKey(pos) && !ReferenceEquals(_gridPositions[pos], null);
 
     private List<GetItemPopup> _itemsPopups;
@@ -62,9 +63,16 @@ public class HexaGridManager : MonoBehaviour
             _itemsPopups.Add(Instantiate(_itemPopupPrefab, transform.GetChild(0)));
             _itemsPopups[i].gameObject.SetActive(false);
         }
-        for (int i = 0;i < 6; i++)
+        LoadData();
+    }
+
+    private void LoadData()
+    {
+        SaveData saveData = SaveSystem.Save;
+        for (int i = 0; i < saveData.HexaPos.Count; i++)
         {
-            SpawnHexaGird(MainGameDataSo.Instance.HexaDatas[i], Vector3Int.right * i);
+            HexaElementDataSO hexadata = MainGameDataSo.Instance.HexaDatas[saveData.HexaID[i]];
+            SpawnHexaGird(hexadata, saveData.HexaPos[i], saveData.HexaSaveDatas[i]);
         }
     }
 
@@ -100,20 +108,20 @@ public class HexaGridManager : MonoBehaviour
         }
     }
 
-    public void SpawnHexaGird(HexaElementDataSO data, Vector3Int pos)
+    public void SpawnHexaGird(HexaElementDataSO data, Vector3Int pos, HexaSaveData saveData = null)
     {
         GameObject grid = Instantiate(_elementPrefab, _grid.CellToWorld(pos), Quaternion.identity, transform).gameObject;
 
         switch (data.HexaType)
         {
             case HexaType.Storge:
-                grid.AddComponent<HexaGridStorage>().Init(data);
+                grid.AddComponent<HexaGridStorage>().Init(data,saveData);
                 break;
             case HexaType.Move:
-                grid.AddComponent<HexaGridTransit>().Init(data);
+                grid.AddComponent<HexaGridTransit>().Init(data, saveData);
                 break;
             default:
-                grid.AddComponent<HexaGridProduct>().Init(data);
+                grid.AddComponent<HexaGridProduct>().Init(data, saveData);
                 break;
         }
         _gridPositions.Add(pos, grid.GetComponent<IHexaGridElement>());

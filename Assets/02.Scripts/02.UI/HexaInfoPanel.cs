@@ -44,7 +44,7 @@ public class HexaInfoPanel : MonoBehaviour
         if (list.Count > 0)
         {
             _recipeDropdown.AddOptions(list);
-            _recipeDropdown.value = list.FindIndex(x => x == _curHexaElement.CurRecipe.RecipeName);
+            _recipeDropdown.value = _curHexaElement.Data.ProduceRecipe.FindIndex(x => x == _curHexaElement.CurRecipe);
             UpdateRecipe();
         }
     }
@@ -74,7 +74,7 @@ public class HexaInfoPanel : MonoBehaviour
             InfoElement element = FindDisableInfoElement(false);
             HexaElementDataSO data = MainGameDataSo.Instance.HexaDatas.Find(x => x.HexaType == _curHexaElement.CurRecipe.NearHexaCondition);
             element.Init(data.HexaIcon, data.BottomHexaColor);
-            element.UpDateSlider(0, 1, false);
+            element.UpDateSlider(_curHexaElement.CheckNearHexaTypeToUI() ? 1 : 0, 1, false);
         }
 
         // 생산 시간 정보
@@ -89,7 +89,7 @@ public class HexaInfoPanel : MonoBehaviour
         {
             InfoElement element = FindDisableInfoElement(false);
             element.Init(MainGameDataSo.Instance.ProcessClickImage, Color.black);
-            element.UpDateSlider(0, 1, true, (_curHexaElement.CurRecipe.ProduceClick*100).ToString()+"%");
+            element.UpDateSlider(0, 1, true, (_curHexaElement.CurRecipe.ProduceClick * 100).ToString() + "%");
         }
 
         // 각 요소 필요한 만큼 활성화

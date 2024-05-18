@@ -27,7 +27,7 @@ public class MainGameDataSo : ScriptableObject
     [field: SerializeField] public int ProductStorageCountMut { get; private set; }
     [Header("ItmeData")]
     [SerializeField] private List<ItemData> _itemDatas;
-    public Dictionary<int,ItemData> ItemDatas { get; private set; }
+    public Dictionary<int, ItemData> ItemDatas { get; private set; }
 
     [field: Header("Other Image")]
     [field: SerializeField] public Sprite ProcessTimerImage { get; private set; }
@@ -35,7 +35,8 @@ public class MainGameDataSo : ScriptableObject
 
     public void Init()
     {
-        ItemDatas = new Dictionary<int,ItemData>();
+        ItemDatas = new Dictionary<int, ItemData>();
+        _itemDatas.Sort((x, y) => x.ItemID.CompareTo(y.ItemID));
         foreach (var itemData in _itemDatas)
         {
             ItemDatas.Add(itemData.ItemID, itemData);

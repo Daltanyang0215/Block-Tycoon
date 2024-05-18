@@ -87,6 +87,7 @@ public class MainUIManager : MonoBehaviour
 
     public void ShowReportAnimation(bool Show)
     {
+        ItemCountUpdate();
         StopAllCoroutines();
         StartCoroutine(ReportAnimation(Show));
     }

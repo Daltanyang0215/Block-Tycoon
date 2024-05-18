@@ -19,7 +19,7 @@ public class MainGameManager : MonoBehaviour
     }
     #endregion
 
-    [field:SerializeField] public MainGameDataSo GameDataSo { get; private set; }
+    [field: SerializeField] public MainGameDataSo GameDataSo { get; private set; }
 
     private Dictionary<int, int> _hasItems;
     public int GetItemCount(int type) => _hasItems[type];
@@ -34,19 +34,36 @@ public class MainGameManager : MonoBehaviour
     private void Awake()
     {
         GameDataSo.Init();
+
     }
 
     private void Start()
     {
+        LoadData();
+    }
+
+    private void LoadData()
+    {
+        SaveData saveData = SaveSystem.Save;
         _hasItems = new Dictionary<int, int>();
-        foreach (ItemData data in MainGameDataSo.Instance.ItemDatas.Values)
+        for (int i = 0; i < saveData.HasItemCode.Count; i++)
         {
-            _hasItems.Add(data.ItemID, 0);
+            _hasItems.Add(saveData.HasItemCode[i], saveData.HasItemCount[i]);
         }
     }
+
+    [ContextMenu("DeleteData")]
+    public void DeleteData() => SaveSystem.DeleteData();
+    [ContextMenu("SaveData")]
+    public void SaveData() => SaveSystem.SaveData();
 
     public void OnGameExit()
     {
         Application.Quit();
+    }
+
+    public void OnApplicationQuit()
+    {
+        SaveSystem.SaveData();
     }
 }

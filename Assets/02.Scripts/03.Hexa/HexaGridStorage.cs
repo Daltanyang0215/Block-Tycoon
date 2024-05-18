@@ -25,7 +25,7 @@ public class HexaGridStorage : MonoBehaviour, IHexaGridElement
         }
     }
 
-    public void Init(HexaElementDataSO data)
+    public void Init(HexaElementDataSO data, HexaSaveData saveData)
     {
         Data = data;
 

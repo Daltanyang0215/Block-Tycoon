@@ -7,4 +7,5 @@ public interface IHexaGridInItem
     public Dictionary<int, int> MaterialItemCount { get; }
     public Dictionary<int, int> ProductItemCount { get; }
     public bool CanGetMaterial(int index);
+    public HexaSaveData SaveData();
 }

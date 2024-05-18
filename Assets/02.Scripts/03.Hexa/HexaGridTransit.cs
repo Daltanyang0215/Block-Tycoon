@@ -22,7 +22,7 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
 
     public System.Action InfoUpData;
 
-    public void Init(HexaElementDataSO data)
+    public void Init(HexaElementDataSO data, HexaSaveData saveData)
     {
         Data = data;
         //SetReciepe(0);
@@ -32,6 +32,21 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         transform.GetChild(3).transform.localPosition = Vector3.zero;
         transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = Data.HexaSubIcon2;
         transform.GetChild(3).GetComponent<SpriteRenderer>().color = Color.white;
+
+        // 세이브 데이터 적용
+        if (ReferenceEquals(saveData, null)) return;
+        SetVec(saveData.InVec, saveData.OutVec);
+        ProductItemCount.Clear();
+        if (saveData.HexaProductItemCode.Count == 0)
+        {
+            CurItemid = -1;
+            ProductItemCount.Add(CurItemid, 0);
+        }
+        else
+        {
+            CurItemid = saveData.HexaProductItemCode[0];
+            ProductItemCount.Add(CurItemid, saveData.HexaProductItemCount[0]);
+        }
     }
 
     public void SetVec(byte input, byte output)
@@ -108,5 +123,19 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     private void OnMouseDrag()
     {
         transform.position = _manger.GetGridePos(this, Input.mousePosition, transform.position);
+    }
+
+    public HexaSaveData SaveData()
+    {
+        HexaSaveData saveData = new HexaSaveData();
+
+        saveData.InVec = InputVec;
+        saveData.OutVec = InputVec;
+        if (CurItemid != -1)
+        {
+            saveData.HexaProductItemCode.Add(CurItemid);
+            saveData.HexaProductItemCount.Add(1);
+        }
+        return saveData;
     }
 }

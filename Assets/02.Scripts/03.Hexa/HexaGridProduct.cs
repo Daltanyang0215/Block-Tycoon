@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HexaGridProduct : MonoBehaviour, IHexaGridElement,IHexaGridInItem
+public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
 {
 
     [field: SerializeField] public HexaElementDataSO Data { get; private set; }
@@ -24,7 +24,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement,IHexaGridInItem
 
     public System.Action<int> InfoUpData;
 
-    public void Init(HexaElementDataSO data)
+    public void Init(HexaElementDataSO data, HexaSaveData saveData)
     {
         _manger = HexaGridManager.Instance;
         _fillMaterial = transform.Find("Gauge").GetComponent<SpriteRenderer>().materials[0];
@@ -39,6 +39,21 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement,IHexaGridInItem
         transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomGaugeColor);
         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
         transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
+
+        // 세이브 데이터 적용
+        if (ReferenceEquals(saveData, null)) return;
+        SetReciepe(saveData.CurRecipeIndex);
+        _fillAmount = saveData.FillAmount;
+        if (_fillAmount != 0) _isCanProduce = true;
+
+        for (int i = 0; i < saveData.HexaMaterialItemCode.Count; i++)
+        {
+            MaterialItemCount[saveData.HexaMaterialItemCode[i]] = saveData.HexaMaterialItemCount[i];
+        }
+        for (int i = 0; i < saveData.HexaProductItemCode.Count; i++)
+        {
+            ProductItemCount[saveData.HexaProductItemCode[i]] = saveData.HexaProductItemCount[i];
+        }
     }
 
     public void SetReciepe(int index)
@@ -48,6 +63,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement,IHexaGridInItem
         if (CurRecipe == Data.ProduceRecipe[index]) return;
 
         CurRecipe = Data.ProduceRecipe[index];
+        _fillAmount = 0;
         _fillMut = CurRecipe?.ProduceTime != 0 ? 1 / CurRecipe.ProduceTime : 0;
         MaterialItemCount.Clear();
         ProductItemCount.Clear();
@@ -92,7 +108,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement,IHexaGridInItem
             for (int i = 0; i < CurRecipe.ProduceItemPairs.Count; i++)
             {
                 ItemPair item = CurRecipe.ProduceItemPairs[i];
-                
+
                 ProductItemCount[CurRecipe.ProduceItemPairs[i].ItemID] += CurRecipe.ProduceItemPairs[i].Amount;
                 InfoUpData?.Invoke(-1);
             }
@@ -179,6 +195,23 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement,IHexaGridInItem
 
         return _isCanProduce;
     }
+    public bool CheckNearHexaTypeToUI()
+    {
+        if (CurRecipe.NearHexaCondition == HexaType.None) return true;
+
+        // TODO 최적화 테스트 용 . 나중에 지워야 됨
+        //Debug.Log("변화 감지");
+
+        foreach (IHexaGridElement near in _nearHexa)
+        {
+            if (ReferenceEquals(near, null)) continue;
+            if (near.Data.HexaType == CurRecipe.NearHexaCondition)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private bool CheckMaterialCount()
     {
@@ -209,7 +242,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement,IHexaGridInItem
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (!ReferenceEquals(CurRecipe, null))
+            if (!ReferenceEquals(CurRecipe, null)&& _isCanProduce)
             {
                 _fillAmount += CurRecipe.ProduceClick;
             }
@@ -224,6 +257,25 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement,IHexaGridInItem
     {
         transform.position = _manger.GetGridePos(this, Input.mousePosition, transform.position);
     }
+    public HexaSaveData SaveData()
+    {
+        if (CurRecipe == null) return null;
+        HexaSaveData saveData = new HexaSaveData();
+        saveData.CurRecipeIndex = Data.ProduceRecipe.FindIndex(x => x.Equals(CurRecipe));
+        saveData.FillAmount = _fillAmount;
 
+        foreach (KeyValuePair<int, int> pair in MaterialItemCount)
+        {
+            saveData.HexaMaterialItemCode.Add(pair.Key);
+            saveData.HexaMaterialItemCount.Add(pair.Value);
+        }
+        foreach (KeyValuePair<int, int> pair in ProductItemCount)
+        {
+            saveData.HexaProductItemCode.Add(pair.Key);
+            saveData.HexaProductItemCount.Add(pair.Value);
+        }
+
+        return saveData;
+    }
 
 }
