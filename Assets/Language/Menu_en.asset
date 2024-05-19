@@ -50,6 +50,22 @@ MonoBehaviour:
     m_Localized: Output
     m_Metadata:
       m_Items: []
+  - m_Id: 1111909713256448
+    m_Localized: Data Delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1112716206612480
+    m_Localized: "Delete all data \nand quit the game"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1113320249303040
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1113303396589568
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

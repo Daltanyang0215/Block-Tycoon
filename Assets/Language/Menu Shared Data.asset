@@ -47,6 +47,22 @@ MonoBehaviour:
     m_Key: Output
     m_Metadata:
       m_Items: []
+  - m_Id: 1111909713256448
+    m_Key: Data Delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1112716206612480
+    m_Key: Delete Comment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1113303396589568
+    m_Key: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1113320249303040
+    m_Key: No
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

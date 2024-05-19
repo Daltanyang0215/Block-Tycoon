@@ -25,7 +25,7 @@ MonoBehaviour:
   <HexaIcon>k__BackingField: {fileID: 21300000, guid: 80bc9c2a60062c54784f8a7bf4be19da, type: 3}
   <HexaSubIcon1>k__BackingField: {fileID: 0}
   <HexaSubIcon2>k__BackingField: {fileID: 0}
-  <TopHexaColor>k__BackingField: {r: 0.9716981, g: 0.94219536, b: 0.55460125, a: 1}
-  <BottomHexaColor>k__BackingField: {r: 0.901129, g: 0.9150943, b: 0.25467247, a: 1}
+  <TopHexaColor>k__BackingField: {r: 1, g: 0.9848351, b: 0.7971698, a: 1}
+  <BottomHexaColor>k__BackingField: {r: 0.4300511, g: 0.4339623, b: 0.21493414, a: 1}
   <TopGaugeColor>k__BackingField: {r: 0.748042, g: 0.7507124, b: 0.7735849, a: 1}
   <BottomGaugeColor>k__BackingField: {r: 0.41475144, g: 0.41451585, b: 0.4245283, a: 1}

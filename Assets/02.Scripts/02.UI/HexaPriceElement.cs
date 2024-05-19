@@ -30,6 +30,7 @@ public class HexaPriceElement : MonoBehaviour
             ReportElement element = Instantiate(_priceElement, _priceTransfrom);
             ItemData item = MainGameDataSo.Instance.ItemDatas[pair.ItemID];
             element.Init(item.ItemSprite, item.ItemName);
+            element.SetColor(item.ItemColor);
             element.UpdateItemCount(pair.Amount);
             _priceButton.interactable = false;
         }

@@ -41,6 +41,7 @@ public class MainUIManager : MonoBehaviour
         {
             ReportElement item = Instantiate(_elementPrefeb, _elementParent);
             item.Init(data.ItemSprite, data.ItemName);
+            item.SetColor(data.ItemColor);
             _reportElements.Add(data.ItemID, item);
             item.gameObject.SetActive(false);
         }

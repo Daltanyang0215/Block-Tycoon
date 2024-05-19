@@ -95,6 +95,7 @@ public class HexaTransitInfoPanel : MonoBehaviour
     {
         ItemData curData = MainGameDataSo.Instance.ItemDatas[_curHexaElement.CurItemid];
         _curItemReport.Init(curData.ItemSprite, curData.ItemName);
+        _curItemReport.SetColor(curData.ItemColor);
     }
     public void DestroySelectHexa()
     {

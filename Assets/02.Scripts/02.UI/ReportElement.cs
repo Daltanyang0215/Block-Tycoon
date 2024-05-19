@@ -14,7 +14,12 @@ public class ReportElement : MonoBehaviour
     public void Init(Sprite sprite, string name)
     {
         _image.sprite = sprite;
-        _itemName.StringReference.SetReference("Item",name);
+        _itemName.StringReference.SetReference("Item", name);
+    }
+
+    public void SetColor(Color color)
+    {
+        _image.color = color;
     }
 
     public void UpdateItemCount(int count)

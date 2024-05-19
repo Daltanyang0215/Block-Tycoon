@@ -27,8 +27,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c3b7d6e3a43c0b34eb2e207fd4f7a3c5, type: 2}
   - {fileID: 11400000, guid: cbac76f0fc50bb74b8c3a49f71962332, type: 2}
   - {fileID: 11400000, guid: 161282292bbb568408746eed376d576a, type: 2}
-  - {fileID: 11400000, guid: bd1335b78fd9f4240ba3cebd536fd07b, type: 2}
-  - {fileID: 11400000, guid: 3cd1dc86db4e23f49a444f419b7e098c, type: 2}
   <MatarialStorageCountMut>k__BackingField: 3
   <ProductStorageCountMut>k__BackingField: 3
   _itemDatas:
