@@ -98,7 +98,12 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
 
     public void HexaUpdate()
     {
-        if (!CheckCanProduce()) return;
+        if (!CheckCanProduce())
+        {
+            _fillAmount = 0;
+            _fillMaterial.SetFloat("_CutRange", 0);
+            return;
+        }
 
         _fillAmount += Time.deltaTime * _fillMut;
         if (_fillAmount > _filltimer)
@@ -242,7 +247,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (!ReferenceEquals(CurRecipe, null)&& _isCanProduce)
+            if (!ReferenceEquals(CurRecipe, null) && _isCanProduce)
             {
                 _fillAmount += CurRecipe.ProduceClick;
             }

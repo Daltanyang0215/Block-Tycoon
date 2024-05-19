@@ -26,7 +26,7 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 1
       <Amount>k__BackingField: 1
     <ProduceTime>k__BackingField: 30
-    <ProduceClick>k__BackingField: 0.1
+    <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 8
       <Amount>k__BackingField: 1
@@ -36,7 +36,7 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 4
       <Amount>k__BackingField: 1
     <ProduceTime>k__BackingField: 30
-    <ProduceClick>k__BackingField: 0.1
+    <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 10
       <Amount>k__BackingField: 1
@@ -46,7 +46,7 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 5
       <Amount>k__BackingField: 1
     <ProduceTime>k__BackingField: 30
-    <ProduceClick>k__BackingField: 0.1
+    <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 11
       <Amount>k__BackingField: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 6
       <Amount>k__BackingField: 1
     <ProduceTime>k__BackingField: 30
-    <ProduceClick>k__BackingField: 0.1
+    <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 12
       <Amount>k__BackingField: 1
@@ -68,7 +68,7 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 7
       <Amount>k__BackingField: 1
     <ProduceTime>k__BackingField: 30
-    <ProduceClick>k__BackingField: 0.1
+    <ProduceClick>k__BackingField: 0
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 13
       <Amount>k__BackingField: 1

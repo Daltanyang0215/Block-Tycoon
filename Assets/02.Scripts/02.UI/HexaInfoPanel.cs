@@ -21,7 +21,21 @@ public class HexaInfoPanel : MonoBehaviour
 
         transform.GetComponentInParent<Canvas>().enabled = true;
 
-        transform.position = Camera.main.WorldToScreenPoint(curElenemt.transform.position);
+        Vector2 pos = Camera.main.WorldToScreenPoint(curElenemt.transform.position);
+        Vector2 viewPos = Camera.main.WorldToViewportPoint(curElenemt.transform.position);
+        if (viewPos.x > .75f)
+        {
+            pos.x -= 550;
+        }
+        if (viewPos.y > .85f)
+        {
+            pos.y -= 125;
+        }
+        if (viewPos.y < .25f)
+        {
+            pos.y += 200;
+        }
+        transform.position = pos;
 
         _curHexaElement = curElenemt;
         _curHexaElement.InfoUpData = UpdateRecipe;

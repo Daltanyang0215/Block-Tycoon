@@ -23,7 +23,12 @@ public class HexaTransitInfoPanel : MonoBehaviour
 
         transform.GetComponentInParent<Canvas>().enabled = true;
 
-        transform.position = Camera.main.WorldToScreenPoint(curElenemt.transform.position);
+        Vector2 pos = Camera.main.WorldToScreenPoint(curElenemt.transform.position);
+        if (Camera.main.WorldToViewportPoint(curElenemt.transform.position).x > .75f)
+        {
+            pos.x -= 550;
+        }
+        transform.position = pos;
 
         _curHexaElement = curElenemt;
         _curHexaElement.InfoUpData = UpdateInfo;
