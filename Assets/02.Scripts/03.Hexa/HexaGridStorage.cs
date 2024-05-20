@@ -5,8 +5,10 @@ using UnityEngine;
 public class HexaGridStorage : MonoBehaviour, IHexaGridElement
 {
     [field: SerializeField] public HexaElementDataSO Data { get; private set; }
+    public Vector2 Pos => transform.position;
     private HexaGridManager _manger;
     private IHexaGridElement[] _nearHexa = new IHexaGridElement[6];
+
 
     private void Start()
     {
@@ -54,6 +56,7 @@ public class HexaGridStorage : MonoBehaviour, IHexaGridElement
                 _manger.ShowAddItemPopup(transform.position + (count * 0.35f) * Vector3.up + 0.15f * Vector3.up, key);
                 hexa.ProductItemCount[key]--;
                 MainGameManager.Instance.AddItem(key, 1);
+                _manger.ShowMoveItemEffect((near.Pos), transform.position, key);
                 count++;
             }
             (hexa as HexaGridProduct)?.InfoUpData?.Invoke(-1);

@@ -33,6 +33,12 @@ public class HexaGridManager : MonoBehaviour
     private List<GetItemPopup> _itemsPopups;
     [SerializeField] private GetItemPopup _itemPopupPrefab;
 
+    private List<MoveItemEffect> _moveItems;
+    [SerializeField] private MoveItemEffect _moveItemPrefab;
+    private List<Transform> _nearLines;
+    [SerializeField] private Transform _nearLinePrefab;
+
+
     private readonly List<Vector3Int> _oddPos = new List<Vector3Int>
     {
         new Vector3Int(-1, 0, 0),
@@ -52,6 +58,8 @@ public class HexaGridManager : MonoBehaviour
         new Vector3Int( -1, -1, 0)
     };
 
+    private WaitForSeconds _sleep;
+
     private void Start()
     {
         _camera = Camera.main;
@@ -63,7 +71,21 @@ public class HexaGridManager : MonoBehaviour
             _itemsPopups.Add(Instantiate(_itemPopupPrefab, transform.GetChild(0)));
             _itemsPopups[i].gameObject.SetActive(false);
         }
+        _moveItems = new List<MoveItemEffect>();
+        for (int i = 0; i < 15; i++)
+        {
+            _moveItems.Add(Instantiate(_moveItemPrefab, transform.GetChild(1)));
+            _moveItems[i].gameObject.SetActive(false);
+        }
+        _nearLines = new List<Transform>();
+        for (int i = 0; i < 15; i++)
+        {
+            _nearLines.Add(Instantiate(_nearLinePrefab, transform.GetChild(2)).transform);
+            _nearLines[i].gameObject.SetActive(false);
+        }
         LoadData();
+
+        _sleep = new WaitForSeconds(MainGameDataSo.Instance.MoveItemEffectTime);
     }
 
     private void LoadData()
@@ -115,7 +137,7 @@ public class HexaGridManager : MonoBehaviour
         switch (data.HexaType)
         {
             case HexaType.Storge:
-                grid.AddComponent<HexaGridStorage>().Init(data,saveData);
+                grid.AddComponent<HexaGridStorage>().Init(data, saveData);
                 break;
             case HexaType.Move:
                 grid.AddComponent<HexaGridTransit>().Init(data, saveData);
@@ -151,6 +173,14 @@ public class HexaGridManager : MonoBehaviour
 
     public void ShowAddItemPopup(Vector2 showPos, int itemid)
     {
+        StartCoroutine(ShowPopup(showPos, itemid));
+    }
+
+
+    private IEnumerator ShowPopup(Vector2 showPos, int itemid)
+    {
+        yield return _sleep;
+
         GetItemPopup itemPopup = null;
         ItemData itemData = MainGameDataSo.Instance.ItemDatas[itemid];
 
@@ -168,11 +198,69 @@ public class HexaGridManager : MonoBehaviour
             itemPopup = Instantiate(_itemPopupPrefab, showPos, Quaternion.identity, transform.GetChild(0));
             itemPopup.Init(itemData.ItemSprite);
             _itemsPopups.Add(itemPopup);
-            return;
+            yield break;
         }
         itemPopup.transform.position = showPos;
         itemPopup.gameObject.SetActive(true);
         itemPopup.Init(itemData.ItemSprite);
+    }
+
+    public void ShowMoveItemEffect(Vector2 startPos, Vector2 endPos, int itemid)
+    {
+        MoveItemEffect moveEffect = null;
+        ItemData itemData = MainGameDataSo.Instance.ItemDatas[itemid];
+
+        foreach (var effect in _moveItems)
+        {
+            if (!effect.gameObject.activeSelf)
+            {
+                moveEffect = effect;
+                break;
+            }
+        }
+
+        if (moveEffect == null)
+        {
+            moveEffect = Instantiate(_moveItemPrefab, startPos, Quaternion.identity, transform.GetChild(1));
+            _moveItems.Add(moveEffect);
+        }
+        moveEffect.Init(startPos, endPos, itemData.ItemColor);
+    }
+
+    public void ShowNearLine(Vector2 startPos, Vector2 endPos, int itemid)
+    {
+        Transform nearLine = null;
+        ItemData itemData = MainGameDataSo.Instance.ItemDatas[itemid];
+
+        Vector3 SpwanPos = Vector2.Lerp(startPos, endPos, .5f);
+
+        foreach (var line in _nearLines)
+        {
+            if (!line.gameObject.activeSelf)
+            {
+                nearLine = line;
+                break;
+            }
+            else
+            {
+                if (line.transform.position == SpwanPos) return;
+            }
+        }
+
+        if (nearLine == null)
+        {
+            nearLine = Instantiate(_moveItemPrefab, SpwanPos, Quaternion.identity, transform.GetChild(2)).transform;
+            _nearLines.Add(nearLine);
+        }
+        nearLine.position = SpwanPos;
+        nearLine.right = endPos - startPos;
+        nearLine.gameObject.SetActive(true);
+    }
+
+    public void RemoveNearLine(Vector2 startPos, Vector2 endPos)
+    {
+        Vector3 linePos = Vector2.Lerp(startPos, endPos, .5f);
+        _nearLines.Find(x => x.position == linePos).gameObject.SetActive(false);
     }
 
     public Vector2 GetGridePos(IHexaGridElement element, Vector3 mousePos, Vector3 befoPos)
@@ -223,7 +311,9 @@ public class HexaGridManager : MonoBehaviour
         for (int i = 0; i < posList.Count; i++)
         {
             if (_gridPositions.TryGetValue(center + posList[i], out IHexaGridElement near) && !ReferenceEquals(near, null))
+            {
                 near.RemoveNearHexa(remove);
+            }
         }
     }
 

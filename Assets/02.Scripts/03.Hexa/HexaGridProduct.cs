@@ -6,6 +6,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
 {
 
     [field: SerializeField] public HexaElementDataSO Data { get; private set; }
+    public Vector2 Pos => transform.position;
     private HexaGridManager _manger;
     private IHexaGridElement[] _nearHexa = new IHexaGridElement[6];
 
@@ -40,6 +41,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
         transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
 
+
         // 세이브 데이터 적용
         if (ReferenceEquals(saveData, null)) return;
         SetReciepe(saveData.CurRecipeIndex);
@@ -59,7 +61,11 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     public void SetReciepe(int index)
     {
         //TODO 나중에 레시피에따른 기능 변경 필요
-        if (Data.ProduceRecipe.Count == 0) return;
+        if (Data.ProduceRecipe.Count == 0)
+        {
+            transform.GetChild(4).gameObject.SetActive(false);
+            return;
+        }
         if (CurRecipe == Data.ProduceRecipe[index]) return;
 
         CurRecipe = Data.ProduceRecipe[index];
@@ -74,6 +80,10 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         foreach (ItemPair product in CurRecipe.ProduceItemPairs)
         {
             ProductItemCount.Add(product.ItemID, 0);
+            transform.GetChild(4).gameObject.SetActive(true);
+            ItemData setitem = MainGameDataSo.Instance.ItemDatas[product.ItemID];
+            transform.GetChild(4).GetComponent<SpriteRenderer>().sprite = setitem.ItemSprite;
+            transform.GetChild(4).GetComponent<SpriteRenderer>().color = setitem.ItemColor;
         }
     }
 
@@ -81,6 +91,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     {
         _nearHexa = hexas;
         _isChangeCondition = true;
+
     }
 
     public void RemoveNearHexa(IHexaGridElement hexa)
@@ -89,6 +100,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         {
             if (_nearHexa[i] == hexa)
             {
+                _manger.RemoveNearLine(transform.position, hexa.Pos);
                 _nearHexa[i] = null;
                 break;
             }
@@ -138,6 +150,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
                 {
                     hexa.ProductItemCount[pair.ItemID]--;
                     MaterialItemCount[pair.ItemID]++;
+                    _manger.ShowMoveItemEffect((near.Pos), transform.position, pair.ItemID);
                     InfoUpData?.Invoke(-1);
                     break;
                 }
@@ -261,6 +274,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     private void OnMouseDrag()
     {
         transform.position = _manger.GetGridePos(this, Input.mousePosition, transform.position);
+
     }
     public HexaSaveData SaveData()
     {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
 {
     [field: SerializeField] public HexaElementDataSO Data { get; private set; }
+    public Vector2 Pos => transform.position;
     private HexaGridManager _manger;
     private IHexaGridElement[] _nearHexa = new IHexaGridElement[6];
 
@@ -25,6 +26,7 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     public void Init(HexaElementDataSO data, HexaSaveData saveData)
     {
         Data = data;
+        _manger = HexaGridManager.Instance;
         //SetReciepe(0);
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopHexaColor);
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
@@ -88,6 +90,7 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
                 CurItemid = key;
                 ProductItemCount.Clear();
                 ProductItemCount.Add(CurItemid, 1);
+                _manger.ShowMoveItemEffect((near.Pos), transform.position, key);
                 InfoUpData?.Invoke();
                 return;
             }
@@ -130,7 +133,7 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         HexaSaveData saveData = new HexaSaveData();
 
         saveData.InVec = InputVec;
-        saveData.OutVec = InputVec;
+        saveData.OutVec = OutputVec;
         if (CurItemid != -1)
         {
             saveData.HexaProductItemCode.Add(CurItemid);

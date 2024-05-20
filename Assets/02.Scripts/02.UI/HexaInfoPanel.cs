@@ -25,15 +25,15 @@ public class HexaInfoPanel : MonoBehaviour
         Vector2 viewPos = Camera.main.WorldToViewportPoint(curElenemt.transform.position);
         if (viewPos.x > .75f)
         {
-            pos.x -= 550;
+            pos.x -= 550 * (Screen.width / 1920);
         }
         if (viewPos.y > .85f)
         {
-            pos.y -= 125;
+            pos.y -= 125 * (Screen.height / 1080);
         }
         if (viewPos.y < .25f)
         {
-            pos.y += 200;
+            pos.y += 200 * (Screen.height / 1080);
         }
         transform.position = pos;
 

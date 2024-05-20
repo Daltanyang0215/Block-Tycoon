@@ -29,7 +29,8 @@ public class MainGameDataSo : ScriptableObject
     [SerializeField] private List<ItemData> _itemDatas;
     public Dictionary<int, ItemData> ItemDatas { get; private set; }
 
-    [field: Header("Other Image")]
+    [field: Header("Other")]
+    [field : SerializeField] public float MoveItemEffectTime {  get; private set; }
     [field: SerializeField] public Sprite ProcessTimerImage { get; private set; }
     [field: SerializeField] public Sprite ProcessClickImage { get; private set; }
 

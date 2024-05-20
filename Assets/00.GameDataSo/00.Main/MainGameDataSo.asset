@@ -166,5 +166,6 @@ MonoBehaviour:
     <ItemID>k__BackingField: 33
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: f640a56694402bb4da51caa206e59615, type: 3}
     <ItemColor>k__BackingField: {r: 0.5717716, g: 0.8113208, b: 0.5319509, a: 1}
+  <MoveItemEffectTime>k__BackingField: 0.5
   <ProcessTimerImage>k__BackingField: {fileID: 21300000, guid: cb7208ec9a0bbdd4b95c789dac9e8540, type: 3}
   <ProcessClickImage>k__BackingField: {fileID: 21300000, guid: 11a2a66b5de76b348b05dbf454b1109d, type: 3}
