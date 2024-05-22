@@ -23,6 +23,9 @@ public class HexaGridManager : MonoBehaviour
     private Camera _camera;
     private Grid _grid;
 
+    [SerializeField] private float _mapSizeX;
+    [SerializeField] private float _mapSizeY;
+
     [field: SerializeField] public HexaGridPreview GridPreview { get; private set; }
 
     [SerializeField] private GameObject _elementPrefab;
@@ -171,12 +174,11 @@ public class HexaGridManager : MonoBehaviour
         Destroy(hexa);
     }
 
+    #region Effect
     public void ShowAddItemPopup(Vector2 showPos, int itemid)
     {
         StartCoroutine(ShowPopup(showPos, itemid));
     }
-
-
     private IEnumerator ShowPopup(Vector2 showPos, int itemid)
     {
         yield return _sleep;
@@ -263,6 +265,10 @@ public class HexaGridManager : MonoBehaviour
         _nearLines.Find(x => x.position == linePos).gameObject.SetActive(false);
     }
 
+    #endregion
+
+    #region GridMove And NearUpdate
+
     public Vector2 GetGridePos(IHexaGridElement element, Vector3 mousePos, Vector3 befoPos)
     {
         Vector3Int cellPos = MousePosToGridPos(mousePos);
@@ -291,10 +297,15 @@ public class HexaGridManager : MonoBehaviour
     public Vector3Int MousePosToGridPos(Vector3 mousePos)
     {
         Vector2 posPos = _camera.ScreenToWorldPoint(Input.mousePosition);
-        if (posPos.y < -4.7f) posPos.y = -4.7f;
-        if (posPos.y > 4.7) posPos.y = 4.7f;
-        if (posPos.x > 8.4f) posPos.x = 8.4f;
-        if (posPos.x < -8.4f) posPos.x = -8.4f;
+        //if (posPos.y < -4.7f) posPos.y = -4.7f;
+        //if (posPos.y > 4.7) posPos.y = 4.7f;
+        //if (posPos.x > 8.4f) posPos.x = 8.4f;
+        //if (posPos.x < -8.4f) posPos.x = -8.4f;
+
+        if (posPos.y < -_mapSizeY) posPos.y = -_mapSizeY;
+        if (posPos.y > _mapSizeY) posPos.y = _mapSizeY;
+        if (posPos.x > _mapSizeX) posPos.x = _mapSizeX;
+        if (posPos.x < -_mapSizeX) posPos.x = -_mapSizeX;
         Vector3Int result = _grid.WorldToCell(posPos);
         result.z = 0;
         return result;
@@ -331,6 +342,8 @@ public class HexaGridManager : MonoBehaviour
         _gridPositions[center].SetNearHexa(near);
     }
 
+
+    #endregion
 
     //private void OnDrawGizmosSelected()
     //{

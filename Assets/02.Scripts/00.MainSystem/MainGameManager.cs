@@ -21,6 +21,8 @@ public class MainGameManager : MonoBehaviour
 
     [field: SerializeField] public MainGameDataSo GameDataSo { get; private set; }
 
+    private readonly WaitForSeconds _autoSaveTime = new WaitForSeconds(300);
+
     private Dictionary<int, int> _hasItems;
     public int GetItemCount(int type) => _hasItems[type];
     public void AddItem(int itemid, int addValue)
@@ -51,6 +53,17 @@ public class MainGameManager : MonoBehaviour
             _hasItems.Add(saveData.HasItemCode[i], saveData.HasItemCount[i]);
         }
     }
+
+    private IEnumerator AutoSave()
+    {
+        while (true)
+        {
+            yield return _autoSaveTime;
+            SaveData();
+        }
+    }
+
+
 
     [ContextMenu("DeleteData")]
     public void DeleteData() => SaveSystem.DeleteData();

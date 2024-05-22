@@ -100,7 +100,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         {
             if (_nearHexa[i] == hexa)
             {
-                _manger.RemoveNearLine(transform.position, hexa.Pos);
+                //_manger.RemoveNearLine(transform.position, hexa.Pos);
                 _nearHexa[i] = null;
                 break;
             }
@@ -274,7 +274,6 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     private void OnMouseDrag()
     {
         transform.position = _manger.GetGridePos(this, Input.mousePosition, transform.position);
-
     }
     public HexaSaveData SaveData()
     {

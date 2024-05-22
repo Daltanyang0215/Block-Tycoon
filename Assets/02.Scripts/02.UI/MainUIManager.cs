@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
 public class MainUIManager : MonoBehaviour
@@ -76,14 +77,17 @@ public class MainUIManager : MonoBehaviour
             }
         }
         foreach (HexaPriceElement priceElement in _hexaPrices)
-        {
             priceElement.PriceUpdata();
-        }
     }
 
     public void SetLanguage(int index)
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
+    }
+
+    public string GetLocalString(string table, string key)
+    {
+        return LocalizationSettings.StringDatabase.GetLocalizedString(table, key, LocalizationSettings.SelectedLocale);
     }
 
     public void ShowReportAnimation(bool Show)
@@ -100,8 +104,8 @@ public class MainUIManager : MonoBehaviour
         transform.GetChild(0).GetChild(0).gameObject.SetActive(!show);
         transform.GetChild(0).GetChild(1).gameObject.SetActive(show);
 
-        float startpos = show ? 0f : 500f;
-        float endPos = show ? 500f : 0;
+        float startpos = show ? 0f : 500f * target.localScale.y;
+        float endPos = show ? 500f * target.localScale.y : 0;
 
         float animationTimer = 0;
         float animationMaxTime = .5f;
@@ -115,10 +119,10 @@ public class MainUIManager : MonoBehaviour
             x = animationTimer / animationMaxTime;
             //t = Mathf.Pow(2, -10 * x) * Mathf.Sin((x * 10 - 0.75f) * c4) + 1;
             t = 1 - Mathf.Pow(1 - x, 5);
-            target.anchoredPosition = Vector2.up * Mathf.Lerp(startpos, endPos, t);
+            target.anchoredPosition = Vector2.up * Mathf.Lerp(startpos, endPos, t) + Vector2.left * 120;
             yield return null;
         }
-        target.anchoredPosition = Vector2.up * endPos;
+        target.anchoredPosition = Vector2.up * endPos + Vector2.left * 120;
 
 
     }

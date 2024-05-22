@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
-using UnityEngine.Localization.Settings;
 
 public class HexaInfoPanel : MonoBehaviour
 {
@@ -47,12 +45,12 @@ public class HexaInfoPanel : MonoBehaviour
         {
             infoElement.gameObject.SetActive(false);
         }
-        Locale currentLanguage = LocalizationSettings.SelectedLocale;
+        
         List<string> list = new List<string>();
         for (int i = 0; i < _curHexaElement.Data.ProduceRecipe.Count; i++)
         {
             ProduceRecipe recipe = _curHexaElement.Data.ProduceRecipe[i];
-            list.Add(LocalizationSettings.StringDatabase.GetLocalizedString("Item", recipe.RecipeName, currentLanguage));
+            list.Add(MainUIManager.Instance.GetLocalString("Item",recipe.RecipeName));
         }
 
         if (list.Count > 0)
