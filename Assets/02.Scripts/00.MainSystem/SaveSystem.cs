@@ -116,7 +116,7 @@ public class SaveData
         foreach (KeyValuePair<Vector3Int, IHexaGridElement> grid in HexaGridManager.Instance.GridPositions)
         {
             HexaPos.Add(grid.Key);
-            HexaID.Add(MainGameDataSo.Instance.HexaDatas.FindIndex(x => x == grid.Value.Data));
+            HexaID.Add(grid.Value.Data.GetID);
 
             if (!(grid.Value is IHexaGridInItem gridInItem))
             {

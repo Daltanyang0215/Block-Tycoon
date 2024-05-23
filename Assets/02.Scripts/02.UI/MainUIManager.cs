@@ -104,8 +104,8 @@ public class MainUIManager : MonoBehaviour
         transform.GetChild(0).GetChild(0).gameObject.SetActive(!show);
         transform.GetChild(0).GetChild(1).gameObject.SetActive(show);
 
-        float startpos = show ? 0f : 500f * target.localScale.y;
-        float endPos = show ? 500f * target.localScale.y : 0;
+        float startpos = show ? 50f : target.rect.size.y * target.localScale.y;
+        float endPos = show ? target.rect.size.y * target.localScale.y : 50;
 
         float animationTimer = 0;
         float animationMaxTime = .5f;
