@@ -71,6 +71,10 @@ MonoBehaviour:
     m_Key: Hand
     m_Metadata:
       m_Items: []
+  - m_Id: 2464960709599232
+    m_Key: Mine
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

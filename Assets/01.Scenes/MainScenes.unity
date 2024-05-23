@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 16427152}
   - component: {fileID: 16427151}
   m_Layer: 5
-  m_Name: HexaHoldButton
+  m_Name: HexaDeleteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 74f85a8a3dbaa6e4881d6e647da08800, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d66df7d2887fb44887e40bdbc8e3ff9, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 102086604}
   - component: {fileID: 102086603}
   m_Layer: 5
-  m_Name: HexaHoldButton
+  m_Name: HexaDeleteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 74f85a8a3dbaa6e4881d6e647da08800, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d66df7d2887fb44887e40bdbc8e3ff9, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2891,14 +2891,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 19ff918f470199049b771fb9454eb953, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc30780f7f6f9d8469b1cda0ba8997e5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5774,7 +5774,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 30.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8057,14 +8057,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 19ff918f470199049b771fb9454eb953, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc30780f7f6f9d8469b1cda0ba8997e5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -60,7 +60,6 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
 
     public void SetReciepe(int index)
     {
-        //TODO 나중에 레시피에따른 기능 변경 필요
         if (Data.ProduceRecipe.Count == 0)
         {
             transform.GetChild(4).gameObject.SetActive(false);
@@ -196,9 +195,6 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         // 최적화 목적, 주위 블록의 변화가 없다면 리턴
         if (!_isChangeCondition) return _isBefoCanProduce;
 
-        // TODO 최적화 테스트 용 . 나중에 지워야 됨
-        //Debug.Log("변화 감지");
-
         foreach (IHexaGridElement near in _nearHexa)
         {
             if (ReferenceEquals(near, null)) continue;
@@ -216,9 +212,6 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     public bool CheckNearHexaTypeToUI()
     {
         if (CurRecipe.NearHexaCondition == HexaType.None) return true;
-
-        // TODO 최적화 테스트 용 . 나중에 지워야 됨
-        //Debug.Log("변화 감지");
 
         foreach (IHexaGridElement near in _nearHexa)
         {

@@ -24,6 +24,7 @@ public class MainGameManager : MonoBehaviour
     private readonly WaitForSeconds _autoSaveTime = new WaitForSeconds(300);
 
     private Dictionary<int, int> _hasItems;
+    public List<bool> UnlockList { get; private set; }
     public int GetItemCount(int type) => _hasItems[type];
     public void AddItem(int itemid, int addValue)
     {
@@ -42,6 +43,7 @@ public class MainGameManager : MonoBehaviour
     private void Start()
     {
         LoadData();
+        MainUIManager.Instance.StartInit();
     }
 
     private void LoadData()
@@ -52,6 +54,20 @@ public class MainGameManager : MonoBehaviour
         {
             _hasItems.Add(saveData.HasItemCode[i], saveData.HasItemCount[i]);
         }
+
+        if(saveData.UnlockList?.Count == 0)
+        {
+            UnlockList = new List<bool>();
+            for (int i = 0; i < MainGameDataSo.Instance.HexaDatas.Count; i++)
+            {
+                UnlockList.Add(false);
+            }
+        }
+        else
+        {
+            UnlockList = saveData.UnlockList;
+        }
+
     }
 
     private IEnumerator AutoSave()

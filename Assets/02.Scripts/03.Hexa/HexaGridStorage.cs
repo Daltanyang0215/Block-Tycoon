@@ -9,27 +9,11 @@ public class HexaGridStorage : MonoBehaviour, IHexaGridElement
     private HexaGridManager _manger;
     private IHexaGridElement[] _nearHexa = new IHexaGridElement[6];
 
-
-    private void Start()
-    {
-        _manger = HexaGridManager.Instance;
-        //_fillMaterial = transform.Find("Gauge").GetComponent<SpriteRenderer>().materials[0];
-        //_fillMaterial.SetFloat("_CutRange", 0);
-        // TODO 나중에 지워야됨
-        {
-            transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopHexaColor);
-            transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
-            transform.Find("Gauge").GetComponent<SpriteRenderer>().materials[0].SetFloat("_CutRange", 0);
-            //transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopGaugeColor);
-            //transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomGaugeColor);
-            transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
-            transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
-        }
-    }
-
-    public void Init(HexaElementDataSO data, HexaSaveData saveData)
+        public void Init(HexaElementDataSO data, HexaSaveData saveData)
     {
         Data = data;
+
+        _manger = HexaGridManager.Instance;
 
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopHexaColor);
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);

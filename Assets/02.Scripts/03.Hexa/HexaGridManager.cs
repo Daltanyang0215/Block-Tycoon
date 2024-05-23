@@ -272,6 +272,7 @@ public class HexaGridManager : MonoBehaviour
     public Vector2 GetGridePos(IHexaGridElement element, Vector3 mousePos, Vector3 befoPos)
     {
         Vector3Int cellPos = MousePosToGridPos(mousePos);
+        
         if (_gridPositions.ContainsKey(cellPos) && !ReferenceEquals(_gridPositions[cellPos], null))
         {
             return befoPos;
@@ -290,6 +291,8 @@ public class HexaGridManager : MonoBehaviour
             HexaNearUpData(cellPos + posList[i]);
         }
         HexaNearUpData(cellPos);
+
+        // TODO 니어 라인 만들꺼라면 여기에
 
         return _grid.CellToWorld(cellPos);
     }

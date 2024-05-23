@@ -35,7 +35,7 @@ public class MainUIManager : MonoBehaviour
     [field: SerializeField] public HexaInfoPanel HexaInfoPanel { get; private set; }
     [field: SerializeField] public HexaTransitInfoPanel HexaTransitInfoPanel { get; private set; }
 
-    private void Start()
+    public void StartInit()
     {
         _reportElements = new Dictionary<int, ReportElement>();
         foreach (ItemData data in MainGameDataSo.Instance.ItemDatas.Values)

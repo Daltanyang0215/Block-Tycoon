@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a55cc7393e088ca4aa894fbbbc060df8, type: 3}
-  m_Name: Quarry
+  m_Name: Mine
   m_EditorClassIdentifier: 
   <HexaType>k__BackingField: 6
   <CanBuy>k__BackingField: 1
+  <UnlockPrice>k__BackingField:
+  - <ItemID>k__BackingField: 1
+    <Amount>k__BackingField: 10
   <BuyPrice>k__BackingField:
   - <ItemID>k__BackingField: 1
     <Amount>k__BackingField: 20

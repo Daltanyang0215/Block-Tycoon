@@ -74,6 +74,7 @@ public class SaveData
 {
     public List<int> HasItemCode = new List<int>();
     public List<int> HasItemCount = new List<int>();
+    public List<bool> UnlockList;
     public List<Vector3Int> HexaPos = new List<Vector3Int>();
     public List<int> HexaID = new List<int>();
     public List<HexaSaveData> HexaSaveDatas = new List<HexaSaveData>();
@@ -83,6 +84,11 @@ public class SaveData
         {
             HasItemCode.Add(item.Key);
             HasItemCount.Add(0);
+        }
+        UnlockList = new List<bool>();
+        for (int i = 0; i < MainGameDataSo.Instance.HexaDatas.Count; i++)
+        {
+            UnlockList.Add(false);
         }
 
         HexaPos.Add(new Vector3Int(-2, 0, 0)); HexaID.Add(0); HexaSaveDatas.Add(null);
@@ -102,6 +108,7 @@ public class SaveData
             HasItemCode.Add(item.Key);
             HasItemCount.Add(MainGameManager.Instance.GetItemCount(item.Key));
         }
+        UnlockList = MainGameManager.Instance.UnlockList;
 
         HexaPos.Clear();
         HexaID.Clear();

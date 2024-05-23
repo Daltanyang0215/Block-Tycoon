@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <HexaType>k__BackingField: 6
   <CanBuy>k__BackingField: 1
+  <UnlockPrice>k__BackingField:
+  - <ItemID>k__BackingField: 27
+    <Amount>k__BackingField: 5
   <BuyPrice>k__BackingField:
   - <ItemID>k__BackingField: 27
     <Amount>k__BackingField: 20

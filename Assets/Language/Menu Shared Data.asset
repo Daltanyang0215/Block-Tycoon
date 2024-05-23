@@ -67,6 +67,10 @@ MonoBehaviour:
     m_Key: Hold
     m_Metadata:
       m_Items: []
+  - m_Id: 2567732406722560
+    m_Key: Unlock
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
