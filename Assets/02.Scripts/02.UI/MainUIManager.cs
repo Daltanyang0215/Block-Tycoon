@@ -31,6 +31,11 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private HexaPriceElement _hexaPricePrefab;
     private List<HexaPriceElement> _hexaPrices;
 
+    [field: Header("Mission")]
+    [SerializeField] private Transform _missionElementParent;
+    [SerializeField] private UIMissionElement _missionElenetPrefab;
+    private List<UIMissionElement> _missionElenets;
+
     [field: Header("InfoPanel")]
     [field: SerializeField] public HexaInfoPanel HexaInfoPanel { get; private set; }
     [field: SerializeField] public HexaTransitInfoPanel HexaTransitInfoPanel { get; private set; }
@@ -58,7 +63,18 @@ public class MainUIManager : MonoBehaviour
             }
         }
 
+        _missionElenets = new List<UIMissionElement>();
+        foreach (MissionDataSO mission in MainGameDataSo.Instance.MissionDatas.Values)
+        {
+            if (MainGameManager.Instance.MissionComplite[mission.MissionID]) continue;
+            UIMissionElement element = Instantiate(_missionElenetPrefab,_missionElementParent);
+            element.Init(mission);
+            _missionElenets.Add(element);
+        }
+
         MainGameManager.Instance.UIUpdateAction += ItemCountUpdate;
+
+        
     }
 
     private void ItemCountUpdate()
@@ -78,6 +94,9 @@ public class MainUIManager : MonoBehaviour
         }
         foreach (HexaPriceElement priceElement in _hexaPrices)
             priceElement.PriceUpdata();
+
+        foreach (UIMissionElement missionElement in _missionElenets)
+            missionElement.MissionUpdata();
     }
 
     public void SetLanguage(int index)
@@ -110,14 +129,12 @@ public class MainUIManager : MonoBehaviour
         float animationTimer = 0;
         float animationMaxTime = .5f;
 
-        //float c4 = (2 * Mathf.PI) / 3f;
         float x = 0;
         float t = 0;
         while (animationTimer < animationMaxTime)
         {
             animationTimer += Time.deltaTime;
             x = animationTimer / animationMaxTime;
-            //t = Mathf.Pow(2, -10 * x) * Mathf.Sin((x * 10 - 0.75f) * c4) + 1;
             t = 1 - Mathf.Pow(1 - x, 5);
             target.anchoredPosition = Vector2.up * Mathf.Lerp(startpos, endPos, t) + Vector2.left * 120;
             yield return null;

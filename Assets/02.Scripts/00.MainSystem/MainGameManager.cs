@@ -23,14 +23,24 @@ public class MainGameManager : MonoBehaviour
 
     private readonly WaitForSeconds _autoSaveTime = new WaitForSeconds(300);
 
+    #region Money
+    [field: SerializeField] public int HasMoney { get; private set; }
+    public void AddMoney(int money) => HasMoney += money;
+
+    #endregion
+
+    #region Item
     private Dictionary<int, int> _hasItems;
-    public List<bool> UnlockList { get; private set; }
     public int GetItemCount(int type) => _hasItems[type];
     public void AddItem(int itemid, int addValue)
     {
         _hasItems[itemid] += addValue;
         UIUpdateAction?.Invoke();
     }
+    #endregion
+
+    public Dictionary<int, bool> MissionComplite { get; private set; }
+    public Dictionary<int, bool> UnlockList { get; private set; }
 
     public System.Action UIUpdateAction;
 
@@ -49,23 +59,43 @@ public class MainGameManager : MonoBehaviour
     private void LoadData()
     {
         SaveData saveData = SaveSystem.Save;
+        HasMoney = saveData.HasMoney;
+
         _hasItems = new Dictionary<int, int>();
         for (int i = 0; i < saveData.HasItemCode.Count; i++)
         {
             _hasItems.Add(saveData.HasItemCode[i], saveData.HasItemCount[i]);
         }
 
-        if(saveData.UnlockList?.Count == 0)
+        UnlockList = new Dictionary<int, bool>();
+        if (saveData.UnlockList?.Count == 0)
         {
-            UnlockList = new List<bool>();
             for (int i = 0; i < MainGameDataSo.Instance.HexaDatas.Count; i++)
             {
-                UnlockList.Add(false);
+                UnlockList.Add(i, false);
             }
         }
         else
         {
-            UnlockList = saveData.UnlockList;
+            foreach (IntBoolPair data in saveData.UnlockList)
+            {
+                UnlockList.Add(data.index, data.value);
+            }
+        }
+        MissionComplite = new Dictionary<int, bool>();
+        if (saveData.MissionComplite?.Count == 0)
+        {
+            foreach (MissionDataSO data in MainGameDataSo.Instance.MissionDatas.Values)
+            {
+                MissionComplite.Add(data.MissionID, false);
+            }
+        }
+        else
+        {
+            foreach (IntBoolPair data in saveData.MissionComplite)
+            {
+                MissionComplite.Add(data.index, data.value);
+            }
         }
 
     }

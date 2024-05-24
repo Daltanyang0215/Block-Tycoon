@@ -29,18 +29,30 @@ public class MainGameDataSo : ScriptableObject
     [SerializeField] private List<ItemData> _itemDatas;
     public Dictionary<int, ItemData> ItemDatas { get; private set; }
 
+    [Header("MissionData")]
+    [SerializeField] private List<MissionDataSO> _missions;
+    public Dictionary<int, MissionDataSO> MissionDatas { get; private set; }
+
+
     [field: Header("Other")]
-    [field : SerializeField] public float MoveItemEffectTime {  get; private set; }
+    [field: SerializeField] public float MoveItemEffectTime { get; private set; }
+    [field: SerializeField] public Sprite MoneyImage { get; private set; }
+    [field: SerializeField] public Sprite HexaLoadImage { get; private set; }
     [field: SerializeField] public Sprite ProcessTimerImage { get; private set; }
     [field: SerializeField] public Sprite ProcessClickImage { get; private set; }
 
     public void Init()
     {
         ItemDatas = new Dictionary<int, ItemData>();
-        _itemDatas.Sort((x, y) => x.ItemID.CompareTo(y.ItemID));
         foreach (var itemData in _itemDatas)
         {
             ItemDatas.Add(itemData.ItemID, itemData);
+        }
+
+        MissionDatas = new Dictionary<int, MissionDataSO>();
+        foreach (var missionData in _missions)
+        {
+            MissionDatas.TryAdd(missionData.MissionID, missionData);
         }
     }
 

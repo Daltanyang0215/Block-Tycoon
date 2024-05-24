@@ -71,6 +71,10 @@ MonoBehaviour:
     m_Key: Unlock
     m_Metadata:
       m_Items: []
+  - m_Id: 2970287313985536
+    m_Key: Receipt
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

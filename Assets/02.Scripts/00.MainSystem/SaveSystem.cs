@@ -72,9 +72,11 @@ public class SaveSystem
 [System.Serializable]
 public class SaveData
 {
+    public int HasMoney;
     public List<int> HasItemCode = new List<int>();
     public List<int> HasItemCount = new List<int>();
-    public List<bool> UnlockList;
+    public List<IntBoolPair> MissionComplite;
+    public List<IntBoolPair> UnlockList;
     public List<Vector3Int> HexaPos = new List<Vector3Int>();
     public List<int> HexaID = new List<int>();
     public List<HexaSaveData> HexaSaveDatas = new List<HexaSaveData>();
@@ -85,10 +87,17 @@ public class SaveData
             HasItemCode.Add(item.Key);
             HasItemCount.Add(0);
         }
-        UnlockList = new List<bool>();
+
+        UnlockList = new List<IntBoolPair>();
         for (int i = 0; i < MainGameDataSo.Instance.HexaDatas.Count; i++)
         {
-            UnlockList.Add(false);
+            UnlockList.Add(new IntBoolPair(i,false));
+        }
+        
+        MissionComplite = new List<IntBoolPair>();
+        foreach (MissionDataSO data in MainGameDataSo.Instance.MissionDatas.Values)
+        {
+            MissionComplite.Add(new IntBoolPair(data.MissionID,false));
         }
 
         HexaPos.Add(new Vector3Int(-2, 0, 0)); HexaID.Add(0); HexaSaveDatas.Add(null);
@@ -101,6 +110,7 @@ public class SaveData
 
     public void Save()
     {
+        HasMoney = MainGameManager.Instance.HasMoney;
         HasItemCode.Clear();
         HasItemCount.Clear();
         foreach (KeyValuePair<int, ItemData> item in MainGameDataSo.Instance.ItemDatas)
@@ -108,7 +118,17 @@ public class SaveData
             HasItemCode.Add(item.Key);
             HasItemCount.Add(MainGameManager.Instance.GetItemCount(item.Key));
         }
-        UnlockList = MainGameManager.Instance.UnlockList;
+
+        UnlockList.Clear();
+        foreach (KeyValuePair<int,bool> data in MainGameManager.Instance.UnlockList)
+        {
+            UnlockList.Add(new IntBoolPair(data.Key, data.Value));
+        }
+        MissionComplite.Clear();
+        foreach (KeyValuePair<int, bool> data in MainGameManager.Instance.MissionComplite)
+        {
+            MissionComplite.Add(new IntBoolPair(data.Key, data.Value));
+        }
 
         HexaPos.Clear();
         HexaID.Clear();
@@ -139,4 +159,17 @@ public class HexaSaveData
 
     public byte InVec;
     public byte OutVec;
+}
+
+[System.Serializable]
+public class IntBoolPair
+{
+    public int index;
+    public bool value;
+
+    public IntBoolPair(int index, bool value)
+    {
+        this.index = index;
+        this.value = value;
+    }
 }
