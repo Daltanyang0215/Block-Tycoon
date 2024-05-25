@@ -75,6 +75,14 @@ MonoBehaviour:
     m_Key: Receipt
     m_Metadata:
       m_Items: []
+  - m_Id: 3308559215042560
+    m_Key: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3309627466522624
+    m_Key: Upgrade Max Level
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

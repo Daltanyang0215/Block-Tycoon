@@ -25,7 +25,11 @@ public class MainGameManager : MonoBehaviour
 
     #region Money
     [field: SerializeField] public int HasMoney { get; private set; }
-    public void AddMoney(int money) => HasMoney += money;
+    public void AddMoney(int money)
+    {
+        HasMoney += money;
+        UIUpdateAction?.Invoke();
+    }
 
     #endregion
 
@@ -41,6 +45,8 @@ public class MainGameManager : MonoBehaviour
 
     public Dictionary<int, bool> MissionComplite { get; private set; }
     public Dictionary<int, bool> UnlockList { get; private set; }
+
+    public Dictionary<int, List<int>> Upgrades { get; private set; }
 
     public System.Action UIUpdateAction;
 
@@ -95,6 +101,28 @@ public class MainGameManager : MonoBehaviour
             foreach (IntBoolPair data in saveData.MissionComplite)
             {
                 MissionComplite.Add(data.index, data.value);
+            }
+        }
+
+        Upgrades = new Dictionary<int, List<int>> ();
+        if (saveData.HexaUpgradeData?.Count == 0)
+        {
+        
+            foreach (HexaElementDataSO data in MainGameDataSo.Instance.HexaDatas)
+            {
+                List<int> add = new List<int>();
+                for (int i = 0; i < data.UpgradePairs.Count; i++)
+                {
+                    add.Add(0);
+                }
+                Upgrades.Add(data.GetID, add);
+            }
+        }
+        else
+        {
+            foreach (hexaUpgradeSaveData data in saveData.HexaUpgradeData)
+            {
+                Upgrades.Add(data.hexaindex, data.level);
             }
         }
 

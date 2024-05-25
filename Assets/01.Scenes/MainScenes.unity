@@ -5118,6 +5118,8 @@ MonoBehaviour:
   _elementPrefeb: {fileID: 2609984622068949544, guid: 7ef1bafda3b6aa34390c093066115d8e, type: 3}
   _hexaElementParent: {fileID: 1707073104}
   _hexaPricePrefab: {fileID: 5826286197676256641, guid: b60f4cbe574d14c4e9aa3e72667eb618, type: 3}
+  _hexaUpgradeParent: {fileID: 552101917}
+  _hexaUpgradePrefab: {fileID: 3963778348465483405, guid: d2bfa737ed1d674439be3d414fa3c702, type: 3}
   _missionElementParent: {fileID: 1510426498}
   _missionElenetPrefab: {fileID: 3258541567008290957, guid: 07fe754bab5a0984387a526a9af8a3cb, type: 3}
   <HexaInfoPanel>k__BackingField: {fileID: 1430347011}

@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Data.Common;
 
 public class SaveSystem
 {
@@ -77,6 +78,7 @@ public class SaveData
     public List<int> HasItemCount = new List<int>();
     public List<IntBoolPair> MissionComplite;
     public List<IntBoolPair> UnlockList;
+    public List<hexaUpgradeSaveData> HexaUpgradeData;
     public List<Vector3Int> HexaPos = new List<Vector3Int>();
     public List<int> HexaID = new List<int>();
     public List<HexaSaveData> HexaSaveDatas = new List<HexaSaveData>();
@@ -91,13 +93,24 @@ public class SaveData
         UnlockList = new List<IntBoolPair>();
         for (int i = 0; i < MainGameDataSo.Instance.HexaDatas.Count; i++)
         {
-            UnlockList.Add(new IntBoolPair(i,false));
+            UnlockList.Add(new IntBoolPair(i, false));
         }
-        
+
         MissionComplite = new List<IntBoolPair>();
         foreach (MissionDataSO data in MainGameDataSo.Instance.MissionDatas.Values)
         {
-            MissionComplite.Add(new IntBoolPair(data.MissionID,false));
+            MissionComplite.Add(new IntBoolPair(data.MissionID, false));
+        }
+
+        HexaUpgradeData = new List<hexaUpgradeSaveData>();
+        foreach (HexaElementDataSO data in MainGameDataSo.Instance.HexaDatas)
+        {
+            List<int> add = new List<int>();
+            for (int i = 0; i < data.UpgradePairs.Count; i++)
+            {
+                add.Add(0);
+            }
+            HexaUpgradeData.Add(new hexaUpgradeSaveData(data.GetID, add));
         }
 
         HexaPos.Add(new Vector3Int(-2, 0, 0)); HexaID.Add(0); HexaSaveDatas.Add(null);
@@ -120,14 +133,26 @@ public class SaveData
         }
 
         UnlockList.Clear();
-        foreach (KeyValuePair<int,bool> data in MainGameManager.Instance.UnlockList)
+        foreach (KeyValuePair<int, bool> data in MainGameManager.Instance.UnlockList)
         {
             UnlockList.Add(new IntBoolPair(data.Key, data.Value));
         }
+
         MissionComplite.Clear();
         foreach (KeyValuePair<int, bool> data in MainGameManager.Instance.MissionComplite)
         {
             MissionComplite.Add(new IntBoolPair(data.Key, data.Value));
+        }
+
+        HexaUpgradeData.Clear();
+        foreach (HexaElementDataSO data in MainGameDataSo.Instance.HexaDatas)
+        {
+            List<int> add = new List<int>();
+            for (int i = 0; i < data.UpgradePairs.Count; i++)
+            {
+                add.Add(MainGameManager.Instance.Upgrades[data.GetID][i]);
+            }
+            HexaUpgradeData.Add(new hexaUpgradeSaveData(data.GetID, add));
         }
 
         HexaPos.Clear();
@@ -171,5 +196,17 @@ public class IntBoolPair
     {
         this.index = index;
         this.value = value;
+    }
+}
+[System.Serializable]
+public class hexaUpgradeSaveData
+{
+    public int hexaindex;
+    public List<int> level;
+
+    public hexaUpgradeSaveData(int hexaindex, List<int> level)
+    {
+        this.hexaindex = hexaindex;
+        this.level = level;
     }
 }

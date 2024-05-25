@@ -7,12 +7,15 @@ public class HexaElementDataSO : ScriptableObject
 {
 
     [field: SerializeField] public HexaType HexaType { get; private set; }
-    [field:SerializeField]public bool CanBuy {  get; private set; }
-    [field:SerializeField]public List<ItemPair> UnlockPrice { get; private set; }  
-    [field:SerializeField]public List<ItemPair> BuyPrice { get; private set; }  
+    [field: SerializeField] public bool CanBuy { get; private set; }
+    [field: SerializeField] public List<ItemPair> UnlockPrice { get; private set; }
+    [field: SerializeField] public List<ItemPair> BuyPrice { get; private set; }
 
     [field: Header("Produce")]
     [field: SerializeField] public List<ProduceRecipe> ProduceRecipe { get; private set; }
+
+    [field: Header("Upgrade")]
+    [field: SerializeField] public List<HexaUpgradePair> UpgradePairs { get; private set; }
 
     [field: Header("Render")]
     [field: SerializeField] public Sprite HexaIcon { get; private set; }
@@ -24,4 +27,25 @@ public class HexaElementDataSO : ScriptableObject
     [field: SerializeField] public Color BottomGaugeColor { get; private set; }
 
     public int GetID => MainGameDataSo.Instance.HexaDatas.FindIndex(x => x == this);
+}
+[System.Serializable]
+public class HexaUpgradePair
+{
+    [field: SerializeField] public HexaUpgradeType Type { get; private set; }
+    [field: SerializeField] public List<PriceValuePair> Prices { get; private set; }
+
+    [System.Serializable]
+    public struct PriceValuePair
+    {
+        [field: SerializeField] public int Price { get; private set; }
+
+        [field: Tooltip("강화시 해당 값 적용. 합산 아님")]
+        [field: SerializeField]
+        public float Value { get; private set; }
+    }
+}
+
+public enum HexaUpgradeType
+{
+    AddPerSec,    
 }

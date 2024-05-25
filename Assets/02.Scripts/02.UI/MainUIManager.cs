@@ -31,6 +31,11 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private HexaPriceElement _hexaPricePrefab;
     private List<HexaPriceElement> _hexaPrices;
 
+    [field: Header("HexaUpgrade")]
+    [SerializeField] private Transform _hexaUpgradeParent;
+    [SerializeField] private HexaUpgradeElement _hexaUpgradePrefab;
+    private List<HexaUpgradeElement> _hexaUpgrades;
+
     [field: Header("Mission")]
     [SerializeField] private Transform _missionElementParent;
     [SerializeField] private UIMissionElement _missionElenetPrefab;
@@ -39,6 +44,8 @@ public class MainUIManager : MonoBehaviour
     [field: Header("InfoPanel")]
     [field: SerializeField] public HexaInfoPanel HexaInfoPanel { get; private set; }
     [field: SerializeField] public HexaTransitInfoPanel HexaTransitInfoPanel { get; private set; }
+
+    private bool _isShow;
 
     public void StartInit()
     {
@@ -63,22 +70,33 @@ public class MainUIManager : MonoBehaviour
             }
         }
 
+        _hexaUpgrades = new List<HexaUpgradeElement>();
+        foreach (HexaElementDataSO hexa in MainGameDataSo.Instance.HexaDatas)
+        {
+            if (hexa.UpgradePairs.Count == 0) continue;
+            HexaUpgradeElement add = Instantiate(_hexaUpgradePrefab, _hexaUpgradeParent);
+            add.Init(hexa);
+            _hexaUpgrades.Add(add);
+        }
+
         _missionElenets = new List<UIMissionElement>();
         foreach (MissionDataSO mission in MainGameDataSo.Instance.MissionDatas.Values)
         {
             if (MainGameManager.Instance.MissionComplite[mission.MissionID]) continue;
-            UIMissionElement element = Instantiate(_missionElenetPrefab,_missionElementParent);
+            UIMissionElement element = Instantiate(_missionElenetPrefab, _missionElementParent);
             element.Init(mission);
             _missionElenets.Add(element);
         }
 
         MainGameManager.Instance.UIUpdateAction += ItemCountUpdate;
 
-        
+
     }
 
     private void ItemCountUpdate()
     {
+        if (!_isShow) return;
+
         foreach (ItemData data in MainGameDataSo.Instance.ItemDatas.Values)
         {
             int itemcount = MainGameManager.Instance.GetItemCount(data.ItemID);
@@ -94,6 +112,9 @@ public class MainUIManager : MonoBehaviour
         }
         foreach (HexaPriceElement priceElement in _hexaPrices)
             priceElement.PriceUpdata();
+
+        foreach (HexaUpgradeElement element in _hexaUpgrades)
+            element.UpgradeUpdata();
 
         foreach (UIMissionElement missionElement in _missionElenets)
             missionElement.MissionUpdata();
@@ -111,6 +132,7 @@ public class MainUIManager : MonoBehaviour
 
     public void ShowReportAnimation(bool Show)
     {
+        _isShow = Show;
         ItemCountUpdate();
         StopAllCoroutines();
         StartCoroutine(ReportAnimation(Show));
