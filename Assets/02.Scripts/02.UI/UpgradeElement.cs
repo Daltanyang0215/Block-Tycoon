@@ -46,8 +46,9 @@ public class UpgradeElement : MonoBehaviour
         _upgradeButton.onClick.RemoveAllListeners();
         _upgradeButton.onClick.AddListener(() =>
         {
-            MainGameManager.Instance.AddMoney(-(int)_pair.Prices[pairLevel].Value);
+            MainGameManager.Instance.AddMoney(-_pair.Prices[pairLevel].Price);
             MainGameManager.Instance.Upgrades[_hexaid][_pairindex]++;
+            HexaGridManager.Instance.HexaUpgradeUpdate();
             ElementUpdate();
         });
     }

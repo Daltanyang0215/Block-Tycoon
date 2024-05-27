@@ -10,4 +10,5 @@ public interface IHexaGridElement
     public void SetNearHexa(IHexaGridElement[] hexas);
     public void RemoveNearHexa(IHexaGridElement hexa);
     public void HexaUpdate();
+    public void HexaUpgrade();
 }

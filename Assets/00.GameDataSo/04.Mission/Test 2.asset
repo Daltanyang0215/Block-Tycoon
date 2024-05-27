@@ -17,6 +17,7 @@ MonoBehaviour:
   <RewardMoney>k__BackingField: 100
   <ConditionID>k__BackingField: 1
   <MissionConditions>k__BackingField:
-  - <ConditionItem>k__BackingField:
+  - <IsItem>k__BackingField: 1
+    <ConditionPair>k__BackingField:
       <ItemID>k__BackingField: 1
-      <Amount>k__BackingField: 1000
+      <Amount>k__BackingField: 100

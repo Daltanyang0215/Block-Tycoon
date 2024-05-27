@@ -14,16 +14,33 @@ public class MissionDataSO : ScriptableObject
 [System.Serializable]
 public class MissionCondition
 {
-    [field: SerializeField] public ItemPair ConditionItem { get; private set; }
+    [field: SerializeField] public bool IsItem {  get; private set; }
+    [field: SerializeField] public ItemPair ConditionPair { get; private set; }
 
     public bool CheckCondition()
     {
-        if (ConditionItem.ItemID == 0 ||
-            MainGameManager.Instance.GetItemCount(ConditionItem.ItemID) > ConditionItem.Amount)
+        bool result = true;
+
+        if (IsItem)
         {
-            return true;
+            // 클리어 조건이 아이템이면 해당 아이템을 확인 모자르다면 false
+            if (ConditionPair.ItemID != 0 &&
+                MainGameManager.Instance.GetItemCount(ConditionPair.ItemID) <= ConditionPair.Amount)
+            {
+                result = false;
+            }
         }
-        return false;
+        else
+        {
+            // 클리어 조건이 아이템이 아니면 동일한 아이디의 블록을 확인 모자르다면 false
+            if (ConditionPair.ItemID != 0 &&
+                HexaGridManager.Instance.GetHexaCount(ConditionPair.ItemID) <= ConditionPair.Amount)
+            {
+                result = false;
+            }
+        }
+
+        return result;
     }
 }
 

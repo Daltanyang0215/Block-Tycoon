@@ -178,6 +178,8 @@ MonoBehaviour:
       <Value>k__BackingField: 5
     - <Price>k__BackingField: 300
       <Value>k__BackingField: 10
+    - <Price>k__BackingField: 1000
+      <Value>k__BackingField: 15
   <HexaIcon>k__BackingField: {fileID: 21300000, guid: 404088e94a126164cbd2fbc105e6d6b9, type: 3}
   <HexaSubIcon1>k__BackingField: {fileID: 0}
   <HexaSubIcon2>k__BackingField: {fileID: 0}

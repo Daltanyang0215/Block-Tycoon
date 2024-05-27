@@ -11,10 +11,10 @@ public class ReportElement : MonoBehaviour
     [SerializeField] private LocalizeStringEvent _itemName;
     [SerializeField] private TMP_Text _itemCount;
 
-    public void Init(Sprite sprite, string name)
+    public void Init(Sprite sprite, string name, string table = "Item")
     {
         _image.sprite = sprite;
-        _itemName.StringReference.SetReference("Item", name);
+        _itemName.StringReference.SetReference(table, name);
     }
 
     public void SetColor(Color color)

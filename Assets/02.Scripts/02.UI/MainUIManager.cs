@@ -21,6 +21,9 @@ public class MainUIManager : MonoBehaviour
         }
     }
     #endregion
+
+    [SerializeField] private TMP_Text _moneyText;
+
     [field: Header("ItemList")]
     [SerializeField] private Transform _elementParent;
     [SerializeField] private ReportElement _elementPrefeb;
@@ -96,6 +99,8 @@ public class MainUIManager : MonoBehaviour
     private void ItemCountUpdate()
     {
         if (!_isShow) return;
+
+        _moneyText.text= MainGameManager.Instance.HasMoney.ToString();
 
         foreach (ItemData data in MainGameDataSo.Instance.ItemDatas.Values)
         {

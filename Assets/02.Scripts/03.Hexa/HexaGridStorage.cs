@@ -69,4 +69,5 @@ public class HexaGridStorage : MonoBehaviour, IHexaGridElement
         transform.position = _manger.GetGridePos(this, Input.mousePosition, transform.position);
     }
 
+    public void HexaUpgrade() { }
 }

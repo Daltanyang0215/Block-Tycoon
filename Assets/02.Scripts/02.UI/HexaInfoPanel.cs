@@ -14,6 +14,8 @@ public class HexaInfoPanel : MonoBehaviour
     [SerializeField] private Transform _productParent;
     [SerializeField] private Transform _materialParent;
 
+    [SerializeField] private Transform _destoryButton;
+
     public void ShowPanel(HexaGridProduct curElenemt)
     {
 
@@ -59,6 +61,9 @@ public class HexaInfoPanel : MonoBehaviour
             _recipeDropdown.value = _curHexaElement.Data.ProduceRecipe.FindIndex(x => x == _curHexaElement.CurRecipe);
             UpdateRecipe();
         }
+
+        _destoryButton.gameObject.SetActive(_curHexaElement.Data.HexaType == HexaType.Produce);
+        
     }
 
 
@@ -94,7 +99,7 @@ public class HexaInfoPanel : MonoBehaviour
         {
             InfoElement element = FindDisableInfoElement(false);
             element.Init(MainGameDataSo.Instance.ProcessTimerImage, Color.black);
-            element.UpDateSlider(0, 1, true, _curHexaElement.CurRecipe.ProduceTime.ToString() + "s");
+            element.UpDateSlider(0, 1, true, _curHexaElement.GetProduceTime.ToString("#.#") + "s");
         }
         // 생산 클릭 정보
         if (_curHexaElement.CurRecipe.ProduceClick != 0)

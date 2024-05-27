@@ -163,7 +163,7 @@ public class HexaGridManager : MonoBehaviour
     {
         Vector3Int pos = _grid.WorldToCell(hexa.transform.position);
 
-        _gridPositions.Remove(_grid.WorldToCell(pos));
+        _gridPositions.Remove(pos);
         HexaNearRemove(_grid.WorldToCell(pos), hexa.GetComponent<IHexaGridElement>());
 
         List<Vector3Int> posList = pos.y % 2 == 0 ? _evenPos : _oddPos;
@@ -174,7 +174,34 @@ public class HexaGridManager : MonoBehaviour
         Destroy(hexa);
     }
 
+    [ContextMenu("test")]
+    public void test()
+    {
+        foreach (IHexaGridElement hexa in _gridPositions.Values) {
+            Debug.Log(hexa.Data.GetID);
+        }
+    }
+
+    public void HexaUpgradeUpdate()
+    {
+        foreach (IHexaGridElement hexa in _gridPositions.Values)
+        {
+            hexa.HexaUpgrade();
+        }
+    }
+
+    public int GetHexaCount(int hexaID)
+    {
+        int result = 0;
+        foreach (IHexaGridElement hexa in _gridPositions.Values)
+        {
+            if (hexa.Data.GetID == hexaID) result++;
+        }
+        return result;
+    }
+
     #region Effect
+
     public void ShowAddItemPopup(Vector2 showPos, int itemid)
     {
         StartCoroutine(ShowPopup(showPos, itemid));
@@ -272,7 +299,7 @@ public class HexaGridManager : MonoBehaviour
     public Vector2 GetGridePos(IHexaGridElement element, Vector3 mousePos, Vector3 befoPos)
     {
         Vector3Int cellPos = MousePosToGridPos(mousePos);
-        
+
         if (_gridPositions.ContainsKey(cellPos) && !ReferenceEquals(_gridPositions[cellPos], null))
         {
             return befoPos;

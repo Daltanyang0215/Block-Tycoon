@@ -19,12 +19,15 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     private bool _isChangeCondition;
 
     private Material _fillMaterial;
-    private float _filltimer = 1;
+    private readonly float _filltimer = 1;
     private float _fillAmount;
     private float _fillMut;
+    private float _fillTimeUpgrade = 1;
+    public float GetProduceTime => CurRecipe.ProduceTime * _fillTimeUpgrade;
 
     public System.Action<int> InfoUpData;
 
+    #region IHexaGrid
     public void Init(HexaElementDataSO data, HexaSaveData saveData)
     {
         _manger = HexaGridManager.Instance;
@@ -55,34 +58,6 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         for (int i = 0; i < saveData.HexaProductItemCode.Count; i++)
         {
             ProductItemCount[saveData.HexaProductItemCode[i]] = saveData.HexaProductItemCount[i];
-        }
-    }
-
-    public void SetReciepe(int index)
-    {
-        if (Data.ProduceRecipe.Count == 0)
-        {
-            transform.GetChild(4).gameObject.SetActive(false);
-            return;
-        }
-        if (CurRecipe == Data.ProduceRecipe[index]) return;
-
-        CurRecipe = Data.ProduceRecipe[index];
-        _fillAmount = 0;
-        _fillMut = CurRecipe?.ProduceTime != 0 ? 1 / CurRecipe.ProduceTime : 0;
-        MaterialItemCount.Clear();
-        ProductItemCount.Clear();
-        foreach (ItemPair material in CurRecipe.MaterailItemPairs)
-        {
-            MaterialItemCount.Add(material.ItemID, 0);
-        }
-        foreach (ItemPair product in CurRecipe.ProduceItemPairs)
-        {
-            ProductItemCount.Add(product.ItemID, 0);
-            transform.GetChild(4).gameObject.SetActive(true);
-            ItemData setitem = MainGameDataSo.Instance.ItemDatas[product.ItemID];
-            transform.GetChild(4).GetComponent<SpriteRenderer>().sprite = setitem.ItemSprite;
-            transform.GetChild(4).GetComponent<SpriteRenderer>().color = setitem.ItemColor;
         }
     }
 
@@ -132,6 +107,60 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         _fillMaterial.SetFloat("_CutRange", _fillAmount / _filltimer);
     }
 
+    public void HexaUpgrade()
+    {
+        _fillTimeUpgrade = 1;
+
+        List<int> upgradDatas = MainGameManager.Instance.Upgrades[Data.GetID];
+
+        for (int i = 0; i < Data.UpgradePairs.Count; i++)
+        {
+            if (upgradDatas[i] == 0) continue;
+
+            switch (Data.UpgradePairs[i].Type)
+            {
+                case HexaUpgradeType.AddPerSec:
+                    _fillTimeUpgrade *= 1 - (Data.UpgradePairs[i].Prices[upgradDatas[i] - 1].Value / 100);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        if (Data.ProduceRecipe.Count != 0)
+            _fillMut = CurRecipe?.ProduceTime != 0 ? 1 / (CurRecipe.ProduceTime * _fillTimeUpgrade) : 0;
+    }
+
+    #endregion
+
+    #region IHexaItem
+    public void SetReciepe(int index)
+    {
+        if (Data.ProduceRecipe.Count == 0)
+        {
+            transform.GetChild(4).gameObject.SetActive(false);
+            return;
+        }
+        if (CurRecipe == Data.ProduceRecipe[index]) return;
+
+        CurRecipe = Data.ProduceRecipe[index];
+        _fillAmount = 0;
+        _fillMut = CurRecipe?.ProduceTime != 0 ? 1 / (CurRecipe.ProduceTime * _fillTimeUpgrade) : 0;
+        MaterialItemCount.Clear();
+        ProductItemCount.Clear();
+        foreach (ItemPair material in CurRecipe.MaterailItemPairs)
+        {
+            MaterialItemCount.Add(material.ItemID, 0);
+        }
+        foreach (ItemPair product in CurRecipe.ProduceItemPairs)
+        {
+            ProductItemCount.Add(product.ItemID, 0);
+            transform.GetChild(4).gameObject.SetActive(true);
+            ItemData setitem = MainGameDataSo.Instance.ItemDatas[product.ItemID];
+            transform.GetChild(4).GetComponent<SpriteRenderer>().sprite = setitem.ItemSprite;
+            transform.GetChild(4).GetComponent<SpriteRenderer>().color = setitem.ItemColor;
+        }
+    }
     public void GetMaterialToNear()
     {
         if (ReferenceEquals(CurRecipe, null)) return;
@@ -156,7 +185,6 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
             }
         }
     }
-
     private bool CheckCanProduce()
     {
         if (ReferenceEquals(CurRecipe, null)) return false;
@@ -171,7 +199,6 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         // 재료가 필요한 지 확인
         return CheckMaterialCount();
     }
-
     private bool CheckProductCountIFMax()
     {
         if (CurRecipe.ProduceItemPairs.Count > 0)
@@ -187,7 +214,6 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         }
         return false;
     }
-
     private bool CheckNearHexaType()
     {
         if (CurRecipe.NearHexaCondition == HexaType.None) return true;
@@ -223,7 +249,6 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         }
         return false;
     }
-
     private bool CheckMaterialCount()
     {
         if (CurRecipe.MaterailItemPairs.Count > 0)
@@ -248,6 +273,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         _isCanProduce = true;
         return _isCanProduce;
     }
+    #endregion
 
     private void OnMouseOver()
     {
@@ -288,5 +314,6 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
 
         return saveData;
     }
+
 
 }

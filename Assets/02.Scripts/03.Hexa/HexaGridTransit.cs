@@ -27,7 +27,7 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     {
         Data = data;
         _manger = HexaGridManager.Instance;
-        
+
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopHexaColor);
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = Data.HexaSubIcon1;
@@ -141,4 +141,6 @@ public class HexaGridTransit : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         }
         return saveData;
     }
+
+    public void HexaUpgrade() { }
 }

@@ -31,10 +31,19 @@ public class UIMissionElement : MonoBehaviour
         foreach (MissionCondition pair in _data.MissionConditions)
         {
             ReportElement element = Instantiate(_priceElement, _materialTransfrom);
-            ItemData item = MainGameDataSo.Instance.ItemDatas[pair.ConditionItem.ItemID];
-            element.Init(item.ItemSprite, item.ItemName);
-            element.SetColor(item.ItemColor);
-            element.UpdateItemCount(pair.ConditionItem.Amount);
+            if (pair.IsItem)
+            {
+                ItemData item = MainGameDataSo.Instance.ItemDatas[pair.ConditionPair.ItemID];
+                element.Init(item.ItemSprite, item.ItemName);
+                element.SetColor(item.ItemColor);
+            }
+            else
+            {
+                HexaElementDataSO hexa = MainGameDataSo.Instance.HexaDatas[pair.ConditionPair.ItemID];
+                element.Init(hexa.HexaIcon, hexa.name, "Hexa");
+                element.SetColor(hexa.BottomHexaColor);
+            }
+            element.UpdateItemCount(pair.ConditionPair.Amount);
         }
         if (_data.ConditionID != -1) gameObject.SetActive(false);
         MissionUpdata();
@@ -45,7 +54,7 @@ public class UIMissionElement : MonoBehaviour
             MainGameManager.Instance.AddMoney(_data.RewardMoney);
             foreach (MissionCondition condition in _data.MissionConditions)
             {
-                MainGameManager.Instance.AddItem(condition.ConditionItem.ItemID, -condition.ConditionItem.Amount);
+                MainGameManager.Instance.AddItem(condition.ConditionPair.ItemID, -condition.ConditionPair.Amount);
             }
             gameObject.SetActive(false);
         });
