@@ -20,7 +20,7 @@ MonoBehaviour:
     - rid: 3548249941504688139
   m_TableData:
   - m_Id: 7251632128
-    m_Localized: Process Speed +{Value}%
+    m_Localized: Process Time Reduction {Value}%
     m_Metadata:
       m_Items:
       - rid: 3548249941504688139

@@ -19,5 +19,5 @@ MonoBehaviour:
   <MissionConditions>k__BackingField:
   - <IsItem>k__BackingField: 0
     <ConditionPair>k__BackingField:
-      <ItemID>k__BackingField: 1
+      <ItemID>k__BackingField: 10
       <Amount>k__BackingField: 1
