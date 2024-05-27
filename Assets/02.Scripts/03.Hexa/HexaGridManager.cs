@@ -63,7 +63,7 @@ public class HexaGridManager : MonoBehaviour
 
     private WaitForSeconds _sleep;
 
-    private void Start()
+    public void StartInit()
     {
         _camera = Camera.main;
         _grid = GetComponent<Grid>();
@@ -174,13 +174,7 @@ public class HexaGridManager : MonoBehaviour
         Destroy(hexa);
     }
 
-    [ContextMenu("test")]
-    public void test()
-    {
-        foreach (IHexaGridElement hexa in _gridPositions.Values) {
-            Debug.Log(hexa.Data.GetID);
-        }
-    }
+   
 
     public void HexaUpgradeUpdate()
     {

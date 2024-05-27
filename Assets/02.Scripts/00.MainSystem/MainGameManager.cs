@@ -59,6 +59,7 @@ public class MainGameManager : MonoBehaviour
     private void Start()
     {
         LoadData();
+        HexaGridManager.Instance.StartInit();
         MainUIManager.Instance.StartInit();
     }
 
@@ -152,5 +153,14 @@ public class MainGameManager : MonoBehaviour
     public void OnApplicationQuit()
     {
         SaveSystem.SaveData();
+    }
+
+    [ContextMenu("Debug/AddAllItem")]
+    public void AddAllItem()
+    {
+        foreach (int itemID in MainGameDataSo.Instance.ItemDatas.Keys)
+        {
+            AddItem(itemID, 100);
+        }
     }
 }

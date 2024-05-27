@@ -36,7 +36,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
 
         Data = data;
         SetReciepe(0);
-
+        HexaUpgrade();
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopHexaColor);
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
         transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopGaugeColor);
