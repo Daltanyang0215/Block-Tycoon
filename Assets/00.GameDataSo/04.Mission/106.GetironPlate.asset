@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23e3352d250bbab4aafa25bfa82684a3, type: 3}
-  m_Name: Test
+  m_Name: 106.GetironPlate
   m_EditorClassIdentifier: 
-  <MissionID>k__BackingField: 1
-  <MissionInfo>k__BackingField: "\uD14C\uC2A4\uD2B8 \uC911\uC774\uB2E4"
+  <MissionID>k__BackingField: 106
+  <MissionInfo>k__BackingField: PlcaeRefinery
   <RewardMoney>k__BackingField: 100
   <ConditionID>k__BackingField: -1
-  <MissionConditions>k__BackingField:
-  - <IsItem>k__BackingField: 0
-    <ConditionPair>k__BackingField:
-      <ItemID>k__BackingField: 10
-      <Amount>k__BackingField: 1
+  <IsLoop>k__BackingField: 0
+  <MissionCondition>k__BackingField:
+    <MissionType>k__BackingField: 1
+    <ConditionPairs>k__BackingField:
+    - <ItemID>k__BackingField: 15
+      <Amount>k__BackingField: 10

@@ -16,12 +16,70 @@ MonoBehaviour:
     m_Code: ko
   m_SharedData: {fileID: 11400000, guid: 210e5f64c58981a438f14073c648dea1, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 3548250009897533446
   m_TableData:
   - m_Id: 6412771328
-    m_Localized: "\uD14C\uC2A4\uD2B8"
+    m_Localized: "\uBAA9\uD45C\uC5C6\uC74C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1466443371323392
+    m_Localized: "{Item} {ItemCount}\uAC1C \uBCF4\uC720"
+    m_Metadata:
+      m_Items:
+      - rid: 3548250009897533446
+  - m_Id: 1466447066505216
+    m_Localized: "{Item} {ItemCount}\uAC1C \uB0A9\uD488 {IsLoop: (\uBC18\uBCF5)|}"
+    m_Metadata:
+      m_Items:
+      - rid: 3548250009897533446
+  - m_Id: 1466451390832640
+    m_Localized: "{Item} {ItemCount} \uAC1C \uC124\uCE58"
+    m_Metadata:
+      m_Items:
+      - rid: 3548250009897533446
+  - m_Id: 1466454515589120
+    m_Localized: "{Item} \uD574\uAE08"
+    m_Metadata:
+      m_Items:
+      - rid: 3548250009897533446
+  - m_Id: 1507650281611264
+    m_Localized: "(\uC124\uBA85)\uBE14\uB85D\uC744 \uB4DC\uB798\uADF8\uD574\uC11C
+      \uC774\uB3D9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1507904410296320
+    m_Localized: "(\uC124\uBA85)\uBE14\uB85D\uC744 \uC6B0\uD074\uB9AD\uC73C\uB85C
+      \uC0C1\uC138\uCC3D"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1508049055064064
+    m_Localized: "(\uC124\uBA85)\uC0C1\uC138\uCC3D\uC5D0\uC11C \uC81C\uC791\uD488\uC744
+      \uBCC0\uACBD\uAC00\uB2A5"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1520437254889472
+    m_Localized: "\uC5C5\uB370\uC774\uD2B8 \uC608\uC815"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1523814646882304
+    m_Localized: "(\uC124\uBA85) \uC81C\uC791\uD488\uC740 \uC778\uADFC \uBE14\uB85D\uC5D0
+      \uC790\uB3D9\uC73C\uB85C \uC774\uB3D9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1524090002939904
+    m_Localized: "(\uC124\uBA85) \uCC3D\uACE0\uB294 \uC778\uADFC\uBE14\uB85D\uC758
+      \uC81C\uC791\uD488\uC744 \uBAA8\uB450 \uD68C\uC218"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1525450123452416
+    m_Localized: "(\uC124\uBA85)\uC124\uBA85\uC885\uB8CC"
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3548250009897533446
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00203bf4b835050000207bd0b935050000203bd2ba35050000207b8cbb350500

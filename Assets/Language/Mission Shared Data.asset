@@ -16,7 +16,51 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 210e5f64c58981a438f14073c648dea1
   m_Entries:
   - m_Id: 6412771328
-    m_Key: Test
+    m_Key: None
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1466443371323392
+    m_Key: HasItem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1466447066505216
+    m_Key: SubItem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1466451390832640
+    m_Key: HasHexa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1466454515589120
+    m_Key: UnlockHexa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1507650281611264
+    m_Key: MoveHexa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1507904410296320
+    m_Key: ShowInfo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1508049055064064
+    m_Key: SetRecipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1520437254889472
+    m_Key: continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1523814646882304
+    m_Key: MoveItem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1524090002939904
+    m_Key: AddItem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1525450123452416
+    m_Key: EndExp
     m_Metadata:
       m_Items: []
   m_Metadata:

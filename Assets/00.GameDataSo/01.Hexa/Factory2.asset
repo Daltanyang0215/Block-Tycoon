@@ -16,7 +16,11 @@ MonoBehaviour:
   <CanBuy>k__BackingField: 1
   <UnlockPrice>k__BackingField:
   - <ItemID>k__BackingField: 27
-    <Amount>k__BackingField: 5
+    <Amount>k__BackingField: 20
+  - <ItemID>k__BackingField: 21
+    <Amount>k__BackingField: 20
+  - <ItemID>k__BackingField: 24
+    <Amount>k__BackingField: 20
   <BuyPrice>k__BackingField:
   - <ItemID>k__BackingField: 27
     <Amount>k__BackingField: 20

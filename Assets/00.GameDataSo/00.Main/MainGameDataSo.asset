@@ -32,144 +32,198 @@ MonoBehaviour:
   _itemDatas:
   - <ItemName>k__BackingField: None
     <ItemID>k__BackingField: -1
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 3bcc8f37ee7a7df4eb79f2f2486a1377, type: 3}
     <ItemColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
   - <ItemName>k__BackingField: stone
     <ItemID>k__BackingField: 1
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 3fa384bc5d7103c4da05c3983a471451, type: 3}
     <ItemColor>k__BackingField: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
   - <ItemName>k__BackingField: tree
     <ItemID>k__BackingField: 2
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: a449b8a71382cd849a09941b579c6984, type: 3}
     <ItemColor>k__BackingField: {r: 0.6161804, g: 1, b: 0.5254902, a: 1}
   - <ItemName>k__BackingField: water
     <ItemID>k__BackingField: 3
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: f640a56694402bb4da51caa206e59615, type: 3}
     <ItemColor>k__BackingField: {r: 0, g: 0.8512273, b: 0.922, a: 1}
   - <ItemName>k__BackingField: sand
     <ItemID>k__BackingField: 4
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 4e37aac53713e7441b3432e9e43b3b2b, type: 3}
     <ItemColor>k__BackingField: {r: 0.82645744, g: 0.8301887, b: 0.6461374, a: 1}
   - <ItemName>k__BackingField: iron ore
     <ItemID>k__BackingField: 5
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 3fa384bc5d7103c4da05c3983a471451, type: 3}
     <ItemColor>k__BackingField: {r: 0.5566038, g: 0.51722145, b: 0.51722145, a: 1}
   - <ItemName>k__BackingField: copper ore
     <ItemID>k__BackingField: 6
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 3fa384bc5d7103c4da05c3983a471451, type: 3}
     <ItemColor>k__BackingField: {r: 0.6792453, g: 0.43505827, b: 0.20185119, a: 1}
   - <ItemName>k__BackingField: coal
     <ItemID>k__BackingField: 7
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 3fa384bc5d7103c4da05c3983a471451, type: 3}
     <ItemColor>k__BackingField: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 1}
   - <ItemName>k__BackingField: stone brick
     <ItemID>k__BackingField: 8
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 4bf2d5671fa634148b86e2ce89e03f4a, type: 3}
     <ItemColor>k__BackingField: {r: 0.5647059, g: 0.5776111, b: 0.6039216, a: 1}
   - <ItemName>k__BackingField: wood
     <ItemID>k__BackingField: 9
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 916f3230130116347b8c4599d36f367d, type: 3}
     <ItemColor>k__BackingField: {r: 0.9339623, g: 0.6313395, b: 0.3127893, a: 1}
   - <ItemName>k__BackingField: glass
     <ItemID>k__BackingField: 10
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 916f3230130116347b8c4599d36f367d, type: 3}
     <ItemColor>k__BackingField: {r: 0.72690463, g: 0.9339623, b: 0.92383146, a: 1}
   - <ItemName>k__BackingField: iron
     <ItemID>k__BackingField: 11
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 946a31ad0a5fb3d4b8a0f647cd128074, type: 3}
     <ItemColor>k__BackingField: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
   - <ItemName>k__BackingField: copper
     <ItemID>k__BackingField: 12
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 946a31ad0a5fb3d4b8a0f647cd128074, type: 3}
     <ItemColor>k__BackingField: {r: 0.745283, g: 0.45712233, b: 0.18632075, a: 1}
   - <ItemName>k__BackingField: steel
     <ItemID>k__BackingField: 13
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 946a31ad0a5fb3d4b8a0f647cd128074, type: 3}
     <ItemColor>k__BackingField: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
   - <ItemName>k__BackingField: concrete
     <ItemID>k__BackingField: 14
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 4bf2d5671fa634148b86e2ce89e03f4a, type: 3}
     <ItemColor>k__BackingField: {r: 0.7169812, g: 0.68014365, b: 0.6256675, a: 1}
   - <ItemName>k__BackingField: iron plate
     <ItemID>k__BackingField: 15
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: b25e3a8ae1fd4714ab29065be38cacb7, type: 3}
     <ItemColor>k__BackingField: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   - <ItemName>k__BackingField: iron pipe
     <ItemID>k__BackingField: 16
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: b6dc23f26cdb1114692a513eeefc9454, type: 3}
     <ItemColor>k__BackingField: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   - <ItemName>k__BackingField: iron stick
     <ItemID>k__BackingField: 17
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 307afe1702c673549b029802fb19b1f0, type: 3}
     <ItemColor>k__BackingField: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   - <ItemName>k__BackingField: iron gear wheel
     <ItemID>k__BackingField: 18
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 9693bb83ac05150438c68ed9bb3c781e, type: 3}
     <ItemColor>k__BackingField: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   - <ItemName>k__BackingField: coppar plate
     <ItemID>k__BackingField: 19
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: b25e3a8ae1fd4714ab29065be38cacb7, type: 3}
     <ItemColor>k__BackingField: {r: 0.74509805, g: 0.45882353, b: 0.1882353, a: 1}
   - <ItemName>k__BackingField: copper wire
     <ItemID>k__BackingField: 20
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 6939383658a11e64b9797c133d4bd575, type: 3}
     <ItemColor>k__BackingField: {r: 0.74509805, g: 0.45882353, b: 0.1882353, a: 1}
   - <ItemName>k__BackingField: steel plate
     <ItemID>k__BackingField: 21
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: b25e3a8ae1fd4714ab29065be38cacb7, type: 3}
     <ItemColor>k__BackingField: {r: 0.94509804, g: 0.94509804, b: 0.94509804, a: 1}
   - <ItemName>k__BackingField: steel pipe
     <ItemID>k__BackingField: 22
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: b6dc23f26cdb1114692a513eeefc9454, type: 3}
     <ItemColor>k__BackingField: {r: 0.94509804, g: 0.94509804, b: 0.94509804, a: 1}
   - <ItemName>k__BackingField: steel stick
     <ItemID>k__BackingField: 23
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 307afe1702c673549b029802fb19b1f0, type: 3}
     <ItemColor>k__BackingField: {r: 0.94509804, g: 0.94509804, b: 0.94509804, a: 1}
   - <ItemName>k__BackingField: steel gear wheel
     <ItemID>k__BackingField: 24
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 9693bb83ac05150438c68ed9bb3c781e, type: 3}
     <ItemColor>k__BackingField: {r: 0.94509804, g: 0.94509804, b: 0.94509804, a: 1}
   - <ItemName>k__BackingField: wood circuit
     <ItemID>k__BackingField: 25
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: d53503b43910edf43ab33e2679879732, type: 3}
     <ItemColor>k__BackingField: {r: 1, g: 0.8660032, b: 0.5518868, a: 1}
   - <ItemName>k__BackingField: electronic curcuit
     <ItemID>k__BackingField: 26
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: d53503b43910edf43ab33e2679879732, type: 3}
     <ItemColor>k__BackingField: {r: 0.5801887, g: 0.92213076, b: 1, a: 1}
   - <ItemName>k__BackingField: iron machinery
     <ItemID>k__BackingField: 27
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 4d05796c05d71c142a79f730aceb5c7d, type: 3}
     <ItemColor>k__BackingField: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   - <ItemName>k__BackingField: steel machinery
     <ItemID>k__BackingField: 28
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 4d05796c05d71c142a79f730aceb5c7d, type: 3}
     <ItemColor>k__BackingField: {r: 0.94509804, g: 0.94509804, b: 0.94509804, a: 1}
   - <ItemName>k__BackingField: engine
     <ItemID>k__BackingField: 29
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: bdee2bc87667a75499daac6c0c5199d8, type: 3}
     <ItemColor>k__BackingField: {r: 0.94509804, g: 0.94509804, b: 0.94509804, a: 1}
   - <ItemName>k__BackingField: curde oil
     <ItemID>k__BackingField: 30
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: f640a56694402bb4da51caa206e59615, type: 3}
     <ItemColor>k__BackingField: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
   - <ItemName>k__BackingField: plastic
     <ItemID>k__BackingField: 31
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: b25e3a8ae1fd4714ab29065be38cacb7, type: 3}
     <ItemColor>k__BackingField: {r: 0.8235294, g: 0.82579386, b: 0.972549, a: 1}
   - <ItemName>k__BackingField: heaby oil
     <ItemID>k__BackingField: 32
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: f640a56694402bb4da51caa206e59615, type: 3}
     <ItemColor>k__BackingField: {r: 0.8490566, g: 0.69581515, b: 0.30838373, a: 1}
   - <ItemName>k__BackingField: lubricant
     <ItemID>k__BackingField: 33
+    <ItemPrice>k__BackingField: 0
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: f640a56694402bb4da51caa206e59615, type: 3}
     <ItemColor>k__BackingField: {r: 0.5717716, g: 0.8113208, b: 0.5319509, a: 1}
   _missions:
   - {fileID: 11400000, guid: 37c6fcce4f76f934ebb553bb7c9bbdcf, type: 2}
-  - {fileID: 11400000, guid: 5927a3e03b58dbb41b61444eabd3432a, type: 2}
-  - {fileID: 11400000, guid: ed6c7e5bc98c30c44ae2da962cf6c1b0, type: 2}
+  - {fileID: 11400000, guid: 330949c9e133cf14383dce2cf0d63d55, type: 2}
+  - {fileID: 11400000, guid: 0604fe3644a8b8843969beac2d22d428, type: 2}
+  - {fileID: 11400000, guid: 1fc712d80e327124cad27984de04ddf8, type: 2}
+  - {fileID: 11400000, guid: d462a135ac64c1943bdd793221df11dc, type: 2}
+  - {fileID: 11400000, guid: 80675b75415beda47a43e1f45eff2247, type: 2}
+  - {fileID: 11400000, guid: 16f7153d8447da041bd116ec6e276f33, type: 2}
+  - {fileID: 11400000, guid: 10ef240ee1297f743ba0e6980b59e141, type: 2}
+  - {fileID: 11400000, guid: b8bedc2a51fd7bf4fba073544a8409e0, type: 2}
+  - {fileID: 11400000, guid: ec5befea7c4608b40b75d74e3a70d024, type: 2}
+  - {fileID: 11400000, guid: 675e5af9b1b4f394cb4fffb504225a56, type: 2}
+  - {fileID: 11400000, guid: feb118f9372910e42b23529a177ed7a2, type: 2}
+  - {fileID: 11400000, guid: eb41570b79f94ea4490bede73ca97481, type: 2}
+  - {fileID: 11400000, guid: 31db1b71d741bcc47ac50516216d8529, type: 2}
+  - {fileID: 11400000, guid: 4e641a799e021684da2b978f6decf3c2, type: 2}
+  - {fileID: 11400000, guid: f11a094ee8b463040a946b5894e9ff9c, type: 2}
+  - {fileID: 11400000, guid: 5830a89ce2275c94f80a5390e4345d78, type: 2}
+  - {fileID: 11400000, guid: bc0cc1ed9c9926a449e0b348748dfead, type: 2}
+  - {fileID: 11400000, guid: d674955dc6a3fa0479ba316011abf20b, type: 2}
+  - {fileID: 11400000, guid: 66c1c61699a9dd145bc2943ebaa48c50, type: 2}
+  - {fileID: 11400000, guid: ec60137fc834d3b409cc763d3267f839, type: 2}
+  - {fileID: 11400000, guid: 930273c9d49b00740a1d9cb425f953b4, type: 2}
+  - {fileID: 11400000, guid: 28093bde015d38b449e362ed960eeae8, type: 2}
   <MoveItemEffectTime>k__BackingField: 0.5
   <MoneyImage>k__BackingField: {fileID: 21300000, guid: 4f84db0459e31514c8b555933b6b930c, type: 3}
   <HexaLoadImage>k__BackingField: {fileID: 21300000, guid: 113243f99a7e1ce46b828c2d5f3be9ff, type: 3}

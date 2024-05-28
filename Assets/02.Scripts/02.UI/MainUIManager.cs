@@ -85,7 +85,7 @@ public class MainUIManager : MonoBehaviour
         _missionElenets = new List<UIMissionElement>();
         foreach (MissionDataSO mission in MainGameDataSo.Instance.MissionDatas.Values)
         {
-            if (MainGameManager.Instance.MissionComplite[mission.MissionID]) continue;
+            if (MainGameManager.Instance.MissionComplite[mission.MissionID] && !mission.IsLoop) continue;
             UIMissionElement element = Instantiate(_missionElenetPrefab, _missionElementParent);
             element.Init(mission);
             _missionElenets.Add(element);
@@ -100,7 +100,7 @@ public class MainUIManager : MonoBehaviour
     {
         if (!_isShow) return;
 
-        _moneyText.text= MainGameManager.Instance.HasMoney.ToString();
+        _moneyText.text = MainGameManager.Instance.HasMoney.ToString();
 
         foreach (ItemData data in MainGameDataSo.Instance.ItemDatas.Values)
         {
@@ -123,6 +123,13 @@ public class MainUIManager : MonoBehaviour
 
         foreach (UIMissionElement missionElement in _missionElenets)
             missionElement.MissionUpdata();
+    }
+    public void MissionListUpdate()
+    {
+        foreach (UIMissionElement element in _missionElenets)
+        {
+            element.TitleNameUpdate();
+        }
     }
 
     public void SetLanguage(int index)

@@ -15,8 +15,10 @@ MonoBehaviour:
   <HexaType>k__BackingField: 6
   <CanBuy>k__BackingField: 1
   <UnlockPrice>k__BackingField:
-  - <ItemID>k__BackingField: 1
-    <Amount>k__BackingField: 15
+  - <ItemID>k__BackingField: 15
+    <Amount>k__BackingField: 10
+  - <ItemID>k__BackingField: 19
+    <Amount>k__BackingField: 10
   <BuyPrice>k__BackingField:
   - <ItemID>k__BackingField: 15
     <Amount>k__BackingField: 10
@@ -43,7 +45,7 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 8
       <Amount>k__BackingField: 3
     <ProduceTime>k__BackingField: 60
-    <ProduceClick>k__BackingField: 0.1
+    <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 14
       <Amount>k__BackingField: 5
@@ -137,7 +139,7 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 13
       <Amount>k__BackingField: 1
     <ProduceTime>k__BackingField: 20
-    <ProduceClick>k__BackingField: 0.1
+    <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 21
       <Amount>k__BackingField: 1
@@ -147,7 +149,7 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 21
       <Amount>k__BackingField: 2
     <ProduceTime>k__BackingField: 20
-    <ProduceClick>k__BackingField: 0.1
+    <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 22
       <Amount>k__BackingField: 1
@@ -157,7 +159,7 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 13
       <Amount>k__BackingField: 1
     <ProduceTime>k__BackingField: 20
-    <ProduceClick>k__BackingField: 0.1
+    <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 23
       <Amount>k__BackingField: 1
@@ -167,7 +169,7 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 23
       <Amount>k__BackingField: 1
     <ProduceTime>k__BackingField: 20
-    <ProduceClick>k__BackingField: 0.1
+    <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 24
       <Amount>k__BackingField: 5

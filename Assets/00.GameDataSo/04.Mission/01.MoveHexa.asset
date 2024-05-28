@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e3352d250bbab4aafa25bfa82684a3, type: 3}
+  m_Name: 01.MoveHexa
+  m_EditorClassIdentifier: 
+  <MissionID>k__BackingField: 1
+  <MissionInfo>k__BackingField: MoveHexa
+  <RewardMoney>k__BackingField: 10
+  <ConditionID>k__BackingField: 0
+  <IsLoop>k__BackingField: 0
+  <MissionCondition>k__BackingField:
+    <MissionType>k__BackingField: 0
+    <ConditionPairs>k__BackingField: []

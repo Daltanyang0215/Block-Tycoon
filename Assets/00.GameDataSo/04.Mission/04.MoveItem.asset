@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23e3352d250bbab4aafa25bfa82684a3, type: 3}
-  m_Name: Test 2
+  m_Name: 04.MoveItem
   m_EditorClassIdentifier: 
   <MissionID>k__BackingField: 4
-  <MissionInfo>k__BackingField: 
-  <RewardMoney>k__BackingField: 100
-  <ConditionID>k__BackingField: 1
-  <MissionConditions>k__BackingField:
-  - <IsItem>k__BackingField: 1
-    <ConditionPair>k__BackingField:
-      <ItemID>k__BackingField: 1
-      <Amount>k__BackingField: 100
+  <MissionInfo>k__BackingField: MoveItem
+  <RewardMoney>k__BackingField: 10
+  <ConditionID>k__BackingField: -1
+  <IsLoop>k__BackingField: 0
+  <MissionCondition>k__BackingField:
+    <MissionType>k__BackingField: 0
+    <ConditionPairs>k__BackingField: []

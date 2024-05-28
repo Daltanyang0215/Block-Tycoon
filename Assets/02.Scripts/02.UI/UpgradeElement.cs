@@ -42,6 +42,7 @@ public class UpgradeElement : MonoBehaviour
         _upgradePrice.text = _pair.Prices[pairLevel].Price.ToString();
         (_upgradeName.StringReference["Value"] as IntVariable).Value = (int)_pair.Prices[pairLevel].Value;
 
+        _upgradeButton.interactable = _pair.Prices[pairLevel].Price <= MainGameManager.Instance.HasMoney;
 
         _upgradeButton.onClick.RemoveAllListeners();
         _upgradeButton.onClick.AddListener(() =>

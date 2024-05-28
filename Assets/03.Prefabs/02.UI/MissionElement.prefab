@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: -10}
-  m_SizeDelta: {x: 500, y: 75}
+  m_SizeDelta: {x: 600, y: 75}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4655857667367845294
 CanvasRenderer:
@@ -149,13 +149,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:210e5f64c58981a438f14073c648dea1
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 6412771328
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
-    m_LocalVariables: []
+    m_LocalVariables:
+    - name: Item
+      variable:
+        rid: 3548250009897533442
+    - name: ItemCount
+      variable:
+        rid: 3548250009897533445
+    - name: IsLoop
+      variable:
+        rid: 3548250009897533449
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
@@ -174,7 +183,19 @@ MonoBehaviour:
         m_CallState: 1
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3548250009897533442
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 
+    - rid: 3548250009897533445
+      type: {class: IntVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 0
+    - rid: 3548250009897533449
+      type: {class: BoolVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 0
 --- !u!1 &1652988782049641126
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +262,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: receipt
+  m_text: "\uC218\uB839"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f41938666a38ae6498a4741cde09a168, type: 2}
   m_sharedMaterial: {fileID: 2056021329615118801, guid: f41938666a38ae6498a4741cde09a168, type: 2}
@@ -775,7 +796,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 510, y: -10}
+  m_AnchoredPosition: {x: 635, y: -10}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2907177335524255352
@@ -849,8 +870,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -35, y: -50}
-  m_SizeDelta: {x: -320, y: -100}
+  m_AnchoredPosition: {x: -60, y: -50}
+  m_SizeDelta: {x: -370, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &889710045878311128
 MonoBehaviour:
@@ -913,7 +934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 585, y: -10}
+  m_AnchoredPosition: {x: 710, y: -10}
   m_SizeDelta: {x: 275, y: 75}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4174929447175262700

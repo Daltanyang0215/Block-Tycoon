@@ -16,12 +16,66 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 210e5f64c58981a438f14073c648dea1, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 3548250009897533447
   m_TableData:
   - m_Id: 6412771328
-    m_Localized: Test
+    m_Localized: None
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1466443371323392
+    m_Localized: Have {ItemCount} {Item}
+    m_Metadata:
+      m_Items:
+      - rid: 3548250009897533447
+  - m_Id: 1466447066505216
+    m_Localized: 'Deliver {ItemCount} {Item} {IsLoop: (Repeat)|}'
+    m_Metadata:
+      m_Items:
+      - rid: 3548250009897533447
+  - m_Id: 1466451390832640
+    m_Localized: Place {ItemCount} {Item}
+    m_Metadata:
+      m_Items:
+      - rid: 3548250009897533447
+  - m_Id: 1466454515589120
+    m_Localized: Unlock {Item}
+    m_Metadata:
+      m_Items:
+      - rid: 3548250009897533447
+  - m_Id: 1507650281611264
+    m_Localized: (Explanation) Drag the block to move it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1507904410296320
+    m_Localized: (Explanation) Right-click on the block to see the details window.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1508049055064064
+    m_Localized: (Explanation) Can change the product in the details window.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1520437254889472
+    m_Localized: To be updated
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1523814646882304
+    m_Localized: (Explanation) Products are automatically moved to nearby blocks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1524090002939904
+    m_Localized: (Explanation) The warehouse collects all manufactured products from
+      nearby blocks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1525450123452416
+    m_Localized: (Explanation) Explanation ends
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3548250009897533447
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00203bf4b835050000207bd0b935050000203bd2ba35050000207b8cbb350500
