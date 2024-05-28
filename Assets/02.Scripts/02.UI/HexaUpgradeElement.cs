@@ -71,6 +71,10 @@ public class HexaUpgradeElement : MonoBehaviour
             _unlockButton.interactable = canPrice;
             return;
         }
+        else
+        {
+            _unlockTransfrom.gameObject.SetActive(false);
+        }
 
         foreach (UpgradeElement element in _upgradeList)
         {
