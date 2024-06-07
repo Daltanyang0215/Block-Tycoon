@@ -94,8 +94,14 @@ public class HexaInfoPanel : MonoBehaviour
             element.UpDateSlider(_curHexaElement.CheckNearHexaTypeToUI() ? 1 : 0, 1, false);
         }
 
-        // 생산 시간 정보
-        if (_curHexaElement.CurRecipe.ProduceTime != 0)
+        // 생산 시간 정보 TODO 나중에 기존거 지워야됨
+        //if (_curHexaElement.CurRecipe.ProduceTime != 0)
+        //{
+        //    InfoElement element = FindDisableInfoElement(false);
+        //    element.Init(MainGameDataSo.Instance.ProcessTimerImage, Color.black);
+        //    element.UpDateSlider(0, 1, true, _curHexaElement.GetProduceTime.ToString("#.#") + "s");
+        //}
+        if (_curHexaElement.CurRecipe.ProduceQuota != 0)
         {
             InfoElement element = FindDisableInfoElement(false);
             element.Init(MainGameDataSo.Instance.ProcessTimerImage, Color.black);

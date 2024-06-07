@@ -30,7 +30,7 @@ MonoBehaviour:
     <MaterailItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 2
       <Amount>k__BackingField: 1
-    <ProduceTime>k__BackingField: 20
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 9
@@ -44,7 +44,7 @@ MonoBehaviour:
       <Amount>k__BackingField: 3
     - <ItemID>k__BackingField: 8
       <Amount>k__BackingField: 3
-    <ProduceTime>k__BackingField: 60
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 14
@@ -54,7 +54,7 @@ MonoBehaviour:
     <MaterailItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 12
       <Amount>k__BackingField: 1
-    <ProduceTime>k__BackingField: 20
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 19
@@ -64,7 +64,7 @@ MonoBehaviour:
     <MaterailItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 12
       <Amount>k__BackingField: 1
-    <ProduceTime>k__BackingField: 20
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 20
@@ -76,7 +76,7 @@ MonoBehaviour:
       <Amount>k__BackingField: 1
     - <ItemID>k__BackingField: 20
       <Amount>k__BackingField: 1
-    <ProduceTime>k__BackingField: 30
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 25
@@ -86,7 +86,7 @@ MonoBehaviour:
     <MaterailItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 11
       <Amount>k__BackingField: 1
-    <ProduceTime>k__BackingField: 20
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 15
@@ -96,7 +96,7 @@ MonoBehaviour:
     <MaterailItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 15
       <Amount>k__BackingField: 2
-    <ProduceTime>k__BackingField: 20
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 16
@@ -106,7 +106,7 @@ MonoBehaviour:
     <MaterailItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 11
       <Amount>k__BackingField: 1
-    <ProduceTime>k__BackingField: 20
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 17
@@ -116,7 +116,7 @@ MonoBehaviour:
     <MaterailItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 17
       <Amount>k__BackingField: 1
-    <ProduceTime>k__BackingField: 20
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 18
@@ -128,7 +128,7 @@ MonoBehaviour:
       <Amount>k__BackingField: 5
     - <ItemID>k__BackingField: 18
       <Amount>k__BackingField: 10
-    <ProduceTime>k__BackingField: 20
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 27
@@ -138,7 +138,7 @@ MonoBehaviour:
     <MaterailItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 13
       <Amount>k__BackingField: 1
-    <ProduceTime>k__BackingField: 20
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 21
@@ -148,7 +148,7 @@ MonoBehaviour:
     <MaterailItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 21
       <Amount>k__BackingField: 2
-    <ProduceTime>k__BackingField: 20
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 22
@@ -158,7 +158,7 @@ MonoBehaviour:
     <MaterailItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 13
       <Amount>k__BackingField: 1
-    <ProduceTime>k__BackingField: 20
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 23
@@ -168,11 +168,12 @@ MonoBehaviour:
     <MaterailItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 23
       <Amount>k__BackingField: 1
-    <ProduceTime>k__BackingField: 20
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.05
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 24
       <Amount>k__BackingField: 5
+  <ProducePerTimeBonus>k__BackingField: 1
   <UpgradePairs>k__BackingField:
   - <Type>k__BackingField: 0
     <Prices>k__BackingField:

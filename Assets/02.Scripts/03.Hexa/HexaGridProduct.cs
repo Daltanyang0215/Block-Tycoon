@@ -23,7 +23,8 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     private float _fillAmount;
     private float _fillMut;
     private float _fillTimeUpgrade = 1;
-    public float GetProduceTime => CurRecipe.ProduceTime * _fillTimeUpgrade;
+    public float GetProducePerTime => Data.ProducePerTimeBonus * _fillTimeUpgrade;
+    public float GetProduceTime => CurRecipe.ProduceQuota / (Data.ProducePerTimeBonus * _fillTimeUpgrade);
 
     public System.Action<int> InfoUpData;
 
@@ -120,7 +121,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
             switch (Data.UpgradePairs[i].Type)
             {
                 case HexaUpgradeType.AddPerSec:
-                    _fillTimeUpgrade *= 1 - (Data.UpgradePairs[i].Prices[upgradDatas[i] - 1].Value / 100);
+                    _fillTimeUpgrade *= 1 + (Data.UpgradePairs[i].Prices[upgradDatas[i] - 1].Value / 100);
                     break;
                 default:
                     break;
@@ -128,7 +129,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         }
 
         if (Data.ProduceRecipe.Count != 0)
-            _fillMut = CurRecipe?.ProduceTime != 0 ? 1 / (CurRecipe.ProduceTime * _fillTimeUpgrade) : 0;
+            _fillMut = CurRecipe?.ProduceQuota != 0 ? GetProducePerTime / CurRecipe.ProduceQuota : 0;
     }
 
     #endregion
@@ -145,7 +146,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
 
         CurRecipe = Data.ProduceRecipe[index];
         _fillAmount = 0;
-        _fillMut = CurRecipe?.ProduceTime != 0 ? 1 / (CurRecipe.ProduceTime * _fillTimeUpgrade) : 0;
+        _fillMut = CurRecipe?.ProduceQuota != 0 ? GetProducePerTime / CurRecipe.ProduceQuota : 0;
         MaterialItemCount.Clear();
         ProductItemCount.Clear();
         foreach (ItemPair material in CurRecipe.MaterailItemPairs)

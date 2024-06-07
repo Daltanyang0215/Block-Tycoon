@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <HexaType>k__BackingField: 6
   <CanBuy>k__BackingField: 1
-  <ButPrice>k__BackingField: []
+  <UnlockPrice>k__BackingField: []
+  <BuyPrice>k__BackingField: []
   <ProduceRecipe>k__BackingField:
   - <RecipeName>k__BackingField: ore2coin
     <NearHexaCondition>k__BackingField: 0
     <MaterailItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 1
       <Amount>k__BackingField: 1
-    <ProduceTime>k__BackingField: 10
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 0
@@ -31,12 +32,16 @@ MonoBehaviour:
     <MaterailItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 2
       <Amount>k__BackingField: 1
-    <ProduceTime>k__BackingField: 10
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 0
       <Amount>k__BackingField: 1
+  <ProducePerTimeBonus>k__BackingField: 1
+  <UpgradePairs>k__BackingField: []
   <HexaIcon>k__BackingField: {fileID: 21300000, guid: cf7d4dd232743bd4a92cb0e8c27fc5e8, type: 3}
+  <HexaSubIcon1>k__BackingField: {fileID: 0}
+  <HexaSubIcon2>k__BackingField: {fileID: 0}
   <TopHexaColor>k__BackingField: {r: 1, g: 1, b: 0.8745098, a: 1}
   <BottomHexaColor>k__BackingField: {r: 1, g: 0.94509804, b: 0.09803922, a: 1}
   <TopGaugeColor>k__BackingField: {r: 1, g: 0.9411765, b: 0.79607844, a: 1}

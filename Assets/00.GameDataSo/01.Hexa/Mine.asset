@@ -24,7 +24,7 @@ MonoBehaviour:
   - <RecipeName>k__BackingField: stone
     <NearHexaCondition>k__BackingField: 2
     <MaterailItemPairs>k__BackingField: []
-    <ProduceTime>k__BackingField: 10
+    <ProduceQuota>k__BackingField: 3
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
   - <RecipeName>k__BackingField: sand
     <NearHexaCondition>k__BackingField: 1
     <MaterailItemPairs>k__BackingField: []
-    <ProduceTime>k__BackingField: 10
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 4
@@ -40,7 +40,7 @@ MonoBehaviour:
   - <RecipeName>k__BackingField: iron ore
     <NearHexaCondition>k__BackingField: 2
     <MaterailItemPairs>k__BackingField: []
-    <ProduceTime>k__BackingField: 10
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 5
@@ -48,7 +48,7 @@ MonoBehaviour:
   - <RecipeName>k__BackingField: copper ore
     <NearHexaCondition>k__BackingField: 2
     <MaterailItemPairs>k__BackingField: []
-    <ProduceTime>k__BackingField: 10
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 6
@@ -56,11 +56,12 @@ MonoBehaviour:
   - <RecipeName>k__BackingField: coal
     <NearHexaCondition>k__BackingField: 2
     <MaterailItemPairs>k__BackingField: []
-    <ProduceTime>k__BackingField: 10
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 7
       <Amount>k__BackingField: 1
+  <ProducePerTimeBonus>k__BackingField: 1
   <UpgradePairs>k__BackingField:
   - <Type>k__BackingField: 0
     <Prices>k__BackingField:

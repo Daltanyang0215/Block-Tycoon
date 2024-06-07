@@ -14,6 +14,8 @@ public class HexaElementDataSO : ScriptableObject
     [field: Header("Produce")]
     [field: SerializeField] public List<ProduceRecipe> ProduceRecipe { get; private set; }
 
+    [field: SerializeField] public float ProducePerTimeBonus { get; private set; } = 1;
+
     [field: Header("Upgrade")]
     [field: SerializeField] public List<HexaUpgradePair> UpgradePairs { get; private set; }
 

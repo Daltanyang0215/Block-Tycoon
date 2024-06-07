@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <HexaType>k__BackingField: 7
   <CanBuy>k__BackingField: 1
+  <UnlockPrice>k__BackingField: []
   <BuyPrice>k__BackingField:
   - <ItemID>k__BackingField: 27
     <Amount>k__BackingField: 5
@@ -22,6 +23,8 @@ MonoBehaviour:
   - <ItemID>k__BackingField: 17
     <Amount>k__BackingField: 10
   <ProduceRecipe>k__BackingField: []
+  <ProducePerTimeBonus>k__BackingField: 1
+  <UpgradePairs>k__BackingField: []
   <HexaIcon>k__BackingField: {fileID: 21300000, guid: 0877c8ba66add6247ac8fa8e8fff9357, type: 3}
   <HexaSubIcon1>k__BackingField: {fileID: 21300000, guid: 77aae3b9c0e9fe14aa12fdca22416ec1, type: 3}
   <HexaSubIcon2>k__BackingField: {fileID: 21300000, guid: ed594ae9c4a7a22419cf5e6cdfa31315, type: 3}

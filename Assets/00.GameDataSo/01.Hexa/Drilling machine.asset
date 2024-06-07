@@ -28,11 +28,12 @@ MonoBehaviour:
   - <RecipeName>k__BackingField: curde oil
     <NearHexaCondition>k__BackingField: 4
     <MaterailItemPairs>k__BackingField: []
-    <ProduceTime>k__BackingField: 20
+    <ProduceQuota>k__BackingField: 0
     <ProduceClick>k__BackingField: 0
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 30
       <Amount>k__BackingField: 1
+  <ProducePerTimeBonus>k__BackingField: 1
   <UpgradePairs>k__BackingField: []
   <HexaIcon>k__BackingField: {fileID: 21300000, guid: 96a6a4830a632ae4ab0cec4d778e73f3, type: 3}
   <HexaSubIcon1>k__BackingField: {fileID: 0}
