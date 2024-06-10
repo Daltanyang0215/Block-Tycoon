@@ -29,6 +29,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 161282292bbb568408746eed376d576a, type: 2}
   <MatarialStorageCountMut>k__BackingField: 3
   <ProductStorageCountMut>k__BackingField: 3
+  <ProductBoosterMaxValue>k__BackingField: 15
+  <ProductAddBoostingValue>k__BackingField: 1
+  <ProductBoosterMaxMut>k__BackingField: 1.5
+  <ProductBoostingMut>k__BackingField: 1.2
   _itemDatas:
   - <ItemName>k__BackingField: None
     <ItemID>k__BackingField: -1

@@ -25,6 +25,15 @@ public class MainGameDataSo : ScriptableObject
 
     [field: SerializeField] public int MatarialStorageCountMut { get; private set; }
     [field: SerializeField] public int ProductStorageCountMut { get; private set; }
+    [field : Tooltip("부스팅 최대 게이지 , 지속시간")]
+    [field: SerializeField] public float ProductBoosterMaxValue { get; private set; }
+    [field: Tooltip("부스팅 1회 충전량")]
+    [field: SerializeField] public float ProductAddBoostingValue { get; private set; }
+    [field: Tooltip("부스팅 최대일시 속도 배율")]
+    [field: SerializeField] public float ProductBoosterMaxMut { get; private set; }
+    [field: Tooltip("부스팅 중 속도 배율")]
+    [field: SerializeField] public float ProductBoostingMut { get; private set; }
+
     [Header("ItmeData")]
     [SerializeField] private List<ItemData> _itemDatas;
     public Dictionary<int, ItemData> ItemDatas { get; private set; }

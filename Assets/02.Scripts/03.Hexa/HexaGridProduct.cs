@@ -23,6 +23,11 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     private float _fillAmount;
     private float _fillMut;
     private float _fillTimeUpgrade = 1;
+
+    private Material _gaugeMaterial;
+    private float _boosterGauge;
+    private bool _isBooster;
+
     public float GetProducePerTime => Data.ProducePerTimeBonus * _fillTimeUpgrade;
     public float GetProduceTime => CurRecipe.ProduceQuota / (Data.ProducePerTimeBonus * _fillTimeUpgrade);
 
@@ -34,7 +39,8 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         _manger = HexaGridManager.Instance;
         _fillMaterial = transform.Find("Gauge").GetComponent<SpriteRenderer>().materials[0];
         _fillMaterial.SetFloat("_CutRange", 0);
-
+        _gaugeMaterial = transform.Find("GridIcon").GetComponent<SpriteRenderer>().materials[0];
+        _gaugeMaterial.SetFloat("_FillRange", 0);
         Data = data;
         SetReciepe(0);
         HexaUpgrade();
@@ -42,6 +48,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
         transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopGaugeColor);
         transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomGaugeColor);
+        _gaugeMaterial.SetColor("_FillColor", Data.TopGaugeColor);
         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
         transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
 
@@ -51,6 +58,8 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         SetReciepe(saveData.CurRecipeIndex);
         _fillAmount = saveData.FillAmount;
         if (_fillAmount != 0) _isCanProduce = true;
+        _boosterGauge = saveData.BoosterGauge;
+        _isBooster = saveData.IsBooster;
 
         for (int i = 0; i < saveData.HexaMaterialItemCode.Count; i++)
         {
@@ -92,7 +101,9 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
             return;
         }
 
-        _fillAmount += Time.deltaTime * _fillMut;
+        _fillAmount += Time.deltaTime * _fillMut * 
+            (_isBooster ? MainGameDataSo.Instance.ProductBoosterMaxMut : (_boosterGauge > 0 ? MainGameDataSo.Instance.ProductBoostingMut : 1));
+
         if (_fillAmount > _filltimer)
         {
             _fillAmount -= _filltimer;
@@ -106,6 +117,14 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
             }
         }
         _fillMaterial.SetFloat("_CutRange", _fillAmount / _filltimer);
+
+        _boosterGauge -= Time.deltaTime;
+        if (_boosterGauge < 0)
+        {
+            _boosterGauge = 0;
+            _isBooster = false;
+        }
+        _gaugeMaterial.SetFloat("_FillRange", _boosterGauge / MainGameDataSo.Instance.ProductBoosterMaxValue);
     }
 
     public void HexaUpgrade()
@@ -278,11 +297,23 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
 
     private void OnMouseOver()
     {
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    if (!ReferenceEquals(CurRecipe, null) && _isCanProduce)
+        //    {
+        //        _fillAmount += CurRecipe.ProduceClick;
+        //    }
+        //}
         if (Input.GetMouseButtonDown(0))
         {
-            if (!ReferenceEquals(CurRecipe, null) && _isCanProduce)
+            if (!ReferenceEquals(CurRecipe, null) && _isCanProduce && !_isBooster)
             {
-                _fillAmount += CurRecipe.ProduceClick;
+                _boosterGauge += MainGameDataSo.Instance.ProductAddBoostingValue;
+                if (_boosterGauge >= MainGameDataSo.Instance.ProductBoosterMaxValue)
+                {
+                    _boosterGauge = MainGameDataSo.Instance.ProductBoosterMaxValue;
+                    _isBooster = true;
+                }
             }
         }
         if (Input.GetMouseButtonDown(1))
@@ -301,6 +332,8 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         HexaSaveData saveData = new HexaSaveData();
         saveData.CurRecipeIndex = Data.ProduceRecipe.FindIndex(x => x.Equals(CurRecipe));
         saveData.FillAmount = _fillAmount;
+        saveData.BoosterGauge = _boosterGauge;
+        saveData.IsBooster = _isBooster;
 
         foreach (KeyValuePair<int, int> pair in MaterialItemCount)
         {
