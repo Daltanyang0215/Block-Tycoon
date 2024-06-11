@@ -32,3 +32,6 @@ MonoBehaviour:
   <BottomHexaColor>k__BackingField: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
   <TopGaugeColor>k__BackingField: {r: 0.748042, g: 0.7507124, b: 0.7735849, a: 1}
   <BottomGaugeColor>k__BackingField: {r: 0.41475144, g: 0.41451585, b: 0.4245283, a: 1}
+  <BoostingColor>k__BackingField: {r: 0.85882354, g: 0.23921569, b: 0.23921569, a: 1}
+  <BoosterMaxColor>k__BackingField: {r: 0.9889592, g: 1, b: 0.23113209, a: 1}
+  <ProcessParticle>k__BackingField: {fileID: 0}

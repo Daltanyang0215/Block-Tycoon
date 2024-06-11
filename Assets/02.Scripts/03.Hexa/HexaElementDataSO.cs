@@ -27,6 +27,9 @@ public class HexaElementDataSO : ScriptableObject
     [field: SerializeField] public Color BottomHexaColor { get; private set; }
     [field: SerializeField] public Color TopGaugeColor { get; private set; }
     [field: SerializeField] public Color BottomGaugeColor { get; private set; }
+    [field: SerializeField] public Color BoostingColor { get; private set; }
+    [field: SerializeField] public Color BoosterMaxColor { get; private set; }
+    [field: SerializeField] public ParticleSystem ProcessParticle { get; private set; }
 
     public int GetID => MainGameDataSo.Instance.HexaDatas.FindIndex(x => x == this);
 }

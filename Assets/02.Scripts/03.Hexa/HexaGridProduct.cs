@@ -33,6 +33,8 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
 
     public System.Action<int> InfoUpData;
 
+    private ParticleSystem _particle;
+
     #region IHexaGrid
     public void Init(HexaElementDataSO data, HexaSaveData saveData)
     {
@@ -48,18 +50,23 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomHexaColor);
         transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_TopColor", Data.TopGaugeColor);
         transform.GetChild(1).GetComponent<SpriteRenderer>().material.SetColor("_MiddleColor", Data.BottomGaugeColor);
-        _gaugeMaterial.SetColor("_FillColor", Data.TopGaugeColor);
+
         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
         transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = Data.HexaIcon;
-
+        if (data.ProcessParticle != null)
+        {
+            _particle = Instantiate(data.ProcessParticle, transform.position, Quaternion.identity, transform);
+        }
 
         // 세이브 데이터 적용
+        #region Applay Save
         if (ReferenceEquals(saveData, null)) return;
         SetReciepe(saveData.CurRecipeIndex);
         _fillAmount = saveData.FillAmount;
         if (_fillAmount != 0) _isCanProduce = true;
         _boosterGauge = saveData.BoosterGauge;
         _isBooster = saveData.IsBooster;
+        _gaugeMaterial.SetColor("_FillColor", _isBooster ? Data.BoosterMaxColor : Data.BoostingColor);
 
         for (int i = 0; i < saveData.HexaMaterialItemCode.Count; i++)
         {
@@ -68,7 +75,8 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         for (int i = 0; i < saveData.HexaProductItemCode.Count; i++)
         {
             ProductItemCount[saveData.HexaProductItemCode[i]] = saveData.HexaProductItemCount[i];
-        }
+        } 
+        #endregion
     }
 
     public void SetNearHexa(IHexaGridElement[] hexas)
@@ -101,7 +109,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
             return;
         }
 
-        _fillAmount += Time.deltaTime * _fillMut * 
+        _fillAmount += Time.deltaTime * _fillMut *
             (_isBooster ? MainGameDataSo.Instance.ProductBoosterMaxMut : (_boosterGauge > 0 ? MainGameDataSo.Instance.ProductBoostingMut : 1));
 
         if (_fillAmount > _filltimer)
@@ -113,6 +121,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
                 ItemPair item = CurRecipe.ProduceItemPairs[i];
 
                 ProductItemCount[CurRecipe.ProduceItemPairs[i].ItemID] += CurRecipe.ProduceItemPairs[i].Amount;
+                _particle?.Play();
                 InfoUpData?.Invoke(-1);
             }
         }
@@ -122,6 +131,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         if (_boosterGauge < 0)
         {
             _boosterGauge = 0;
+            _gaugeMaterial.SetColor("_FillColor", Data.BoostingColor);
             _isBooster = false;
         }
         _gaugeMaterial.SetFloat("_FillRange", _boosterGauge / MainGameDataSo.Instance.ProductBoosterMaxValue);
@@ -304,14 +314,16 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         //        _fillAmount += CurRecipe.ProduceClick;
         //    }
         //}
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) // 클릭으로 부스팅 충전
         {
             if (!ReferenceEquals(CurRecipe, null) && _isCanProduce && !_isBooster)
             {
                 _boosterGauge += MainGameDataSo.Instance.ProductAddBoostingValue;
                 if (_boosterGauge >= MainGameDataSo.Instance.ProductBoosterMaxValue)
                 {
+                    // 부스팅 완충 시 컬러 변경및 클릭 안되게 조치
                     _boosterGauge = MainGameDataSo.Instance.ProductBoosterMaxValue;
+                    _gaugeMaterial.SetColor("_FillColor", Data.BoosterMaxColor);
                     _isBooster = true;
                 }
             }

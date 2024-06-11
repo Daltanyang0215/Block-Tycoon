@@ -25,7 +25,6 @@ MonoBehaviour:
     <NearHexaCondition>k__BackingField: 3
     <MaterailItemPairs>k__BackingField: []
     <ProduceQuota>k__BackingField: 0
-    <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 2
       <Amount>k__BackingField: 1
@@ -46,3 +45,6 @@ MonoBehaviour:
   <BottomHexaColor>k__BackingField: {r: 0.6132076, g: 0.390075, b: 0.26900142, a: 1}
   <TopGaugeColor>k__BackingField: {r: 0.9056604, g: 0.80312663, b: 0.6792453, a: 1}
   <BottomGaugeColor>k__BackingField: {r: 0.6037736, g: 0.4535815, b: 0.33321467, a: 1}
+  <BoostingColor>k__BackingField: {r: 0.85882354, g: 0.23921569, b: 0.23921569, a: 1}
+  <BoosterMaxColor>k__BackingField: {r: 0.9889592, g: 1, b: 0.23113209, a: 1}
+  <ProcessParticle>k__BackingField: {fileID: 0}

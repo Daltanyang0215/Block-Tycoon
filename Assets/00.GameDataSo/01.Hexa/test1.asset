@@ -23,7 +23,6 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 1
       <Amount>k__BackingField: 1
     <ProduceQuota>k__BackingField: 0
-    <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 0
       <Amount>k__BackingField: 1
@@ -33,7 +32,6 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 2
       <Amount>k__BackingField: 1
     <ProduceQuota>k__BackingField: 0
-    <ProduceClick>k__BackingField: 0.1
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 0
       <Amount>k__BackingField: 1
@@ -46,3 +44,6 @@ MonoBehaviour:
   <BottomHexaColor>k__BackingField: {r: 1, g: 0.94509804, b: 0.09803922, a: 1}
   <TopGaugeColor>k__BackingField: {r: 1, g: 0.9411765, b: 0.79607844, a: 1}
   <BottomGaugeColor>k__BackingField: {r: 1, g: 0.7058824, b: 0, a: 1}
+  <BoostingColor>k__BackingField: {r: 0.85882354, g: 0.23921569, b: 0.23921569, a: 1}
+  <BoosterMaxColor>k__BackingField: {r: 0.9889592, g: 1, b: 0.23113209, a: 1}
+  <ProcessParticle>k__BackingField: {fileID: 0}

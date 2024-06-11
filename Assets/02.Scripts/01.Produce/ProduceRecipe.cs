@@ -15,8 +15,8 @@ public class ProduceRecipe
     [field: SerializeField] public float ProduceQuota { get; private set; }
     //[field: SerializeField] public float ProduceTime { get; private set; }
     //[field: SerializeField] public float ProducePerTime { get; private set; }
-    [field: Tooltip("1회 클릭을 채워지는 할당량 / 1 => MAX")]
-    [field: SerializeField] public float ProduceClick { get; private set; }
+    //[field: Tooltip("1회 클릭을 채워지는 할당량 / 1 => MAX")]
+    //[field: SerializeField] public float ProduceClick { get; private set; }
 
     [field: Header("Result")]
     [field: SerializeField] public List<ItemPair> ProduceItemPairs { get; private set; }

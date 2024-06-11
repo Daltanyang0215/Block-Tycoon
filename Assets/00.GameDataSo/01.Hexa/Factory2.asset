@@ -35,7 +35,6 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 30
       <Amount>k__BackingField: 1
     <ProduceQuota>k__BackingField: 0
-    <ProduceClick>k__BackingField: 0
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 31
       <Amount>k__BackingField: 1
@@ -45,7 +44,6 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 30
       <Amount>k__BackingField: 1
     <ProduceQuota>k__BackingField: 0
-    <ProduceClick>k__BackingField: 0
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 32
       <Amount>k__BackingField: 1
@@ -55,7 +53,6 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 30
       <Amount>k__BackingField: 1
     <ProduceQuota>k__BackingField: 0
-    <ProduceClick>k__BackingField: 0
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 33
       <Amount>k__BackingField: 1
@@ -67,7 +64,6 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 20
       <Amount>k__BackingField: 1
     <ProduceQuota>k__BackingField: 0
-    <ProduceClick>k__BackingField: 0
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 26
       <Amount>k__BackingField: 1
@@ -81,7 +77,6 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 21
       <Amount>k__BackingField: 5
     <ProduceQuota>k__BackingField: 0
-    <ProduceClick>k__BackingField: 0
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 29
       <Amount>k__BackingField: 1
@@ -95,7 +90,6 @@ MonoBehaviour:
     - <ItemID>k__BackingField: 33
       <Amount>k__BackingField: 2
     <ProduceQuota>k__BackingField: 0
-    <ProduceClick>k__BackingField: 0
     <ProduceItemPairs>k__BackingField:
     - <ItemID>k__BackingField: 28
       <Amount>k__BackingField: 1
@@ -116,3 +110,6 @@ MonoBehaviour:
   <BottomHexaColor>k__BackingField: {r: 0.5660378, g: 0.040049836, b: 0.5641572, a: 1}
   <TopGaugeColor>k__BackingField: {r: 0.7075472, g: 0.29703632, b: 0.6622001, a: 1}
   <BottomGaugeColor>k__BackingField: {r: 0.3490566, g: 0.04116233, b: 0.27379343, a: 1}
+  <BoostingColor>k__BackingField: {r: 0.85882354, g: 0.23921569, b: 0.23921569, a: 1}
+  <BoosterMaxColor>k__BackingField: {r: 0.9889592, g: 1, b: 0.23113209, a: 1}
+  <ProcessParticle>k__BackingField: {fileID: 0}

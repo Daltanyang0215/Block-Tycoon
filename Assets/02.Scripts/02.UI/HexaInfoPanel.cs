@@ -47,12 +47,13 @@ public class HexaInfoPanel : MonoBehaviour
         {
             infoElement.gameObject.SetActive(false);
         }
-        
-        List<string> list = new List<string>();
+
+        List<TMP_Dropdown.OptionData> list = new List<TMP_Dropdown.OptionData>();
         for (int i = 0; i < _curHexaElement.Data.ProduceRecipe.Count; i++)
         {
             ProduceRecipe recipe = _curHexaElement.Data.ProduceRecipe[i];
-            list.Add(MainUIManager.Instance.GetLocalString("Item",recipe.RecipeName));
+            list.Add(new TMP_Dropdown.OptionData(MainUIManager.Instance.GetLocalString("Item", recipe.RecipeName),
+                MainGameDataSo.Instance.ItemDatas[recipe.ProduceItemPairs[0].ItemID].ItemSprite));
         }
 
         if (list.Count > 0)
@@ -63,7 +64,7 @@ public class HexaInfoPanel : MonoBehaviour
         }
 
         _destoryButton.gameObject.SetActive(_curHexaElement.Data.HexaType == HexaType.Produce);
-        
+
     }
 
 
@@ -107,13 +108,16 @@ public class HexaInfoPanel : MonoBehaviour
             element.Init(MainGameDataSo.Instance.ProcessTimerImage, Color.black);
             element.UpDateSlider(0, 1, true, _curHexaElement.GetProduceTime.ToString("#.#") + "s");
         }
-        // 생산 클릭 정보
-        if (_curHexaElement.CurRecipe.ProduceClick != 0)
-        {
-            InfoElement element = FindDisableInfoElement(false);
-            element.Init(MainGameDataSo.Instance.ProcessClickImage, Color.black);
-            element.UpDateSlider(0, 1, true, (_curHexaElement.CurRecipe.ProduceClick * 100).ToString() + "%");
-        }
+
+
+
+        //// 생산 클릭 정보 TODO 클릭으로 인한 생산을 제거 할 예정으로 지워야 됨
+        //if (_curHexaElement.CurRecipe.ProduceClick != 0)
+        //{
+        //    InfoElement element = FindDisableInfoElement(false);
+        //    element.Init(MainGameDataSo.Instance.ProcessClickImage, Color.black);
+        //    element.UpDateSlider(0, 1, true, (_curHexaElement.CurRecipe.ProduceClick * 100).ToString() + "%");
+        //} 
 
         // 각 요소 필요한 만큼 활성화
         foreach (ItemPair item in _curHexaElement.CurRecipe.MaterailItemPairs)
