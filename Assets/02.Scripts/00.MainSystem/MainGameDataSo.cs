@@ -75,5 +75,5 @@ public class ItemData
     [field: SerializeField] public int ItemPrice {  get; private set; }
     [field: SerializeField] public Sprite ItemSprite { get; private set; }
     [field: SerializeField] public Color ItemColor { get; private set; }
-
+    [field: SerializeField] public ProduceRecipe ProduceRecipe { get; private set; }
 }

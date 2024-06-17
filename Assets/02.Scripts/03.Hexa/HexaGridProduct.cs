@@ -29,7 +29,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     private bool _isBooster;
 
     public float GetProducePerTime => Data.ProducePerTimeBonus * _fillTimeUpgrade;
-    public float GetProduceTime => CurRecipe.ProduceQuota / (Data.ProducePerTimeBonus * _fillTimeUpgrade);
+    public float GetProduceTime => CurRecipe.ProduceTime / (Data.ProducePerTimeBonus * _fillTimeUpgrade);
 
     public System.Action<int> InfoUpData;
 
@@ -75,7 +75,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         for (int i = 0; i < saveData.HexaProductItemCode.Count; i++)
         {
             ProductItemCount[saveData.HexaProductItemCode[i]] = saveData.HexaProductItemCount[i];
-        } 
+        }
         #endregion
     }
 
@@ -116,14 +116,10 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         {
             _fillAmount -= _filltimer;
             _isCanProduce = false;
-            for (int i = 0; i < CurRecipe.ProduceItemPairs.Count; i++)
-            {
-                ItemPair item = CurRecipe.ProduceItemPairs[i];
 
-                ProductItemCount[CurRecipe.ProduceItemPairs[i].ItemID] += CurRecipe.ProduceItemPairs[i].Amount;
-                _particle?.Play();
-                InfoUpData?.Invoke(-1);
-            }
+            ProductItemCount[CurRecipe.ProduceitemID]++;
+            _particle?.Play();
+            InfoUpData?.Invoke(-1);
         }
         _fillMaterial.SetFloat("_CutRange", _fillAmount / _filltimer);
 
@@ -158,7 +154,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         }
 
         if (Data.ProduceRecipe.Count != 0)
-            _fillMut = CurRecipe?.ProduceQuota != 0 ? GetProducePerTime / CurRecipe.ProduceQuota : 0;
+            _fillMut = CurRecipe?.ProduceTime != 0 ? GetProducePerTime / CurRecipe.ProduceTime : 0;
     }
 
     #endregion
@@ -175,21 +171,19 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
 
         CurRecipe = Data.ProduceRecipe[index];
         _fillAmount = 0;
-        _fillMut = CurRecipe?.ProduceQuota != 0 ? GetProducePerTime / CurRecipe.ProduceQuota : 0;
+        _fillMut = CurRecipe?.ProduceTime != 0 ? GetProducePerTime / CurRecipe.ProduceTime : 0;
         MaterialItemCount.Clear();
         ProductItemCount.Clear();
         foreach (ItemPair material in CurRecipe.MaterailItemPairs)
         {
             MaterialItemCount.Add(material.ItemID, 0);
         }
-        foreach (ItemPair product in CurRecipe.ProduceItemPairs)
-        {
-            ProductItemCount.Add(product.ItemID, 0);
-            transform.GetChild(4).gameObject.SetActive(true);
-            ItemData setitem = MainGameDataSo.Instance.ItemDatas[product.ItemID];
-            transform.GetChild(4).GetComponent<SpriteRenderer>().sprite = setitem.ItemSprite;
-            transform.GetChild(4).GetComponent<SpriteRenderer>().color = setitem.ItemColor;
-        }
+
+        ProductItemCount.Add(CurRecipe.ProduceitemID, 0);
+        transform.GetChild(4).gameObject.SetActive(true);
+        ItemData setitem = MainGameDataSo.Instance.ItemDatas[CurRecipe.ProduceitemID];
+        transform.GetChild(4).GetComponent<SpriteRenderer>().sprite = setitem.ItemSprite;
+        transform.GetChild(4).GetComponent<SpriteRenderer>().color = setitem.ItemColor;
     }
     public void GetMaterialToNear()
     {
@@ -231,16 +225,10 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
     }
     private bool CheckProductCountIFMax()
     {
-        if (CurRecipe.ProduceItemPairs.Count > 0)
+        // »ý»êÇ°ÀÌ °¡µæ Ã¡´Ù¸é ¸®ÅÏ
+        if (ProductItemCount[CurRecipe.ProduceitemID] + 1 > MainGameDataSo.Instance.ProductStorageCountMut)
         {
-            foreach (ItemPair pair in CurRecipe.ProduceItemPairs)
-            {
-                // »ý»êÇ°ÀÌ °¡µæ Ã¡´Ù¸é ¸®ÅÏ
-                if (ProductItemCount[pair.ItemID] + pair.Amount > pair.Amount * MainGameDataSo.Instance.ProductStorageCountMut)
-                {
-                    return true;
-                }
-            }
+            return true;
         }
         return false;
     }

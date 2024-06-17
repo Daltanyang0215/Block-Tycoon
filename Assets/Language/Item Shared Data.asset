@@ -15,140 +15,124 @@ MonoBehaviour:
   m_TableCollectionName: Item
   m_TableCollectionNameGuidString: aad5afaa74dbccd4793951bb937901d9
   m_Entries:
-  - m_Id: 69101367795712
-    m_Key: stone
+  - m_Id: 11697432064368640
+    m_Key: Coal
     m_Metadata:
       m_Items: []
-  - m_Id: 69259438530560
-    m_Key: tree
+  - m_Id: 11697468089245696
+    m_Key: Ore
     m_Metadata:
       m_Items: []
-  - m_Id: 69263800606720
-    m_Key: water
+  - m_Id: 11697499936595968
+    m_Key: Metal
     m_Metadata:
       m_Items: []
-  - m_Id: 69273745301504
-    m_Key: sand
+  - m_Id: 11697525429575680
+    m_Key: Metal Parts
     m_Metadata:
       m_Items: []
-  - m_Id: 69282876301312
-    m_Key: iron ore
+  - m_Id: 11697576562335744
+    m_Key: Plate
     m_Metadata:
       m_Items: []
-  - m_Id: 69286475014144
-    m_Key: copper ore
+  - m_Id: 11697640915542016
+    m_Key: Metal Equipment
     m_Metadata:
       m_Items: []
-  - m_Id: 69288131764224
-    m_Key: coal
+  - m_Id: 11697670888038400
+    m_Key: Electronic Parts
     m_Metadata:
       m_Items: []
-  - m_Id: 69289104842752
-    m_Key: stone brick
+  - m_Id: 11697720032698368
+    m_Key: Advanced Metal Equipment
     m_Metadata:
       m_Items: []
-  - m_Id: 69289838845952
-    m_Key: wood
+  - m_Id: 11697771257733120
+    m_Key: Home Appliances
     m_Metadata:
       m_Items: []
-  - m_Id: 69290405076992
-    m_Key: glass
+  - m_Id: 11697801305726976
+    m_Key: Fish
     m_Metadata:
       m_Items: []
-  - m_Id: 69291105525760
-    m_Key: iron
+  - m_Id: 11697833270517760
+    m_Key: Canned Fish
     m_Metadata:
       m_Items: []
-  - m_Id: 69291726282752
-    m_Key: copper
+  - m_Id: 11697867240185856
+    m_Key: Sand
     m_Metadata:
       m_Items: []
-  - m_Id: 69292388982784
-    m_Key: steel
+  - m_Id: 11697946281844736
+    m_Key: Glass
     m_Metadata:
       m_Items: []
-  - m_Id: 69293018128384
-    m_Key: concrete
+  - m_Id: 11697972680794112
+    m_Key: Glass Ornaments
     m_Metadata:
       m_Items: []
-  - m_Id: 69293693411328
-    m_Key: iron plate
+  - m_Id: 11697997758537728
+    m_Key: Solid Wood
     m_Metadata:
       m_Items: []
-  - m_Id: 69294339334144
-    m_Key: iron pipe
+  - m_Id: 11698026376273920
+    m_Key: Charcoal
     m_Metadata:
       m_Items: []
-  - m_Id: 69295027200000
-    m_Key: iron stick
+  - m_Id: 11698071305658368
+    m_Key: Wood
     m_Metadata:
       m_Items: []
-  - m_Id: 69295685705728
-    m_Key: iron gear wheel
+  - m_Id: 11698109037617152
+    m_Key: Furniture
     m_Metadata:
       m_Items: []
-  - m_Id: 69296302268416
-    m_Key: coppar plate
+  - m_Id: 11698139001724928
+    m_Key: Luxury Furniture
     m_Metadata:
       m_Items: []
-  - m_Id: 69296977551360
-    m_Key: copper wire
+  - m_Id: 11698182823813120
+    m_Key: Fruit
     m_Metadata:
       m_Items: []
-  - m_Id: 69298189705216
-    m_Key: steel plate
+  - m_Id: 11698209096933376
+    m_Key: Fruit Jam
     m_Metadata:
       m_Items: []
-  - m_Id: 69298919514112
-    m_Key: steel pipe
+  - m_Id: 11698256651952128
+    m_Key: Wine
     m_Metadata:
       m_Items: []
-  - m_Id: 69300240719872
-    m_Key: steel stick
+  - m_Id: 11698300339822592
+    m_Key: Grain
     m_Metadata:
       m_Items: []
-  - m_Id: 69300911808512
-    m_Key: steel gear wheel
+  - m_Id: 11698353548763136
+    m_Key: Bread
     m_Metadata:
       m_Items: []
-  - m_Id: 69301574508544
-    m_Key: wood circuit
+  - m_Id: 11698394854268928
+    m_Key: Vegetable Oil
     m_Metadata:
       m_Items: []
-  - m_Id: 69303453556736
-    m_Key: electronic curcuit
+  - m_Id: 11698437204156416
+    m_Key: Leather
     m_Metadata:
       m_Items: []
-  - m_Id: 69304191754240
-    m_Key: iron machinery
+  - m_Id: 11698460432211968
+    m_Key: Cotton
     m_Metadata:
       m_Items: []
-  - m_Id: 69304808316928
-    m_Key: steel machinery
+  - m_Id: 11698483307945984
+    m_Key: Cloth
     m_Metadata:
       m_Items: []
-  - m_Id: 69305517154304
-    m_Key: engine
+  - m_Id: 11698525473284096
+    m_Key: Clothes
     m_Metadata:
       m_Items: []
-  - m_Id: 69306146299904
-    m_Key: curde oil
-    m_Metadata:
-      m_Items: []
-  - m_Id: 69306825777152
-    m_Key: plastic
-    m_Metadata:
-      m_Items: []
-  - m_Id: 69307471699968
-    m_Key: heaby oil
-    m_Metadata:
-      m_Items: []
-  - m_Id: 69308117622784
-    m_Key: lubricant
-    m_Metadata:
-      m_Items: []
-  - m_Id: 765203494674432
-    m_Key: None
+  - m_Id: 11698549955436544
+    m_Key: Luxury Clothes
     m_Metadata:
       m_Items: []
   m_Metadata:

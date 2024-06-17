@@ -52,8 +52,8 @@ public class HexaInfoPanel : MonoBehaviour
         for (int i = 0; i < _curHexaElement.Data.ProduceRecipe.Count; i++)
         {
             ProduceRecipe recipe = _curHexaElement.Data.ProduceRecipe[i];
-            list.Add(new TMP_Dropdown.OptionData(MainUIManager.Instance.GetLocalString("Item", recipe.RecipeName),
-                MainGameDataSo.Instance.ItemDatas[recipe.ProduceItemPairs[0].ItemID].ItemSprite));
+            list.Add(new TMP_Dropdown.OptionData(MainUIManager.Instance.GetLocalString("Item", MainGameDataSo.Instance.ItemDatas[recipe.ProduceitemID].ItemName),
+                MainGameDataSo.Instance.ItemDatas[recipe.ProduceitemID].ItemSprite));
         }
 
         if (list.Count > 0)
@@ -102,7 +102,7 @@ public class HexaInfoPanel : MonoBehaviour
         //    element.Init(MainGameDataSo.Instance.ProcessTimerImage, Color.black);
         //    element.UpDateSlider(0, 1, true, _curHexaElement.GetProduceTime.ToString("#.#") + "s");
         //}
-        if (_curHexaElement.CurRecipe.ProduceQuota != 0)
+        if (_curHexaElement.CurRecipe.ProduceTime != 0)
         {
             InfoElement element = FindDisableInfoElement(false);
             element.Init(MainGameDataSo.Instance.ProcessTimerImage, Color.black);
@@ -126,12 +126,9 @@ public class HexaInfoPanel : MonoBehaviour
             element.Init(item.ItemID);
             element.UpDateSlider(_curHexaElement.MaterialItemCount[item.ItemID], item.Amount * MainGameDataSo.Instance.MatarialStorageCountMut);
         }
-        foreach (ItemPair item in _curHexaElement.CurRecipe.ProduceItemPairs)
-        {
-            InfoElement element = FindDisableInfoElement(true);
-            element.Init(item.ItemID);
-            element.UpDateSlider(_curHexaElement.ProductItemCount[item.ItemID], item.Amount * MainGameDataSo.Instance.ProductStorageCountMut);
-        }
+        InfoElement productElement = FindDisableInfoElement(true);
+        productElement.Init(_curHexaElement.CurRecipe.ProduceitemID);
+        productElement.UpDateSlider(_curHexaElement.ProductItemCount[_curHexaElement.CurRecipe.ProduceitemID], MainGameDataSo.Instance.ProductStorageCountMut);
     }
 
     private InfoElement FindDisableInfoElement(bool isProdunct)
