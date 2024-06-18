@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55cc7393e088ca4aa894fbbbc060df8, type: 3}
+  m_Name: Fishery
+  m_EditorClassIdentifier: 
+  <HexaType>k__BackingField: 6
+  <HexaTier>k__BackingField: 1
+  <CanBuy>k__BackingField: 1
+  <UnlockPrice>k__BackingField: 0
+  <BuyPrice>k__BackingField: 200
+  <ProducePerTimeBonus>k__BackingField: 1
+  <UpgradePairs>k__BackingField: []
+  <HexaIcon>k__BackingField: {fileID: 21300000, guid: c8905c39f2d7668408058c09017dfbef, type: 3}
+  <HexaSubIcon1>k__BackingField: {fileID: 0}
+  <HexaSubIcon2>k__BackingField: {fileID: 0}
+  <TopHexaColor>k__BackingField: {r: 0.72156864, g: 0.78545207, b: 0.8, a: 1}
+  <BottomHexaColor>k__BackingField: {r: 0.13207547, g: 0.20973778, b: 0.5283019, a: 1}
+  <TopGaugeColor>k__BackingField: {r: 0.5229619, g: 0.7750281, b: 0.9811321, a: 1}
+  <BottomGaugeColor>k__BackingField: {r: 0, g: 0.11121703, b: 0.8301887, a: 1}
+  <BoostingColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <BoosterMaxColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <ProcessParticle>k__BackingField: {fileID: 0}

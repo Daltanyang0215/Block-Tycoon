@@ -30,10 +30,7 @@ public class HexaGridPreview : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !isPlace)
         {
             _manager.SpawnHexaGird(_data, _manager.MousePosToGridPos(Input.mousePosition));
-            foreach (ItemPair pair in _data.BuyPrice)
-            {
-                MainGameManager.Instance.AddItem(pair.ItemID, -pair.Amount);
-            }
+            MainGameManager.Instance.AddMoney(-_data.BuyPrice);
             gameObject.SetActive(false);
         }
         if (Input.GetMouseButtonDown(1))

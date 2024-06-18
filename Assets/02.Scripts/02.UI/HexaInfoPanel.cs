@@ -49,21 +49,22 @@ public class HexaInfoPanel : MonoBehaviour
         }
 
         List<TMP_Dropdown.OptionData> list = new List<TMP_Dropdown.OptionData>();
-        for (int i = 0; i < _curHexaElement.Data.ProduceRecipe.Count; i++)
+
+        foreach (ItemData item in MainGameDataSo.Instance.GetCanProductItemList(curElenemt.Data))
         {
-            ProduceRecipe recipe = _curHexaElement.Data.ProduceRecipe[i];
-            list.Add(new TMP_Dropdown.OptionData(MainUIManager.Instance.GetLocalString("Item", MainGameDataSo.Instance.ItemDatas[recipe.ProduceitemID].ItemName),
-                MainGameDataSo.Instance.ItemDatas[recipe.ProduceitemID].ItemSprite));
+            list.Add(new TMP_Dropdown.OptionData(MainUIManager.Instance.GetLocalString("Item", item.ItemName),
+                                                 item.ItemSprite));
         }
 
-        if (list.Count > 0)
-        {
-            _recipeDropdown.AddOptions(list);
-            _recipeDropdown.value = _curHexaElement.Data.ProduceRecipe.FindIndex(x => x == _curHexaElement.CurRecipe);
-            UpdateRecipe();
-        }
+        //if (list.Count > 0)
+        //{
+        //    _recipeDropdown.AddOptions(list);
+        //    _recipeDropdown.value = _curHexaElement.Data.ProduceRecipe.FindIndex(x => x == _curHexaElement.CurRecipe);
+        //    UpdateRecipe();
+        //}
 
-        _destoryButton.gameObject.SetActive(_curHexaElement.Data.HexaType == HexaType.Produce);
+        //_destoryButton.gameObject.SetActive(_curHexaElement.Data.HexaType == HexaType.Produce);
+        _destoryButton.gameObject.SetActive(true);
 
     }
 
@@ -87,10 +88,10 @@ public class HexaInfoPanel : MonoBehaviour
         }
 
         // 주위 필요한 블록에 대한 정보 표시
-        if (_curHexaElement.CurRecipe.NearHexaCondition != HexaType.None)
+        if (_curHexaElement.CurProductItem.ProduceRecipe.NearHexaCondition != HexaType.None)
         {
             InfoElement element = FindDisableInfoElement(false);
-            HexaElementDataSO data = MainGameDataSo.Instance.HexaDatas.Find(x => x.HexaType == _curHexaElement.CurRecipe.NearHexaCondition);
+            HexaElementDataSO data = MainGameDataSo.Instance.HexaDatas.Find(x => x.HexaType == _curHexaElement.CurProductItem.ProduceRecipe.NearHexaCondition);
             element.Init(data.HexaIcon, data.BottomHexaColor);
             element.UpDateSlider(_curHexaElement.CheckNearHexaTypeToUI() ? 1 : 0, 1, false);
         }
@@ -102,7 +103,7 @@ public class HexaInfoPanel : MonoBehaviour
         //    element.Init(MainGameDataSo.Instance.ProcessTimerImage, Color.black);
         //    element.UpDateSlider(0, 1, true, _curHexaElement.GetProduceTime.ToString("#.#") + "s");
         //}
-        if (_curHexaElement.CurRecipe.ProduceTime != 0)
+        if (_curHexaElement.CurProductItem.ProduceRecipe.ProduceTime != 0)
         {
             InfoElement element = FindDisableInfoElement(false);
             element.Init(MainGameDataSo.Instance.ProcessTimerImage, Color.black);
@@ -120,15 +121,15 @@ public class HexaInfoPanel : MonoBehaviour
         //} 
 
         // 각 요소 필요한 만큼 활성화
-        foreach (ItemPair item in _curHexaElement.CurRecipe.MaterailItemPairs)
+        foreach (ItemPair item in _curHexaElement.CurProductItem.ProduceRecipe.MaterailItemPairs)
         {
             InfoElement element = FindDisableInfoElement(false);
             element.Init(item.ItemID);
             element.UpDateSlider(_curHexaElement.MaterialItemCount[item.ItemID], item.Amount * MainGameDataSo.Instance.MatarialStorageCountMut);
         }
         InfoElement productElement = FindDisableInfoElement(true);
-        productElement.Init(_curHexaElement.CurRecipe.ProduceitemID);
-        productElement.UpDateSlider(_curHexaElement.ProductItemCount[_curHexaElement.CurRecipe.ProduceitemID], MainGameDataSo.Instance.ProductStorageCountMut);
+        productElement.Init(_curHexaElement.CurProductItem.ItemID);
+        productElement.UpDateSlider(_curHexaElement.ProductItemCount, MainGameDataSo.Instance.ProductStorageCountMut);
     }
 
     private InfoElement FindDisableInfoElement(bool isProdunct)

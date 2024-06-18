@@ -5,8 +5,14 @@ public enum HexaType
     Mountain,
     Forest,
     Field,
-    Generator,
-    Produce,
-    Move,
-    Storge
+    Player,
+    Fishery,
+    Mine,
+    Lumberyard,
+    Pasture,
+    Farm,
+    Orchard,
+    Furnace,
+    ProcessingShop,
+    Delivery
 }

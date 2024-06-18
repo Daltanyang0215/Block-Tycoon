@@ -13,20 +13,22 @@ MonoBehaviour:
   m_Name: MainGameDataSo
   m_EditorClassIdentifier: 
   <HexaDatas>k__BackingField:
-  - {fileID: 11400000, guid: 8a47280bc7e8ac9419b9bc189d9772a0, type: 2}
-  - {fileID: 11400000, guid: ba117f695e5146a47b0237467b659767, type: 2}
-  - {fileID: 11400000, guid: 98736bcbbb2a22d48b6a79ed59002d63, type: 2}
-  - {fileID: 11400000, guid: a71d9572db3a8db4e8ccc92719a61a7f, type: 2}
-  - {fileID: 11400000, guid: 210087714c64db240bfe78772308b807, type: 2}
-  - {fileID: 11400000, guid: 4a40533f6f6eaf145a30319b561077cb, type: 2}
-  - {fileID: 11400000, guid: 4dea202bf826dbe42a7b4b4c94a58770, type: 2}
-  - {fileID: 11400000, guid: 27941ffbc4bb41d4da6840ae62d59844, type: 2}
-  - {fileID: 11400000, guid: 888c5b721ec9db440b57d18faf24ca20, type: 2}
-  - {fileID: 11400000, guid: 72c13166a1dd01a47a227ef89a1de78e, type: 2}
-  - {fileID: 11400000, guid: 99ff2b48745346d489356b4ffc11ab19, type: 2}
-  - {fileID: 11400000, guid: c3b7d6e3a43c0b34eb2e207fd4f7a3c5, type: 2}
-  - {fileID: 11400000, guid: cbac76f0fc50bb74b8c3a49f71962332, type: 2}
-  - {fileID: 11400000, guid: 161282292bbb568408746eed376d576a, type: 2}
+  - {fileID: 11400000, guid: 999d57e01c807aa438126144c4fb947b, type: 2}
+  - {fileID: 11400000, guid: 71e610d479f61174e881e447115bfaff, type: 2}
+  - {fileID: 11400000, guid: 09370ac7c8826864380ab44e1e3c8c8d, type: 2}
+  - {fileID: 11400000, guid: 1a3b7c725cecb344ab1a61e6f1f0fb9f, type: 2}
+  - {fileID: 11400000, guid: 768814656296bfa468167889173d348f, type: 2}
+  - {fileID: 11400000, guid: bff6a9ea397016f46afaf6f41ccfd21d, type: 2}
+  - {fileID: 11400000, guid: afb0e05e4895e0b42ae3a9667d54aa0e, type: 2}
+  - {fileID: 11400000, guid: af894c2ee19f58340aed607dab36e826, type: 2}
+  - {fileID: 11400000, guid: a357a803b01b5c74fabedd5b545177c3, type: 2}
+  - {fileID: 11400000, guid: f47f5709dc1cbe34e9462bd09d4167fd, type: 2}
+  - {fileID: 11400000, guid: 045e52258cde96049a570d68407e9f45, type: 2}
+  - {fileID: 11400000, guid: 3182d04443447844c81e36d163f0a51b, type: 2}
+  - {fileID: 11400000, guid: 4bcf359a4a9c31b46b424c96566064ba, type: 2}
+  - {fileID: 11400000, guid: 752b56480e846254dacdf20531244a4e, type: 2}
+  - {fileID: 11400000, guid: a4f6e38cce17b6743aa511c6596bb1d0, type: 2}
+  - {fileID: 11400000, guid: 5f36d0ed7980b124a9ef16dffc471c12, type: 2}
   <MatarialStorageCountMut>k__BackingField: 3
   <ProductStorageCountMut>k__BackingField: 3
   <ProductBoosterMaxValue>k__BackingField: 15
@@ -34,125 +36,150 @@ MonoBehaviour:
   <ProductBoosterMaxMut>k__BackingField: 1.5
   <ProductBoostingMut>k__BackingField: 1.2
   _itemDatas:
+  - <ItemName>k__BackingField: Debug_None
+    <ItemID>k__BackingField: 0
+    <ItemPrice>k__BackingField: 0
+    <ItemSprite>k__BackingField: {fileID: 21300000, guid: fab22ca411fb9404994fe7c272111143, type: 3}
+    <ItemColor>k__BackingField: {r: 1, g: 0, b: 0, a: 1}
+    <ProduceRecipe>k__BackingField:
+      <ProduceTime>k__BackingField: 0
+      <MaterailItemPairs>k__BackingField: []
+      <NearHexaCondition>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 0
+      <CanProduceHexaTiar>k__BackingField: 0
   - <ItemName>k__BackingField: Coal
     <ItemID>k__BackingField: 1
     <ItemPrice>k__BackingField: 10
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 3fa384bc5d7103c4da05c3983a471451, type: 3}
     <ItemColor>k__BackingField: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
+      <ProduceTime>k__BackingField: 5
       <MaterailItemPairs>k__BackingField: []
-      <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <NearHexaCondition>k__BackingField: 2
+      <CanProduceHexa>k__BackingField: 7
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Ore
-    <ItemID>k__BackingField: 1
+    <ItemID>k__BackingField: 2
     <ItemPrice>k__BackingField: 1
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: da05f70d79365b845a1da9f21d3b6d1e, type: 3}
     <ItemColor>k__BackingField: {r: 0.3584906, g: 0.15545088, b: 0.01183696, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
+      <ProduceTime>k__BackingField: 5
       <MaterailItemPairs>k__BackingField: []
-      <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <NearHexaCondition>k__BackingField: 2
+      <CanProduceHexa>k__BackingField: 7
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Metal
     <ItemID>k__BackingField: 3
     <ItemPrice>k__BackingField: 15
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: faf4ef706c5a2044e9cefb3cf68b3da6, type: 3}
     <ItemColor>k__BackingField: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 5
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 1
+        <Amount>k__BackingField: 1
+      - <ItemID>k__BackingField: 2
+        <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 7
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Metal Parts
     <ItemID>k__BackingField: 4
     <ItemPrice>k__BackingField: 20
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 9693bb83ac05150438c68ed9bb3c781e, type: 3}
     <ItemColor>k__BackingField: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 10
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 3
+        <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Plate
     <ItemID>k__BackingField: 5
     <ItemPrice>k__BackingField: 20
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: b25e3a8ae1fd4714ab29065be38cacb7, type: 3}
     <ItemColor>k__BackingField: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 10
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 3
+        <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Metal Equipment
     <ItemID>k__BackingField: 6
     <ItemPrice>k__BackingField: 60
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 9af46ee310df93c4ea62bdff33b1b4bf, type: 3}
     <ItemColor>k__BackingField: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 20
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 4
+        <Amount>k__BackingField: 1
+      - <ItemID>k__BackingField: 5
+        <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 2
   - <ItemName>k__BackingField: Electronic Parts
     <ItemID>k__BackingField: 7
     <ItemPrice>k__BackingField: 50
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 829b79827652c3841b1dc0881fb1c5a9, type: 3}
-    <ItemColor>k__BackingField: {r: 0.63617253, g: 0.7735849, b: 0.60938054, a: 1}
+    <ItemColor>k__BackingField: {r: 0.42905992, g: 0.7830189, b: 0.35826808, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 30
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 12
+        <Amount>k__BackingField: 5
+      - <ItemID>k__BackingField: 4
+        <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 3
   - <ItemName>k__BackingField: Advanced Metal Equipment
     <ItemID>k__BackingField: 8
     <ItemPrice>k__BackingField: 280
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 404088e94a126164cbd2fbc105e6d6b9, type: 3}
     <ItemColor>k__BackingField: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 60
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 7
+        <Amount>k__BackingField: 1
+      - <ItemID>k__BackingField: 6
+        <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 3
   - <ItemName>k__BackingField: Home Appliances
     <ItemID>k__BackingField: 9
     <ItemPrice>k__BackingField: 250
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: d8d3f9775639ea0408a551e710a499c2, type: 3}
     <ItemColor>k__BackingField: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 60
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 7
+        <Amount>k__BackingField: 1
+      - <ItemID>k__BackingField: 4
+        <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 3
   - <ItemName>k__BackingField: Fish
     <ItemID>k__BackingField: 10
     <ItemPrice>k__BackingField: 10
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 5a2af3b6056edea439d8bea8eab18a77, type: 3}
     <ItemColor>k__BackingField: {r: 0.4085572, g: 0.3726415, b: 1, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
+      <ProduceTime>k__BackingField: 5
       <MaterailItemPairs>k__BackingField: []
-      <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
+      <NearHexaCondition>k__BackingField: 1
+      <CanProduceHexa>k__BackingField: 6
       <CanProduceHexaTiar>k__BackingField: 0
   - <ItemName>k__BackingField: Canned Fish
     <ItemID>k__BackingField: 11
@@ -160,240 +187,260 @@ MonoBehaviour:
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: d0185b40ba77401478437fbbfc250f5d, type: 3}
     <ItemColor>k__BackingField: {r: 0.6648182, g: 0.5981666, b: 0.8867924, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 20
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 10
+        <Amount>k__BackingField: 1
+      - <ItemID>k__BackingField: 5
+        <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Sand
     <ItemID>k__BackingField: 12
     <ItemPrice>k__BackingField: 1
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 4e37aac53713e7441b3432e9e43b3b2b, type: 3}
-    <ItemColor>k__BackingField: {r: 0.8490566, g: 0.84240663, b: 0.66082233, a: 1}
+    <ItemColor>k__BackingField: {r: 0.8867924, g: 0.877555, b: 0.6650943, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
+      <ProduceTime>k__BackingField: 5
       <MaterailItemPairs>k__BackingField: []
-      <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <NearHexaCondition>k__BackingField: 1
+      <CanProduceHexa>k__BackingField: 7
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Glass
     <ItemID>k__BackingField: 13
     <ItemPrice>k__BackingField: 15
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 5bb2f06107face54aa5106b90581b628, type: 3}
-    <ItemColor>k__BackingField: {r: 0.8254717, g: 0.9589572, b: 1, a: 1}
+    <ItemColor>k__BackingField: {r: 0.6274475, g: 0.87318534, b: 0.9433962, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 5
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 12
+        <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 12
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Glass Ornaments
     <ItemID>k__BackingField: 14
     <ItemPrice>k__BackingField: 40
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: a93eaaf5938796f4eb8a0a21703c0090, type: 3}
-    <ItemColor>k__BackingField: {r: 0.8235294, g: 0.9607843, b: 1, a: 1}
+    <ItemColor>k__BackingField: {r: 0.627451, g: 0.8745098, b: 0.94509804, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 20
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 13
+        <Amount>k__BackingField: 2
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 2
   - <ItemName>k__BackingField: Solid Wood
     <ItemID>k__BackingField: 15
     <ItemPrice>k__BackingField: 3
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: b08f923b6355ef54d8f2fe2189e7538b, type: 3}
     <ItemColor>k__BackingField: {r: 0.70980394, g: 0.4823672, b: 0.26666668, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
+      <ProduceTime>k__BackingField: 5
       <MaterailItemPairs>k__BackingField: []
-      <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <NearHexaCondition>k__BackingField: 3
+      <CanProduceHexa>k__BackingField: 8
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Charcoal
     <ItemID>k__BackingField: 16
     <ItemPrice>k__BackingField: 15
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: fffc46f744e140a47b51d2037b4e7b1b, type: 3}
     <ItemColor>k__BackingField: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 5
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 15
+        <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 12
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Wood
     <ItemID>k__BackingField: 17
     <ItemPrice>k__BackingField: 10
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: faf4ef706c5a2044e9cefb3cf68b3da6, type: 3}
     <ItemColor>k__BackingField: {r: 0.70980394, g: 0.48235294, b: 0.26666668, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 15
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 15
+        <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Furniture
     <ItemID>k__BackingField: 18
     <ItemPrice>k__BackingField: 60
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: c2535f6ddfbf718419f59d913207827c, type: 3}
     <ItemColor>k__BackingField: {r: 0.70980394, g: 0.48235294, b: 0.26666668, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 40
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 17
+        <Amount>k__BackingField: 3
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 2
   - <ItemName>k__BackingField: Luxury Furniture
     <ItemID>k__BackingField: 19
     <ItemPrice>k__BackingField: 170
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 8e2c3381454e8fd4f807a86c29baf585, type: 3}
     <ItemColor>k__BackingField: {r: 0.70980394, g: 0.48235294, b: 0.26666668, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 70
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 18
+        <Amount>k__BackingField: 1
+      - <ItemID>k__BackingField: 13
+        <Amount>k__BackingField: 1
+      - <ItemID>k__BackingField: 28
+        <Amount>k__BackingField: 2
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 3
   - <ItemName>k__BackingField: Fruit
     <ItemID>k__BackingField: 20
     <ItemPrice>k__BackingField: 5
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 8c721cdb19ff1984787bd7e804f02920, type: 3}
-    <ItemColor>k__BackingField: {r: 0.6084979, g: 0.11098258, b: 0.8113208, a: 1}
+    <ItemColor>k__BackingField: {r: 0.71059316, g: 0.28025985, b: 0.8867924, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
+      <ProduceTime>k__BackingField: 5
       <MaterailItemPairs>k__BackingField: []
-      <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <NearHexaCondition>k__BackingField: 4
+      <CanProduceHexa>k__BackingField: 11
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Fruit Jam
     <ItemID>k__BackingField: 21
     <ItemPrice>k__BackingField: 30
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 7d0d9ee2649243242af151bda3c73ba3, type: 3}
-    <ItemColor>k__BackingField: {r: 0.60784316, g: 0.10980392, b: 0.8117647, a: 1}
+    <ItemColor>k__BackingField: {r: 0.70980394, g: 0.2784314, b: 0.8862745, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 15
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 20
+        <Amount>k__BackingField: 3
+      - <ItemID>k__BackingField: 13
+        <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Wine
     <ItemID>k__BackingField: 22
     <ItemPrice>k__BackingField: 50
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 2956cee60687ce6459e1487d61ae6933, type: 3}
-    <ItemColor>k__BackingField: {r: 0.60784316, g: 0.10980392, b: 0.8117647, a: 1}
+    <ItemColor>k__BackingField: {r: 0.70980394, g: 0.2784314, b: 0.8862745, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 30
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 20
+        <Amount>k__BackingField: 5
+      - <ItemID>k__BackingField: 13
+        <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 2
   - <ItemName>k__BackingField: Grain
     <ItemID>k__BackingField: 23
     <ItemPrice>k__BackingField: 3
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 41e87c235ab72c8439909d55c700fc45, type: 3}
-    <ItemColor>k__BackingField: {r: 0.8301887, g: 0.4541295, b: 0.20754717, a: 1}
+    <ItemColor>k__BackingField: {r: 0.9245283, g: 0.83883417, b: 0.45790315, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
+      <ProduceTime>k__BackingField: 5
       <MaterailItemPairs>k__BackingField: []
-      <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <NearHexaCondition>k__BackingField: 4
+      <CanProduceHexa>k__BackingField: 10
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Bread
     <ItemID>k__BackingField: 24
     <ItemPrice>k__BackingField: 15
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 86721d33fb99e4f4bac6960d8cc2fa65, type: 3}
     <ItemColor>k__BackingField: {r: 0.83137256, g: 0.45490196, b: 0.20784314, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 15
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 23
+        <Amount>k__BackingField: 2
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Vegetable Oil
     <ItemID>k__BackingField: 25
     <ItemPrice>k__BackingField: 70
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 3b2315dc732f61f48a6b7467184d9ef0, type: 3}
     <ItemColor>k__BackingField: {r: 0.7985735, g: 0.83137256, b: 0.20784314, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 40
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 23
+        <Amount>k__BackingField: 5
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 3
   - <ItemName>k__BackingField: Leather
     <ItemID>k__BackingField: 26
     <ItemPrice>k__BackingField: 10
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 7d0e8c8a70ea171499c831fc95bac128, type: 3}
     <ItemColor>k__BackingField: {r: 0.83137256, g: 0.45490196, b: 0.20784314, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
+      <ProduceTime>k__BackingField: 5
       <MaterailItemPairs>k__BackingField: []
-      <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <NearHexaCondition>k__BackingField: 3
+      <CanProduceHexa>k__BackingField: 9
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Cotton
     <ItemID>k__BackingField: 27
     <ItemPrice>k__BackingField: 1
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 9f541c19c24300244bc785b596845df2, type: 3}
     <ItemColor>k__BackingField: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
+      <ProduceTime>k__BackingField: 5
       <MaterailItemPairs>k__BackingField: []
-      <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <NearHexaCondition>k__BackingField: 4
+      <CanProduceHexa>k__BackingField: 10
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Cloth
     <ItemID>k__BackingField: 28
     <ItemPrice>k__BackingField: 15
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 979ddc843b99a5e41a906628faccc075, type: 3}
     <ItemColor>k__BackingField: {r: 0.9137255, g: 0.9137255, b: 0.9137255, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 30
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 27
+        <Amount>k__BackingField: 5
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Clothes
     <ItemID>k__BackingField: 29
     <ItemPrice>k__BackingField: 50
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: ba1921dada3af7e459e63e51e80ad03a, type: 3}
     <ItemColor>k__BackingField: {r: 0.9137255, g: 0.9137255, b: 0.9137255, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 30
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 28
+        <Amount>k__BackingField: 2
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 2
   - <ItemName>k__BackingField: Luxury Clothes
     <ItemID>k__BackingField: 30
     <ItemPrice>k__BackingField: 100
     <ItemSprite>k__BackingField: {fileID: 21300000, guid: 0de9f424924b0e64db133ee040fb8c5a, type: 3}
     <ItemColor>k__BackingField: {r: 0.9150943, g: 0.83011615, b: 0.71221966, a: 1}
     <ProduceRecipe>k__BackingField:
-      <ProduceitemID>k__BackingField: 0
-      <ProduceTime>k__BackingField: 0
-      <MaterailItemPairs>k__BackingField: []
+      <ProduceTime>k__BackingField: 40
+      <MaterailItemPairs>k__BackingField:
+      - <ItemID>k__BackingField: 29
+        <Amount>k__BackingField: 1
+      - <ItemID>k__BackingField: 26
+        <Amount>k__BackingField: 3
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 0
-      <CanProduceHexaTiar>k__BackingField: 0
+      <CanProduceHexa>k__BackingField: 13
+      <CanProduceHexaTiar>k__BackingField: 3
   _missions:
   - {fileID: 11400000, guid: 37c6fcce4f76f934ebb553bb7c9bbdcf, type: 2}
   - {fileID: 11400000, guid: 330949c9e133cf14383dce2cf0d63d55, type: 2}

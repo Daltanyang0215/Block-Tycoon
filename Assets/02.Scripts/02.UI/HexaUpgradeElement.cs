@@ -27,30 +27,27 @@ public class HexaUpgradeElement : MonoBehaviour
         _hexaImage.sprite = _data.HexaIcon;
         _hexaName.StringReference.SetReference("Hexa", _data.name);
 
-        if (MainGameManager.Instance.UnlockList[_data.GetID] || _data.UnlockPrice.Count == 0)
+        if (MainGameManager.Instance.UnlockList[_data.GetID] || _data.UnlockPrice == 0)
             UnlockHexa();
         else
         {
-            Vector2 size = GetComponent<RectTransform>().sizeDelta;
-            size.y = 75 * _data.UnlockPrice.Count;
-            size.y = size.y < 150f ? 150 : size.y;
-            GetComponent<RectTransform>().sizeDelta = size;
-            foreach (ItemPair pair in _data.UnlockPrice)
+            //Vector2 size = GetComponent<RectTransform>().sizeDelta;
+            //size.y = 75 * _data.UnlockPrice.Count;
+            //size.y = size.y < 150f ? 150 : size.y;
+            //GetComponent<RectTransform>().sizeDelta = size;
+            //foreach (ItemPair pair in _data.UnlockPrice)
             {
                 ReportElement element = Instantiate(_priceElement, _priceTransfrom);
-                ItemData item = MainGameDataSo.Instance.ItemDatas[pair.ItemID];
-                element.Init(item.ItemSprite, item.ItemName);
-                element.SetColor(item.ItemColor);
-                element.UpdateItemCount(pair.Amount);
+                //ItemData item = MainGameDataSo.Instance.ItemDatas[pair.ItemID];
+                element.Init(MainGameDataSo.Instance.MoneyImage,"Money");
+                //element.SetColor(item.ItemColor);
+                element.UpdateItemCount(data.UnlockPrice);
                 _unlockButton.interactable = false;
             }
 
             _unlockButton.onClick.AddListener(() =>
             {
-                foreach (ItemPair pair in _data.UnlockPrice)
-                {
-                    MainGameManager.Instance.AddItem(pair.ItemID, -pair.Amount);
-                }
+                    MainGameManager.Instance.AddMoney(-data.UnlockPrice);
             });
         }
 
@@ -61,13 +58,10 @@ public class HexaUpgradeElement : MonoBehaviour
 
         if (!MainGameManager.Instance.UnlockList[_data.GetID])
         {
-            foreach (ItemPair pair in _data.UnlockPrice)
-            {
-                if (MainGameManager.Instance.GetItemCount(pair.ItemID) < pair.Amount)
+                if (MainGameManager.Instance.HasMoney < _data.UnlockPrice)
                 {
                     canPrice = false;
                 }
-            }
             _unlockButton.interactable = canPrice;
             return;
         }

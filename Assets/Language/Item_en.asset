@@ -138,6 +138,10 @@ MonoBehaviour:
     m_Localized: Coal
     m_Metadata:
       m_Items: []
+  - m_Id: 12099944214896640
+    m_Localized: Money
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

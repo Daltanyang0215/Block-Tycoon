@@ -114,8 +114,8 @@ public class HexaGridManager : MonoBehaviour
         foreach (IHexaGridElement hexa in _gridPositions.Values)
         {
             if (ReferenceEquals(hexa, null)) continue;
-            if (hexa is HexaGridTransit)
-                hexa.HexaUpdate();
+            //if (hexa is HexaGridTransit)
+            //    hexa.HexaUpdate();
         }
         // 생산블록의 재료 이동(소비 이후 재료 이동)
         foreach (IHexaGridElement hexa in _gridPositions.Values)
@@ -139,12 +139,12 @@ public class HexaGridManager : MonoBehaviour
 
         switch (data.HexaType)
         {
-            case HexaType.Storge:
+            case HexaType.Delivery:
                 grid.AddComponent<HexaGridStorage>().Init(data, saveData);
                 break;
-            case HexaType.Move:
-                grid.AddComponent<HexaGridTransit>().Init(data, saveData);
-                break;
+            //case HexaType.Move:
+            //    grid.AddComponent<HexaGridTransit>().Init(data, saveData);
+            //    break;
             default:
                 grid.AddComponent<HexaGridProduct>().Init(data, saveData);
                 break;

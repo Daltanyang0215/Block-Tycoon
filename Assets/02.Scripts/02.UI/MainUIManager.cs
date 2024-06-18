@@ -46,7 +46,7 @@ public class MainUIManager : MonoBehaviour
 
     [field: Header("InfoPanel")]
     [field: SerializeField] public HexaInfoPanel HexaInfoPanel { get; private set; }
-    [field: SerializeField] public HexaTransitInfoPanel HexaTransitInfoPanel { get; private set; }
+    //[field: SerializeField] public HexaTransitInfoPanel HexaTransitInfoPanel { get; private set; }
 
     private bool _isShow;
 

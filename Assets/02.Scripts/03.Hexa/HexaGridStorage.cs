@@ -9,7 +9,7 @@ public class HexaGridStorage : MonoBehaviour, IHexaGridElement
     private HexaGridManager _manger;
     private IHexaGridElement[] _nearHexa = new IHexaGridElement[6];
 
-        public void Init(HexaElementDataSO data, HexaSaveData saveData)
+    public void Init(HexaElementDataSO data, HexaSaveData saveData)
     {
         Data = data;
 
@@ -32,17 +32,13 @@ public class HexaGridStorage : MonoBehaviour, IHexaGridElement
             if (ReferenceEquals(near, null)) continue;
             if (!(near is IHexaGridInItem hexa)) continue;
             //if (ReferenceEquals(hexa.CurRecipe, null)) continue;
-            if (hexa.ProductItemCount.Count == 0) continue;
-            List<int> keys = new List<int>(hexa.ProductItemCount.Keys);
-            foreach (int key in keys)
-            {
-                if (!hexa.CanGetMaterial(i) || hexa.ProductItemCount[key] <= 0) continue;
-                _manger.ShowAddItemPopup(transform.position + (count * 0.35f) * Vector3.up + 0.15f * Vector3.up, key);
-                hexa.ProductItemCount[key]--;
-                MainGameManager.Instance.AddItem(key, 1);
-                _manger.ShowMoveItemEffect((near.Pos), transform.position, key);
-                count++;
-            }
+            if (hexa.ProductItemCount == 0) continue;
+            if (!hexa.CanGetMaterial(i) || hexa.ProductItemCount <= 0) continue;
+            _manger.ShowAddItemPopup(transform.position + (count * 0.35f) * Vector3.up + 0.15f * Vector3.up, hexa.CurProductItem.ItemID);
+            hexa.ProductItemCount--;
+            MainGameManager.Instance.AddItem(hexa.CurProductItem.ItemID, 1);
+            _manger.ShowMoveItemEffect((near.Pos), transform.position, hexa.CurProductItem.ItemID);
+            count++;
             (hexa as HexaGridProduct)?.InfoUpData?.Invoke(-1);
         }
     }

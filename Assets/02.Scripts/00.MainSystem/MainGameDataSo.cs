@@ -25,7 +25,7 @@ public class MainGameDataSo : ScriptableObject
 
     [field: SerializeField] public int MatarialStorageCountMut { get; private set; }
     [field: SerializeField] public int ProductStorageCountMut { get; private set; }
-    [field : Tooltip("부스팅 최대 게이지 , 지속시간")]
+    [field: Tooltip("부스팅 최대 게이지 , 지속시간")]
     [field: SerializeField] public float ProductBoosterMaxValue { get; private set; }
     [field: Tooltip("부스팅 1회 충전량")]
     [field: SerializeField] public float ProductAddBoostingValue { get; private set; }
@@ -65,6 +65,22 @@ public class MainGameDataSo : ScriptableObject
         }
     }
 
+    public List<ItemData> GetCanProductItemList(HexaElementDataSO hexaData)
+    {
+        if (hexaData == null) return null;
+
+        List<ItemData> result = new List<ItemData>();
+
+        foreach (ItemData item in ItemDatas.Values)
+        {
+            if (hexaData.HexaType == item.ProduceRecipe.CanProduceHexa &&
+                hexaData.HexaTier >= item.ProduceRecipe.CanProduceHexaTiar)
+            {
+                result.Add(item);
+            }
+        }
+        return result;
+    }
 
 }
 [System.Serializable]
@@ -72,7 +88,7 @@ public class ItemData
 {
     [field: SerializeField] public string ItemName { get; private set; }
     [field: SerializeField] public int ItemID { get; private set; }
-    [field: SerializeField] public int ItemPrice {  get; private set; }
+    [field: SerializeField] public int ItemPrice { get; private set; }
     [field: SerializeField] public Sprite ItemSprite { get; private set; }
     [field: SerializeField] public Color ItemColor { get; private set; }
     [field: SerializeField] public ProduceRecipe ProduceRecipe { get; private set; }

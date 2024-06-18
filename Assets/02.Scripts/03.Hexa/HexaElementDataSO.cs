@@ -5,15 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "HexaElementDataSO", menuName = "BlockTycoon/HexaElementDataSO")]
 public class HexaElementDataSO : ScriptableObject
 {
-
     [field: SerializeField] public HexaType HexaType { get; private set; }
+    [field: SerializeField] public int HexaTier { get; private set; } = 1;
+
+    [field :Header("Price")]
     [field: SerializeField] public bool CanBuy { get; private set; }
-    [field: SerializeField] public List<ItemPair> UnlockPrice { get; private set; }
-    [field: SerializeField] public List<ItemPair> BuyPrice { get; private set; }
+    //[field: SerializeField] public List<ItemPair> UnlockPrice { get; private set; }
+    //[field: SerializeField] public List<ItemPair> BuyPrice { get; private set; }
+    [field: SerializeField] public int UnlockPrice { get; private set; }
+    [field: SerializeField] public int BuyPrice { get; private set; }
+
 
     [field: Header("Produce")]
-    [field: SerializeField] public List<ProduceRecipe> ProduceRecipe { get; private set; }
-
+    //[field: SerializeField] public List<ProduceRecipe> ProduceRecipe { get; private set; }
     [field: SerializeField] public float ProducePerTimeBonus { get; private set; } = 1;
 
     [field: Header("Upgrade")]
@@ -52,5 +56,5 @@ public class HexaUpgradePair
 
 public enum HexaUpgradeType
 {
-    AddPerSec,    
+    AddPerSec,
 }

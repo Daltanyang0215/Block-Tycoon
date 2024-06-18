@@ -35,47 +35,51 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1366235488256
-    m_Localized: Storage
+    m_Localized: Delivery
     m_Metadata:
       m_Items: []
-  - m_Id: 1382714908672
-    m_Localized: Transit
+  - m_Id: 11966219124678656
+    m_Localized: ProcessingShop2
     m_Metadata:
       m_Items: []
-  - m_Id: 1414440624128
-    m_Localized: Quarry
+  - m_Id: 11966211860144128
+    m_Localized: ProcessingShop1
     m_Metadata:
       m_Items: []
-  - m_Id: 1457356742656
-    m_Localized: Refinery
+  - m_Id: 11966189319954432
+    m_Localized: Pasture
     m_Metadata:
       m_Items: []
-  - m_Id: 1483868938240
-    m_Localized: Factory
+  - m_Id: 11966142951923712
+    m_Localized: Orchard
     m_Metadata:
       m_Items: []
-  - m_Id: 1510611820544
+  - m_Id: 11966115273711616
+    m_Localized: Mine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11966081392123904
+    m_Localized: Master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11965919823339520
     m_Localized: Lumberyard
     m_Metadata:
       m_Items: []
-  - m_Id: 1551581782016
-    m_Localized: Pump
+  - m_Id: 11965883899125760
+    m_Localized: Furnace
     m_Metadata:
       m_Items: []
-  - m_Id: 1569470488576
-    m_Localized: Drilling machine
+  - m_Id: 11965842350350336
+    m_Localized: Fram
     m_Metadata:
       m_Items: []
-  - m_Id: 3421322813440
-    m_Localized: Factory2
+  - m_Id: 11965808879804416
+    m_Localized: Fishery
     m_Metadata:
       m_Items: []
-  - m_Id: 672880605732864
-    m_Localized: Hand
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2464960709599232
-    m_Localized: Mine
+  - m_Id: 11966226661842944
+    m_Localized: ProcessingShop3
     m_Metadata:
       m_Items: []
   references:

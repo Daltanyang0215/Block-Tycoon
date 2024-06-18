@@ -175,14 +175,14 @@ public class SaveData
 [System.Serializable]
 public class HexaSaveData
 {
-    public int CurRecipeIndex;
+    public int CurProductItemID;
     public float FillAmount;
     public float BoosterGauge;
     public bool IsBooster;
     public List<int> HexaMaterialItemCode = new List<int>();
     public List<int> HexaMaterialItemCount = new List<int>();
-    public List<int> HexaProductItemCode = new List<int>();
-    public List<int> HexaProductItemCount = new List<int>();
+    public int HexaProductItemCode ;
+    public int HexaProductItemCount;
 
     public byte InVec;
     public byte OutVec;

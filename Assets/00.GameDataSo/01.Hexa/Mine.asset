@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55cc7393e088ca4aa894fbbbc060df8, type: 3}
+  m_Name: Mine
+  m_EditorClassIdentifier: 
+  <HexaType>k__BackingField: 7
+  <HexaTier>k__BackingField: 1
+  <CanBuy>k__BackingField: 1
+  <UnlockPrice>k__BackingField: 100
+  <BuyPrice>k__BackingField: 200
+  <ProducePerTimeBonus>k__BackingField: 1
+  <UpgradePairs>k__BackingField: []
+  <HexaIcon>k__BackingField: {fileID: 21300000, guid: b917ff0a9ae9a444491e640b796345d2, type: 3}
+  <HexaSubIcon1>k__BackingField: {fileID: 0}
+  <HexaSubIcon2>k__BackingField: {fileID: 0}
+  <TopHexaColor>k__BackingField: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
+  <BottomHexaColor>k__BackingField: {r: 0.23629408, g: 0.24508387, b: 0.2830189, a: 1}
+  <TopGaugeColor>k__BackingField: {r: 0.9622642, g: 0.89072865, b: 0.7307761, a: 1}
+  <BottomGaugeColor>k__BackingField: {r: 0.5, g: 0.42040095, b: 0.370283, a: 1}
+  <BoostingColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <BoosterMaxColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <ProcessParticle>k__BackingField: {fileID: 0}
