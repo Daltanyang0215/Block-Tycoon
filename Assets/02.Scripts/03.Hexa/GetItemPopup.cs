@@ -1,21 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GetItemPopup : MonoBehaviour
 {
     private float _disolveTimer;
-    private SpriteRenderer _itemSprite;
+    [SerializeField] private TMP_Text _priceText;
 
-    private void Awake()
-    {
-        _itemSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
-    }
 
-    public void Init(Sprite sprite)
+    public void Init(int price)
     {
-        _itemSprite.sprite = sprite;
-        transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = sprite; ;
+        _priceText.text = price.ToString();
     }
 
     private void Update()

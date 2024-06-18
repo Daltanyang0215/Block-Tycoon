@@ -139,6 +139,10 @@ MonoBehaviour:
     m_Key: Money
     m_Metadata:
       m_Items: []
+  - m_Id: 12103519317991424
+    m_Key: NoSetting
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

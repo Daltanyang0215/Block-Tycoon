@@ -142,6 +142,10 @@ MonoBehaviour:
     m_Localized: "\uB3C8"
     m_Metadata:
       m_Items: []
+  - m_Id: 12103519317991424
+    m_Localized: "\uBBF8 \uC124\uC815"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

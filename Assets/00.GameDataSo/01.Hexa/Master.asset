@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Master
   m_EditorClassIdentifier: 
   <HexaType>k__BackingField: 5
-  <HexaTier>k__BackingField: 3
+  <HexaTier>k__BackingField: 0
   <CanBuy>k__BackingField: 0
   <UnlockPrice>k__BackingField: 0
   <BuyPrice>k__BackingField: 5000
-  <ProducePerTimeBonus>k__BackingField: 2
+  <ProducePerTimeBonus>k__BackingField: 0.5
   <UpgradePairs>k__BackingField: []
   <HexaIcon>k__BackingField: {fileID: 21300000, guid: f0b22db88e7eabe44989c0d1cb55686c, type: 3}
   <HexaSubIcon1>k__BackingField: {fileID: 0}

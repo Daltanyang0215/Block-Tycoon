@@ -15,6 +15,7 @@ public class HexaInfoPanel : MonoBehaviour
     [SerializeField] private Transform _materialParent;
 
     [SerializeField] private Transform _destoryButton;
+    private List<int> _curHexaProductItemIDs = new List<int>();
 
     public void ShowPanel(HexaGridProduct curElenemt)
     {
@@ -47,21 +48,26 @@ public class HexaInfoPanel : MonoBehaviour
         {
             infoElement.gameObject.SetActive(false);
         }
-
+        _curHexaProductItemIDs.Clear();
+        _curHexaProductItemIDs.Add(0);
         List<TMP_Dropdown.OptionData> list = new List<TMP_Dropdown.OptionData>();
-
+        list.Add(new TMP_Dropdown.OptionData(MainUIManager.Instance.GetLocalString("Item", "NoSetting"),
+                                                 MainGameDataSo.Instance.ItemDatas[0].ItemSprite));
         foreach (ItemData item in MainGameDataSo.Instance.GetCanProductItemList(curElenemt.Data))
         {
             list.Add(new TMP_Dropdown.OptionData(MainUIManager.Instance.GetLocalString("Item", item.ItemName),
                                                  item.ItemSprite));
+            _curHexaProductItemIDs.Add(item.ItemID);
         }
 
-        //if (list.Count > 0)
-        //{
-        //    _recipeDropdown.AddOptions(list);
-        //    _recipeDropdown.value = _curHexaElement.Data.ProduceRecipe.FindIndex(x => x == _curHexaElement.CurRecipe);
-        //    UpdateRecipe();
-        //}
+        if (list.Count > 0)
+        {
+            _recipeDropdown.AddOptions(list);
+            _recipeDropdown.value = curElenemt.CurProductItem == null ?
+                0 :
+                _curHexaProductItemIDs.FindIndex(x => x == curElenemt.CurProductItem.ItemID);
+            UpdateRecipe();
+        }
 
         //_destoryButton.gameObject.SetActive(_curHexaElement.Data.HexaType == HexaType.Produce);
         _destoryButton.gameObject.SetActive(true);
@@ -79,13 +85,15 @@ public class HexaInfoPanel : MonoBehaviour
     {
         if (index >= 0)
         {
-            _curHexaElement.SetReciepe(index);
+            _curHexaElement.SetReciepe(_curHexaProductItemIDs[index]);
         }
         // 모든 요소 비활성화
         foreach (InfoElement infoElement in transform.GetComponentsInChildren<InfoElement>())
         {
             infoElement.gameObject.SetActive(false);
         }
+
+        if (ReferenceEquals(_curHexaElement.CurProductItem, null) || _curHexaElement.CurProductItem.ItemID == 0) return;
 
         // 주위 필요한 블록에 대한 정보 표시
         if (_curHexaElement.CurProductItem.ProduceRecipe.NearHexaCondition != HexaType.None)

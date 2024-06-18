@@ -219,13 +219,13 @@ public class HexaGridManager : MonoBehaviour
         if (itemPopup == null)
         {
             itemPopup = Instantiate(_itemPopupPrefab, showPos, Quaternion.identity, transform.GetChild(0));
-            itemPopup.Init(itemData.ItemSprite);
+            itemPopup.Init(itemData.ItemPrice);
             _itemsPopups.Add(itemPopup);
             yield break;
         }
         itemPopup.transform.position = showPos;
         itemPopup.gameObject.SetActive(true);
-        itemPopup.Init(itemData.ItemSprite);
+        itemPopup.Init(itemData.ItemPrice);
     }
 
     public void ShowMoveItemEffect(Vector2 startPos, Vector2 endPos, int itemid)

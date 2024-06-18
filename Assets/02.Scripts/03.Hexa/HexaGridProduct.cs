@@ -72,6 +72,7 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         {
             MaterialItemCount[saveData.HexaMaterialItemCode[i]] = saveData.HexaMaterialItemCount[i];
         }
+        CurProductItem = MainGameDataSo.Instance.ItemDatas[saveData.CurProductItemID];
         ProductItemCount = saveData.HexaProductItemCount;
         #endregion
     }
@@ -161,22 +162,28 @@ public class HexaGridProduct : MonoBehaviour, IHexaGridElement, IHexaGridInItem
         if (itemid == 0)
         {
             transform.GetChild(4).gameObject.SetActive(false);
+            CurProductItem = null;
+            _fillAmount = 0;
+            _fillMut = 0;
             return;
         }
-        if (CurProductItem.ItemID == itemid) return;
 
-        _fillAmount = 0;
-        _fillMut = ReferenceEquals(CurProductItem, null) ? 0 : GetProducePerTime / CurProductItem.ProduceRecipe.ProduceTime;
-        MaterialItemCount.Clear();
+        if (!ReferenceEquals(CurProductItem, null) && CurProductItem.ItemID == itemid) return;
+        // product update
+        CurProductItem = MainGameDataSo.Instance.ItemDatas[itemid];
         ProductItemCount = 0;
+        MaterialItemCount.Clear();
         foreach (ItemPair material in CurProductItem.ProduceRecipe.MaterailItemPairs)
         {
             MaterialItemCount.Add(material.ItemID, 0);
         }
 
+        // renderer update
         transform.GetChild(4).gameObject.SetActive(true);
         transform.GetChild(4).GetComponent<SpriteRenderer>().sprite = CurProductItem.ItemSprite;
         transform.GetChild(4).GetComponent<SpriteRenderer>().color = CurProductItem.ItemColor;
+        _fillAmount = 0;
+        _fillMut = GetProducePerTime / CurProductItem.ProduceRecipe.ProduceTime;
     }
     public void GetMaterialToNear()
     {

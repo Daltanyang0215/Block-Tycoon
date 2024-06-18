@@ -36,7 +36,8 @@ public class HexaGridStorage : MonoBehaviour, IHexaGridElement
             if (!hexa.CanGetMaterial(i) || hexa.ProductItemCount <= 0) continue;
             _manger.ShowAddItemPopup(transform.position + (count * 0.35f) * Vector3.up + 0.15f * Vector3.up, hexa.CurProductItem.ItemID);
             hexa.ProductItemCount--;
-            MainGameManager.Instance.AddItem(hexa.CurProductItem.ItemID, 1);
+            //MainGameManager.Instance.AddItem(hexa.CurProductItem.ItemID, 1);
+            MainGameManager.Instance.AddMoney(hexa.CurProductItem.ItemPrice);
             _manger.ShowMoveItemEffect((near.Pos), transform.position, hexa.CurProductItem.ItemID);
             count++;
             (hexa as HexaGridProduct)?.InfoUpData?.Invoke(-1);

@@ -118,7 +118,7 @@ public class SaveData
         HexaPos.Add(new Vector3Int(1, 2, 0)); HexaID.Add(2); HexaSaveDatas.Add(null);
         HexaPos.Add(new Vector3Int(2, 0, 0)); HexaID.Add(3); HexaSaveDatas.Add(null);
         HexaPos.Add(new Vector3Int(1, -2, 0)); HexaID.Add(4); HexaSaveDatas.Add(null);
-        HexaPos.Add(new Vector3Int(-1, -2, 0)); HexaID.Add(5); HexaSaveDatas.Add(null);
+        HexaPos.Add(new Vector3Int(-1, -2, 0)); HexaID.Add(6); HexaSaveDatas.Add(null);
     }
 
     public void Save()
