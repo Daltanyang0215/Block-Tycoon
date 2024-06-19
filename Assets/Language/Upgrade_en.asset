@@ -24,10 +24,36 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3548249941504688139
+  - m_Id: 9098701385179136
+    m_Localized: Increase in selling price of all items by {Value}%
+    m_Metadata:
+      m_Items:
+      - rid: 3548249941504688139
+  - m_Id: 9098669055483904
+    m_Localized: Increases booster maximum {Value} (seconds)
+    m_Metadata:
+      m_Items:
+      - rid: 3548249941504688139
+  - m_Id: 9098692652638208
+    m_Localized: Increase booster charge {Value}
+    m_Metadata:
+      m_Items:
+      - rid: 3548249941504688139
+  - m_Id: 9098696159076352
+    m_Localized: When the booster is fully charged, production speed increases by
+      {Value}%
+    m_Metadata:
+      m_Items:
+      - rid: 3548249941504688139
+  - m_Id: 9098699120254976
+    m_Localized: Increases production speed by {Value}% while charging booster
+    m_Metadata:
+      m_Items:
+      - rid: 3548249941504688139
   references:
     version: 2
     RefIds:
     - rid: 3548249941504688139
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00203bb001000000
+        m_Entries: 00203bb0010000000020fb7f385320000020fbf83753200000207b483753200000207b77365320000020fbf830532000

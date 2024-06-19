@@ -86,6 +86,22 @@ MonoBehaviour:
     m_Localized: Upgrade Max Level
     m_Metadata:
       m_Items: []
+  - m_Id: 12354372918517760
+    m_Localized: Price
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12354298616422400
+    m_Localized: Delivery quantity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12354285098180608
+    m_Localized: Item Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12354269801553920
+    m_Localized: Icon
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55cc7393e088ca4aa894fbbbc060df8, type: 3}
+  m_Name: All
+  m_EditorClassIdentifier: 
+  <HexaType>k__BackingField: 5
+  <HexaTier>k__BackingField: 0
+  <CanBuy>k__BackingField: 0
+  <UnlockItems>k__BackingField: []
+  <UnlockPrice>k__BackingField: 0
+  <BuyPrice>k__BackingField: 5000
+  <ProducePerTimeBonus>k__BackingField: 0.5
+  <UpgradePairs>k__BackingField:
+  - <Type>k__BackingField: 1
+    <Prices>k__BackingField:
+    - <Price>k__BackingField: 1000
+      <Value>k__BackingField: 5
+    - <Price>k__BackingField: 3000
+      <Value>k__BackingField: 15
+    - <Price>k__BackingField: 5000
+      <Value>k__BackingField: 30
+    - <Price>k__BackingField: 10000
+      <Value>k__BackingField: 45
+  - <Type>k__BackingField: 2
+    <Prices>k__BackingField:
+    - <Price>k__BackingField: 1000
+      <Value>k__BackingField: 2
+    - <Price>k__BackingField: 2000
+      <Value>k__BackingField: 3
+    - <Price>k__BackingField: 3000
+      <Value>k__BackingField: 5
+  - <Type>k__BackingField: 3
+    <Prices>k__BackingField:
+    - <Price>k__BackingField: 100
+      <Value>k__BackingField: 50
+    - <Price>k__BackingField: 200
+      <Value>k__BackingField: 150
+    - <Price>k__BackingField: 300
+      <Value>k__BackingField: 350
+  - <Type>k__BackingField: 4
+    <Prices>k__BackingField:
+    - <Price>k__BackingField: 100
+      <Value>k__BackingField: 30
+    - <Price>k__BackingField: 200
+      <Value>k__BackingField: 80
+    - <Price>k__BackingField: 300
+      <Value>k__BackingField: 130
+  - <Type>k__BackingField: 5
+    <Prices>k__BackingField:
+    - <Price>k__BackingField: 3000
+      <Value>k__BackingField: 10
+    - <Price>k__BackingField: 5000
+      <Value>k__BackingField: 20
+    - <Price>k__BackingField: 10000
+      <Value>k__BackingField: 30
+  <HexaIcon>k__BackingField: {fileID: 21300000, guid: f0b22db88e7eabe44989c0d1cb55686c, type: 3}
+  <HexaSubIcon1>k__BackingField: {fileID: 0}
+  <HexaSubIcon2>k__BackingField: {fileID: 0}
+  <TopHexaColor>k__BackingField: {r: 0.59368575, g: 0.24328054, b: 0.7264151, a: 1}
+  <BottomHexaColor>k__BackingField: {r: 0.37118784, g: 0.10537558, b: 0.6037736, a: 1}
+  <TopGaugeColor>k__BackingField: {r: 0.745283, g: 0.5449003, b: 0.745283, a: 1}
+  <BottomGaugeColor>k__BackingField: {r: 0.44219992, g: 0.2242791, b: 0.4528302, a: 1}
+  <BoostingColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <BoosterMaxColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <ProcessParticle>k__BackingField: {fileID: 0}

@@ -263,6 +263,7 @@ MonoBehaviour:
   _image: {fileID: 3685841364743465434}
   _itemName: {fileID: 81629323769733506}
   _itemCount: {fileID: 1149748684834090628}
+  _itemPrice: {fileID: 0}
 --- !u!1 &8651824058471099848
 GameObject:
   m_ObjectHideFlags: 0

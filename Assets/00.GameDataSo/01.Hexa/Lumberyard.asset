@@ -15,6 +15,7 @@ MonoBehaviour:
   <HexaType>k__BackingField: 8
   <HexaTier>k__BackingField: 1
   <CanBuy>k__BackingField: 1
+  <UnlockItems>k__BackingField: []
   <UnlockPrice>k__BackingField: 0
   <BuyPrice>k__BackingField: 300
   <ProducePerTimeBonus>k__BackingField: 1
@@ -26,6 +27,6 @@ MonoBehaviour:
   <BottomHexaColor>k__BackingField: {r: 0.764151, g: 0.33960012, b: 0.11894804, a: 1}
   <TopGaugeColor>k__BackingField: {r: 0.7735849, g: 0.5831759, b: 0.33935562, a: 1}
   <BottomGaugeColor>k__BackingField: {r: 0.764151, g: 0.2314116, b: 0, a: 1}
-  <BoostingColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
-  <BoosterMaxColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <BoostingColor>k__BackingField: {r: 1, g: 0.83035153, b: 0.4292453, a: 1}
+  <BoosterMaxColor>k__BackingField: {r: 0.7169812, g: 0.30948317, b: 0, a: 1}
   <ProcessParticle>k__BackingField: {fileID: 0}

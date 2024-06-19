@@ -27,7 +27,7 @@ public class MainGameManager : MonoBehaviour
     [field: SerializeField] public int HasMoney { get; private set; }
     public void AddMoney(int money)
     {
-        HasMoney += money;
+        HasMoney += Mathf.RoundToInt(money * (Upgrades[0][4] > 0 ? GameDataSo.HexaDatas[0].UpgradePairs[4].Prices[Upgrades[0][4] - 1].Value * 0.01f + 1 : 1));
         UIUpdateAction?.Invoke();
     }
 
@@ -105,10 +105,10 @@ public class MainGameManager : MonoBehaviour
             }
         }
 
-        Upgrades = new Dictionary<int, List<int>> ();
+        Upgrades = new Dictionary<int, List<int>>();
         if (saveData.HexaUpgradeData?.Count == 0)
         {
-        
+
             foreach (HexaElementDataSO data in MainGameDataSo.Instance.HexaDatas)
             {
                 List<int> add = new List<int>();
@@ -121,6 +121,7 @@ public class MainGameManager : MonoBehaviour
         }
         else
         {
+
             foreach (hexaUpgradeSaveData data in saveData.HexaUpgradeData)
             {
                 Upgrades.Add(data.hexaindex, data.level);

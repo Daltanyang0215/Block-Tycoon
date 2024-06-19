@@ -52,6 +52,7 @@ public class HexaUpgradeElement : MonoBehaviour
         }
 
     }
+
     public void UpgradeUpdata()
     {
         bool canPrice = true;

@@ -25,14 +25,27 @@ public class MainGameDataSo : ScriptableObject
 
     [field: SerializeField] public int MatarialStorageCountMut { get; private set; }
     [field: SerializeField] public int ProductStorageCountMut { get; private set; }
-    [field: Tooltip("부스팅 최대 게이지 , 지속시간")]
-    [field: SerializeField] public float ProductBoosterMaxValue { get; private set; }
-    [field: Tooltip("부스팅 1회 충전량")]
-    [field: SerializeField] public float ProductAddBoostingValue { get; private set; }
-    [field: Tooltip("부스팅 최대일시 속도 배율")]
-    [field: SerializeField] public float ProductBoosterMaxMut { get; private set; }
-    [field: Tooltip("부스팅 중 속도 배율")]
-    [field: SerializeField] public float ProductBoostingMut { get; private set; }
+    [Tooltip("부스팅 최대 게이지 , 지속시간")]
+    [SerializeField] private float _productBoosterMaxValue;
+    public float ProductBoosterMaxValue => 
+        _productBoosterMaxValue +
+        (MainGameManager.Instance.Upgrades[0][0] > 0 ? HexaDatas[0].UpgradePairs[0].Prices[MainGameManager.Instance.Upgrades[0][0] - 1].Value : 0);
+    [Tooltip("부스팅 1회 충전량")]
+    [SerializeField] private float _productAddBoostingValue;
+    public float ProductAddBoostingValue =>
+        _productAddBoostingValue + 
+        (MainGameManager.Instance.Upgrades[0][1] > 0 ? HexaDatas[0].UpgradePairs[1].Prices[MainGameManager.Instance.Upgrades[0][1] - 1].Value : 0);
+    [Tooltip("부스팅 최대일시 속도 배율")]
+    [SerializeField] private float _productBoosterMaxMut;
+    public float ProductBoosterMaxMut =>
+        _productBoosterMaxMut + 
+        (MainGameManager.Instance.Upgrades[0][2]>0 ? HexaDatas[0].UpgradePairs[2].Prices[MainGameManager.Instance.Upgrades[0][2]-1].Value*0.01f:0);
+    [Tooltip("부스팅 중 속도 배율")]
+    [SerializeField] private float _productBoostingMut;
+    public float ProductBoostingMut =>
+        _productBoostingMut +
+        (MainGameManager.Instance.Upgrades[0][3] > 0 ? HexaDatas[0].UpgradePairs[3].Prices[MainGameManager.Instance.Upgrades[0][3] - 1].Value*0.01f : 0);
+   
 
     [Header("ItmeData")]
     [SerializeField] private List<ItemData> _itemDatas;

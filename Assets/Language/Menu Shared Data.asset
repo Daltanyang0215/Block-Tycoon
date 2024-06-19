@@ -83,6 +83,22 @@ MonoBehaviour:
     m_Key: Upgrade Max Level
     m_Metadata:
       m_Items: []
+  - m_Id: 12354269801553920
+    m_Key: Icon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12354285098180608
+    m_Key: Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12354298616422400
+    m_Key: Delivery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12354372918517760
+    m_Key: Price
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -10,6 +10,7 @@ public class ReportElement : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private LocalizeStringEvent _itemName;
     [SerializeField] private TMP_Text _itemCount;
+    [SerializeField] private TMP_Text _itemPrice;
 
     public void Init(Sprite sprite, string name, string table = "Item")
     {
@@ -25,5 +26,10 @@ public class ReportElement : MonoBehaviour
     public void UpdateItemCount(int count)
     {
         _itemCount.text = count.ToString();
+    }
+    public void UpdateItemPrice(int price)
+    {
+        _itemPrice.enabled = price > 0;
+        _itemPrice.text = price.ToString();
     }
 }

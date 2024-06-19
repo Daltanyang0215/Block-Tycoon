@@ -8,9 +8,9 @@ public class HexaElementDataSO : ScriptableObject
     [field: SerializeField] public HexaType HexaType { get; private set; }
     [field: SerializeField] public int HexaTier { get; private set; } = 1;
 
-    [field :Header("Price")]
+    [field: Header("Price")]
     [field: SerializeField] public bool CanBuy { get; private set; }
-    //[field: SerializeField] public List<ItemPair> UnlockPrice { get; private set; }
+    [field: SerializeField] public List<ItemPair> UnlockItems { get; private set; }
     //[field: SerializeField] public List<ItemPair> BuyPrice { get; private set; }
     [field: SerializeField] public int UnlockPrice { get; private set; }
     [field: SerializeField] public int BuyPrice { get; private set; }
@@ -57,4 +57,9 @@ public class HexaUpgradePair
 public enum HexaUpgradeType
 {
     AddPerSec,
+    AddMaxBoosterValue,
+    AddAddBoosterValue,
+    AddMaxBoosterSpeed,
+    AddBoostingSpeed,
+    AddPriceMut
 }

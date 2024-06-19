@@ -24,10 +24,38 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3548249941504688138
+  - m_Id: 9098701385179136
+    m_Localized: "\uBAA8\uB4E0 \uC544\uC774\uD15C \uD310\uB9E4\uAC00\uACA9 {Value}%
+      \uC99D\uAC00"
+    m_Metadata:
+      m_Items:
+      - rid: 3548249941504688138
+  - m_Id: 9098699120254976
+    m_Localized: "\uBD80\uC2A4\uD130 \uCDA9\uC804 \uC911 \uC0DD\uC0B0\uC18D\uB3C4
+      {Value}% \uC99D\uAC00"
+    m_Metadata:
+      m_Items:
+      - rid: 3548249941504688138
+  - m_Id: 9098696159076352
+    m_Localized: "\uBD80\uC2A4\uD130 \uC644\uCDA9 \uC2DC \uC0DD\uC0B0\uC18D\uB3C4
+      {Value}% \uC99D\uAC00"
+    m_Metadata:
+      m_Items:
+      - rid: 3548249941504688138
+  - m_Id: 9098669055483904
+    m_Localized: "\uBD80\uC2A4\uD130 \uCD5C\uB300\uCE58 {Value}(\uCD08) \uC99D\uAC00"
+    m_Metadata:
+      m_Items:
+      - rid: 3548249941504688138
+  - m_Id: 9098692652638208
+    m_Localized: "\uBD80\uC2A4\uD130 \uCDA9\uC804\uB7C9 {Value} \uC99D\uAC00"
+    m_Metadata:
+      m_Items:
+      - rid: 3548249941504688138
   references:
     version: 2
     RefIds:
     - rid: 3548249941504688138
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00203bb001000000
+        m_Entries: 00203bb0010000000020fb7f3853200000207b48375320000020fbf83753200000207b77365320000020fbf830532000

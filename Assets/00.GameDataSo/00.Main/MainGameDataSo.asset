@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: MainGameDataSo
   m_EditorClassIdentifier: 
   <HexaDatas>k__BackingField:
+  - {fileID: 11400000, guid: bff6a9ea397016f46afaf6f41ccfd21d, type: 2}
   - {fileID: 11400000, guid: 999d57e01c807aa438126144c4fb947b, type: 2}
   - {fileID: 11400000, guid: 71e610d479f61174e881e447115bfaff, type: 2}
   - {fileID: 11400000, guid: 09370ac7c8826864380ab44e1e3c8c8d, type: 2}
   - {fileID: 11400000, guid: 1a3b7c725cecb344ab1a61e6f1f0fb9f, type: 2}
   - {fileID: 11400000, guid: 768814656296bfa468167889173d348f, type: 2}
-  - {fileID: 11400000, guid: bff6a9ea397016f46afaf6f41ccfd21d, type: 2}
   - {fileID: 11400000, guid: afb0e05e4895e0b42ae3a9667d54aa0e, type: 2}
   - {fileID: 11400000, guid: af894c2ee19f58340aed607dab36e826, type: 2}
   - {fileID: 11400000, guid: a357a803b01b5c74fabedd5b545177c3, type: 2}
@@ -31,10 +31,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5f36d0ed7980b124a9ef16dffc471c12, type: 2}
   <MatarialStorageCountMut>k__BackingField: 3
   <ProductStorageCountMut>k__BackingField: 3
-  <ProductBoosterMaxValue>k__BackingField: 15
-  <ProductAddBoostingValue>k__BackingField: 1
-  <ProductBoosterMaxMut>k__BackingField: 1.5
-  <ProductBoostingMut>k__BackingField: 1.2
+  _productBoosterMaxValue: 15
+  _productAddBoostingValue: 1
+  _productBoosterMaxMut: 1.2
+  _productBoostingMut: 1.5
   _itemDatas:
   - <ItemName>k__BackingField: Debug_None
     <ItemID>k__BackingField: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
       - <ItemID>k__BackingField: 2
         <Amount>k__BackingField: 1
       <NearHexaCondition>k__BackingField: 0
-      <CanProduceHexa>k__BackingField: 7
+      <CanProduceHexa>k__BackingField: 12
       <CanProduceHexaTiar>k__BackingField: 1
   - <ItemName>k__BackingField: Metal Parts
     <ItemID>k__BackingField: 4
@@ -465,6 +465,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec60137fc834d3b409cc763d3267f839, type: 2}
   - {fileID: 11400000, guid: 930273c9d49b00740a1d9cb425f953b4, type: 2}
   - {fileID: 11400000, guid: 28093bde015d38b449e362ed960eeae8, type: 2}
+  <MainUpgrade>k__BackingField: []
   <MoveItemEffectTime>k__BackingField: 0.5
   <MoneyImage>k__BackingField: {fileID: 21300000, guid: 4f84db0459e31514c8b555933b6b930c, type: 3}
   <HexaLoadImage>k__BackingField: {fileID: 21300000, guid: 113243f99a7e1ce46b828c2d5f3be9ff, type: 3}

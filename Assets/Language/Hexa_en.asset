@@ -82,6 +82,10 @@ MonoBehaviour:
     m_Localized: ProcessingShop3
     m_Metadata:
       m_Items: []
+  - m_Id: 12291931106910208
+    m_Localized: All
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

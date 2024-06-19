@@ -19,6 +19,26 @@ MonoBehaviour:
     m_Key: AddPerSec
     m_Metadata:
       m_Items: []
+  - m_Id: 9098669055483904
+    m_Key: AddMaxBoosterValue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9098692652638208
+    m_Key: AddAddBoosterValue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9098696159076352
+    m_Key: AddMaxBoosterSpeed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9098699120254976
+    m_Key: AddBoostingSpeed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9098701385179136
+    m_Key: AddPriceMut
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

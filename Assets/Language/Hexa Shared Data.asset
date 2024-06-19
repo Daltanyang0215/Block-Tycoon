@@ -79,6 +79,10 @@ MonoBehaviour:
     m_Key: ProcessingShop3
     m_Metadata:
       m_Items: []
+  - m_Id: 12291931106910208
+    m_Key: All
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
